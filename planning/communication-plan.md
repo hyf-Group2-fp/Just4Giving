@@ -3,6 +3,7 @@
 #### Daily standup
 
 - Monday, Tuesday, Thursday, Friday each evening @ 18:00
+- Week 1: Samir and Bermarte will meet @ 10:30
 
 #### Weekly standup
 
