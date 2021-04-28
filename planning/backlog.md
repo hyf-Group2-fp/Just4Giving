@@ -4,37 +4,45 @@ A collection of user stories you can choose from. Stories inside of each priorit
 
 ## Must-Haves
 
-> these will be the necessary user stories :
+> these will be the necessary user stories:
 
-#### the application personas :
+#### the application personas:
 
-- user (giver) I want to donate object(s) I don't need to the people in need.
+- user (giver) I want to donate object(s) I don't need to the people in need
 
-- user (needer) I want to search for object(s) I need .
+- user (needer) I want to search for object(s) I need
 
 #### Overview of the application:
 
-- As a user (giver) I want to open the landing page to get (read) more information about it.
+- As a user (giver) I want to open the landing page to get (read) more information about it
 
-- As a user (needer) I want to open the landing page to get (read) more information about it.
+- As a user (needer) I want to open the landing page to get (read) more information about it
 
-#### Make an account :
+#### Make an account:
 
-- As a user (giver) I want to make an account so, I will be able to access the application.
+- As a user (giver) I want to make an account so, I will be able to access the application
 
 - As a user (needer) I want to make an account so, I will be able to access the application
 
-#### Use the application :
+#### Use the application:
 
-- As a user (giver) I want to post information about goods I want to donate for people in need.
+- As a user (giver) I want to post information about goods I want to donate for people in need
 
 - As a user (needer) I want to search for goods I need
 
+#### Modify a post:
+
+- As a user (giver) I want to be able to modify my post(s)
+
+#### Delete a post:
+
+- As a user (giver) I want to be able to delete my post(s)
+
 #### Log out :
 
-- As a user (giver) I want to log out to keep my account secure.
+- As a user (giver) I want to log out to keep my account secure
 
-- As a user (needer) I want to log out to keep my account secure.
+- As a user (needer) I want to log out to keep my account secure
 
 ## Should-Haves
 
@@ -42,7 +50,7 @@ A collection of user stories you can choose from. Stories inside of each priorit
 
 #### Switch languages:
 
-- As a user (giver or needer) I want to be able to switch the application language.
+- As a user (giver or needer) I want to be able to switch the application language
 
 ## Could-Haves
 
@@ -50,4 +58,4 @@ A collection of user stories you can choose from. Stories inside of each priorit
 
 #### Translator:
 
-- As a user (giver or needer) I want to be able to translate posts in a language I speak.
+- As a user (giver or needer) I want to be able to translate posts in a language I speak
