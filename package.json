@@ -5,7 +5,7 @@
     "dev": "concurrently \"npm run dev-api\" \"npm run dev-client\"",
     "dev-api": "nodemon api/dev.js",
     "dev-client": "cd client && npm run start",
-    "start": "node server.js",
+    "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "cd api && jest --collectCoverage=true --forceExit",
     "test:watch": "cd api && jest --watch --collectCoverage=true --runInBand --detectOpenHandles"
