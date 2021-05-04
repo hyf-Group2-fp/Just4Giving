@@ -15,7 +15,9 @@
 
 ## General info
 
-The application idea is there are a lot of people (giver) in Brussels, who have extra good(s) (furniture, clothes,books, electronics , PCs,..), they want to donate to people in need (needer).This application provides a secure and easy connection between the giver and the needer.
+There are many people in Brussels who want to get rid of objects they no longer use, like furniture, clothes, books, electronics, PCs and so forth, and at the same time want to help the needy.
+We call the first group `Needers` and the second `Givers`.
+The idea of the application is to offer a tool to connect those who have items to donate with those in need. This app provides an easy and secure connection between the Giver and the Needer. 
 
 ## Screenshots
 
