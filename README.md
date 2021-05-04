@@ -1,6 +1,6 @@
 # Just4Giving
 
-> A full-stack app used to connect people who want to donate goods (giver) to people in need (needer). 
+> A full-stack app used to connect people who want to donate goods (giver) to people in need (needer).
 
 ## Table of contents
 
@@ -15,7 +15,7 @@
 
 ## General info
 
-The application idea is there are a lot of people (giver) in Brussels, who have extra good(s) (furniture, clothes,books, electronics , PCs,..), they want to donate to the people in need (needer).This application provides a secure and easy connection between the giver and the needer.
+The application idea is there are a lot of people (giver) in Brussels, who have extra good(s) (furniture, clothes,books, electronics , PCs,..), they want to donate to people in need (needer).This application provides a secure and easy connection between the giver and the needer.
 
 ## Screenshots
 
