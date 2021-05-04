@@ -1,6 +1,3 @@
-<p align="center" width="16px">
-  <img src="/img/logo.png" />
-</p>
 # Just4Giving
 
 > A full-stack app used to connect people who want to donate goods (giver) to people in need (needer).
@@ -22,7 +19,7 @@ The application idea is there are a lot of people (giver) in Brussels, who have 
 
 ## Screenshots
 
-![Example screenshot](./img/Just4Giving.png)
+![Example screenshot](https://github.com/hyf-Group2-fp/Just4Giving/blob/main/img/just4giving.png)
 
 ## Technologies
 
