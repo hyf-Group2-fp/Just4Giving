@@ -15,7 +15,9 @@
 
 ## General info
 
-The application idea is there are a lot of people (giver) in Brussels, who have extra good(s) (furniture, clothes,books, electronics , PCs,..), they want to donate to people in need (needer).This application provides a secure and easy connection between the giver and the needer.
+There are many people in Brussels who want to get rid of objects they no longer use, like furniture, clothes, books, electronics, PCs and so forth, and at the same time want to help the ones in need.
+We call the first group `Needers` and the second `Givers`.
+The idea of the application is to offer a tool to connect those who have items to donate with those in need. This app provides an easy and secure connection between Givers and Needers. 
 
 ## Screenshots
 
@@ -87,7 +89,7 @@ Project is: _in progress_
 
 #### Project Owners :
 
-- [@Bernardo Martelli](https://github.com/bermarte)
+- [@Bermarte](https://github.com/bermarte)
 - [@Samir M.](https://github.com/samirm00)
 
 #### UX/UI designer :
@@ -96,22 +98,22 @@ Project is: _in progress_
 
 #### Front-End :
 
-- [@Bernardo Martelli](https://github.com/bermarte) (Mentor)
+- [@Bermarte](https://github.com/bermarte) (Mentor)
 - [@Samir M.](https://github.com/samirm00) (Mentor)
 - [@Divya Sree](https://github.com/Divyasree345)
 - [@Sharaf](https://github.com/sharafcs50)
-- [@Peyman Shahmari Mikaeel darehsi](https://github.com/peymanshahmarimikaeeldarehsi)
+- [@Peyman](https://github.com/peymanshahmarimikaeeldarehsi)
 
 #### Back-End :
 
 - [@Samir M.](https://github.com/samirm00) (Mentor)
-- [@Bernardo Martelli](https://github.com/bermarte)
+- [@Bermarte](https://github.com/bermarte)
 - [@Kemi](https://github.com/kemmy72)
 - [@Brain Ketunze](https://github.com/Brainketunze)
 
 #### Dev-OPs :
 
-- [@Bernardo Martelli](https://github.com/bermarte) (Mentor)
+- [@Bermarte](https://github.com/bermarte) (Mentor)
 - [@Samir M.](https://github.com/samirm00)
 
 ---
