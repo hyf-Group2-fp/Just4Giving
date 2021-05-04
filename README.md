@@ -102,7 +102,7 @@ Project is: _in progress_
 - [@Samir M.](https://github.com/samirm00) (Mentor)
 - [@Divya Sree](https://github.com/Divyasree345)
 - [@Sharaf](https://github.com/sharafcs50)
-- [@Peyman Shahmari Mikaeel darehsi](https://github.com/peymanshahmarimikaeeldarehsi)
+- [@Peyman](https://github.com/peymanshahmarimikaeeldarehsi)
 
 #### Back-End :
 
