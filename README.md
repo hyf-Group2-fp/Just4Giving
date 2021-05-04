@@ -77,7 +77,7 @@ Project is: _in progress_
 
 ## Inspiration
 
-## Authors :
+## Authors
 
 #### Project Coaches :
 
