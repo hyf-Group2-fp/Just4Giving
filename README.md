@@ -19,7 +19,7 @@ The application idea is there are a lot of people (giver) in Brussels, who have 
 
 ## Screenshots
 
-![Example screenshot](https://github.com/hyf-Group2-fp/Just4Giving/blob/main/img/just4giving.png)
+![Example screenshot](https://cdn.jsdelivr.net/gh/hyf-Group2-fp/Just4Giving/img/just4giving.png)
 
 ## Technologies
 
