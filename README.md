@@ -17,7 +17,7 @@
 
 There are many people in Brussels who want to get rid of objects they no longer use, like furniture, clothes, books, electronics, PCs and so forth, and at the same time want to help the ones in need.
 We call the first group `Needers` and the second `Givers`.
-The idea of the application is to offer a tool to connect those who have items to donate with those in need. This app provides an easy and secure connection between them. 
+The idea of the application is to offer a tool to connect those who have items to donate with those in need. This app provides an easy and secure connection between Givers and Needers. 
 
 ## Screenshots
 
