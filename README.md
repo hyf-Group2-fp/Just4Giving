@@ -11,7 +11,7 @@
 - [Features](#features)
 - [Status](#status)
 - [Inspiration](#inspiration)
-- [Contact](#contact)
+- [Authors](#authors)
 
 ## General info
 
