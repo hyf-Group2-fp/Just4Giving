@@ -1,6 +1,6 @@
 # Just4Giving
 
-> A full-stack app used to connect the people want to donate good(s) (giver) to the people in need (needer).
+> A full-stack app used to connect the people who want to donate good(s) (giver) to the people in need (needer).
 
 ## Table of contents
 
