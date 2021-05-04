@@ -89,7 +89,7 @@ Project is: _in progress_
 
 #### Project Owners :
 
-- [@Bernardo Martelli](https://github.com/bermarte)
+- [@Bermarte](https://github.com/bermarte)
 - [@Samir M.](https://github.com/samirm00)
 
 #### UX/UI designer :
@@ -98,7 +98,7 @@ Project is: _in progress_
 
 #### Front-End :
 
-- [@Bernardo Martelli](https://github.com/bermarte) (Mentor)
+- [@Bermarte](https://github.com/bermarte) (Mentor)
 - [@Samir M.](https://github.com/samirm00) (Mentor)
 - [@Divya Sree](https://github.com/Divyasree345)
 - [@Sharaf](https://github.com/sharafcs50)
@@ -107,13 +107,13 @@ Project is: _in progress_
 #### Back-End :
 
 - [@Samir M.](https://github.com/samirm00) (Mentor)
-- [@Bernardo Martelli](https://github.com/bermarte)
+- [@Bermarte](https://github.com/bermarte)
 - [@Kemi](https://github.com/kemmy72)
 - [@Brain Ketunze](https://github.com/Brainketunze)
 
 #### Dev-OPs :
 
-- [@Bernardo Martelli](https://github.com/bermarte) (Mentor)
+- [@Bermarte](https://github.com/bermarte) (Mentor)
 - [@Samir M.](https://github.com/samirm00)
 
 ---
