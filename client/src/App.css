@@ -182,6 +182,11 @@ body .bg-dark {
     .jumbotron button {
         font-size: 15px;
     }
+    .btn-primary {
+        width: 250px;
+        height: 50px;
+        font-weight: bold;
+    }
 }
 
 @media only screen and (max-width: 600px) {
