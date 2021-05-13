@@ -6,6 +6,7 @@ import Navigation from "./components/landingpage/Navigation";
 import Demo from "./components/landingpage/Demo";
 import Footer from "./components/landingpage/Footer";
 import About from "./components/landingpage/About";
+import Signupgiver from "./components/register/signupgiver"
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,11 @@ function App() {
         <Switch>
           <Route path="/" exact component={Demo} />
           <Route path="/aboutus" exact component={About} />
+          <Route
+                        path="/signupgiver"
+                        exact
+                        component={Signupgiver}
+                    />
         </Switch>
         <Footer />
       </Router>
