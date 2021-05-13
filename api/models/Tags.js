@@ -15,8 +15,6 @@ const Tags = sequelize.define(
     category_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: "categories",
-      referencesKey: "id",
     },
     tag_name: {
       type: Sequelize.STRING(50),

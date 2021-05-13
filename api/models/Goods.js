@@ -13,7 +13,7 @@ const Goods = sequelize.define(
       primaryKey: true,
     },
     giver_id: {
-      type: Sequelize.TINYINT,
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
     item_name: {
@@ -43,12 +43,12 @@ const Goods = sequelize.define(
       min: 1,
     },
     available: {
-      type: Sequelize.TINYINT,
+      type: Sequelize.INTEGER,
       max: 1,
       min: 0,
     },
     taken: {
-      type: Sequelize.TINYINT,
+      type: Sequelize.INTEGER,
       max: 1,
       min: 0,
     },
