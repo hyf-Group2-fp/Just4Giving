@@ -39,7 +39,32 @@ app.post("/signup", async (req, res) => {
       .send(`a new user : ${first_name} ${last_name} has been created!`);
   } catch (err) {
     console.error(err);
-    res.status(500).send("server error");
+    if (err.errors) {
+      switch (err.errors[0].path) {
+        case "first_name":
+          res
+            .status(401)
+            .send("please make sure the first name is added and is correct!");
+          break;
+        case "last_name":
+          res
+            .status(401)
+            .send("please make sure the first name is added and is correct!");
+          break;
+        case "password":
+          res
+            .status(401)
+            .send("please make sure the password  is added and is correct!");
+          break;
+        case "email":
+          res
+            .status(401)
+            .send("please make sure the email  is added and unique!");
+          break;
+      }
+    }
+
+    res.status(500).send("server error!");
   }
 });
 

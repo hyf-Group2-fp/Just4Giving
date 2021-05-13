@@ -11,11 +11,10 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", require("./routes/home.js"));
-app.use("/", require("./routes/login.js"));
-app.use("/", require("./routes/signup.js"));
+app.use("/", require("./routes/user.js"));
 app.use("/", require("./routes/tags.js"));
-app.use("/", require("./routes/caregories"));
-// app.use("/", require("./routes/goods.js"));
+app.use("/", require("./routes/categories"));
+app.use("/", require("./routes/goods.js"));
+app.use("/", require("./routes/goodsformany.js"));
 
 module.exports = app;

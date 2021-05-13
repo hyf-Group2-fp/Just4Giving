@@ -15,8 +15,22 @@ app.post("/tags", async (req, res) => {
     console.log(name);
     res.status(200).send(`a category  : ${tag_name} has been created!`);
   } catch (err) {
-    console.error(err);
-    res.status(500).send("server error");
+    if (err.errors) {
+      switch (err.errors[0].path) {
+        case "category_id":
+          res
+            .status(401)
+            .send("please make sure the category_id is added and is correct!");
+          break;
+        case "category_name":
+          res
+            .status(401)
+            .send("please make sure the category_nam is added and is correct!");
+          break;
+      }
+    }
+
+    res.status(500).send("server error!");
   }
 });
 

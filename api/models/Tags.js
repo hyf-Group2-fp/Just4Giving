@@ -1,52 +1,46 @@
 const { Sequelize, Model, DataTypes, STRING } = require("sequelize");
 const sequelize = require("../db/db.js");
-const Categories = require("./Categories.js");
 
-class Tags extends Model {
-  constructor({ category_id, tag_name }) {
-    super();
-    this.category_id = category_id;
-    this.tag_name = tag_name;
-  }
-}
+const Categories = require("./Categories");
 
-Tags.init(
+const Tags = sequelize.define(
+  "tags",
   {
     tags_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
     category_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       references: "categories",
       referencesKey: "id",
     },
     tag_name: {
-      type: DataTypes.STRING(50),
+      type: Sequelize.STRING(50),
       allowNull: false,
     },
+    // time stamp
+    createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
   },
   {
-    sequelize,
-    modelName: "tags",
+    tableName: "tags",
   }
 );
 
 // foreign keys
 
-Categories.hasMany(Tags);
+Categories.hasMany(Tags, {
+  as: "tags",
+  foreignKey: "category_id",
+});
 
-// Categories.hasMany(Tags, {
-//   as: "tags",
-//   foreignKey: "category_id",
-// });
-
-// Tags.belongsTo(Categories, {
-//   as: "categories",
-//   foreignKey: "category_id",
-// });
+Tags.belongsTo(Categories, {
+  as: "categories",
+  foreignKey: "category_id",
+});
 
 module.exports = Tags;
