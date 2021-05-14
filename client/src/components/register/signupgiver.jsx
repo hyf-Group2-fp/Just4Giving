@@ -1,90 +1,102 @@
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
-import axios from "axios";
 
 function Signupgiver() {
-    const url = "";
+  //  const url = "/giver/signup";
     const [validated, setValidated] = useState(false);
+    const[first_name, setFirst_name] = useState('');
+    const[last_name, setLast_name] = useState('');
+    const[age, setAge] = useState('');
+    const[phone, setPhone] = useState('');
+    const[address, setAddress] = useState('');
+    const[email, setEmail] = useState('');
+    const[password, setPassword] = useState('');
+    const[confirmpassword, setConfirmpassword] = useState('');
 
-    function handleSubmit(event) {
+
+    const handleSubmit = (event) => {
+       
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else if (form.confirmpassword.value !== form.password.value) {
-            alert("password doesnot match, please try again");
-            event.preventDefault();
-        } else {
-            const user = {
-                first_name: form.first_name.value,
-                last_name: form.first_name.value,
-                age: form.age.value,
-                phone: form.phone.value,
-                address: form.phone.value,
-                email: form.email.value,
-                password: form.password.value,
-            };
-
-            console.log(user);
-            axios
-                .post(url, user)
-                .then((res) => {
-                    console.log(res.user);
-                })
-                .catch((err) => {
-                    console.error("There was an error!", err);
-                });
+          event.preventDefault();
+          event.stopPropagation();
         }
-
-        setValidated(true);
+    else if(password!==confirmpassword){
+        alert('password and confirmpassword does not match')
+        event.stopPropagation();
     }
+    else{
+        const userdata={
+            first_name:first_name,
+            last_name:last_name,
+            age:age,
+            phone:phone,
+            address:address,
+            email:email,
+            password:password
+        }
+        console.log(userdata)
+    }
+        event.preventDefault();
+    
+        setValidated(true);
+        
+
+      };
+    
     return (
         <div className="forms">
              <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
                
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form method="post" noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first_name">
                             <Form.Label>First name</Form.Label>
                             <Form.Control
                                 required
                                 name="first_name"
-                                value={validated.first_name}
+                                
                                 type="text"
                                 minLength="3"
                                 maxLength="20"
+                                onChange={(e) => setFirst_name(e.target.value)}
                             />
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Atleast 3 letters
+                            </Form.Control.Feedback>{" "}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
                             <Form.Label>Last name</Form.Label>
                             <Form.Control
                                 required
                                 name="last_name"
-                                value={validated.last_name}
+                                
                                 type="text"
                                 minLength="1"
                                 maxLength="20"
+                                onChange={(e) => setLast_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letters
+                                Atleast 1 letter
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={Col} md="4" controlId="age">
+                        <Form.Group as={Col} md="2" controlId="age">
                             <Form.Label>Age</Form.Label>
                             <Form.Control
                                 required
                                 type="number"
-                                value={validated.age}
+                                min={18} max={100}
                                 name="age"
+                                onChange={(e) => setAge(e.target.value)}
                             />
-
+ <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter age.
+                                Enter age between 18-100
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="4" controlId="phone">
@@ -95,9 +107,31 @@ function Signupgiver() {
                                 placeholder="+32"
                                 value={validated.phone}
                                 name="phone"
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                             
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Text className="text-muted">
+                                We'll never share your phone number with anyone else.
+                            </Form.Text>
+                            <Form.Control.Feedback type="invalid">
+                                Enter phone number.
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group as={Col} md="6" controlId="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                type="email"
+                                required
+                                
+                                name="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                        />{" "}
+                            
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Enter email address.
+                            </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
@@ -106,43 +140,28 @@ function Signupgiver() {
                             <Form.Control
                                 type="text"
                                 required
-                                value={validated.address}
+                                minLength="5"
                                 name="address"
+                                onChange={(e) => setAddress(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter your street name.
+                                Enter your street name at least 5 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    <Form.Row>
-                        <Form.Group as={Col} md="12" controlId="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                required
-                                value={validated.email}
-                                name="email"
-                            />{" "}
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">
-                                Enter email address.
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Form.Row>
+                    
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                value={validated.password}
+                                
                                 minLength="8"
                                 maxLength="20"
                                 required
                                 name="password"
+                                onChange={(e) => setPassword(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
@@ -155,11 +174,13 @@ function Signupgiver() {
                             as={Col}
                             md="12"
                             controlId="confirmpassword"
+                            onChange={(e) => setConfirmpassword(e.target.value)}
                         >
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                value={validated.confirmpassword}
+                                minLength="8"
+                                maxLength="20"
                                 required
                             />{" "}
                         </Form.Group>
