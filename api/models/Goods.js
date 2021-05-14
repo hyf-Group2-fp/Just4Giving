@@ -30,7 +30,7 @@ const Goods = sequelize.define(
     },
     image: {
       type: Sequelize.STRING,
-      default: "Good",
+      defaultValue: "good image",
     },
     quality: {
       type: Sequelize.INTEGER,
