@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
+import axios from 'axios';
 
 function Signupgiver() {
-  //  const url = "/giver/signup";
+   const url = "/giver/signup";
     const [validated, setValidated] = useState(false);
     const[first_name, setFirst_name] = useState('');
     const[last_name, setLast_name] = useState('');
@@ -35,7 +36,15 @@ function Signupgiver() {
             email:email,
             password:password
         }
-        console.log(userdata)
+        console.log(userdata);
+        axios
+                .post(url, userdata)
+                .then((res) => {
+                    console.log(res.userdata);
+                })
+                .catch((err) => {
+                    console.error("There was an error!", err);
+                });
     }
         event.preventDefault();
     
