@@ -19,7 +19,7 @@ function Navigation() {
         </Navbar>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-        const unauthenticatedNavBar = () => {
+        const authenticatedNavBar = () => {
     return (
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="row justify-content-end links">
