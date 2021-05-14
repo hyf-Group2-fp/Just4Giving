@@ -18,17 +18,40 @@ function Navigation() {
           </Navbar.Brand>
         </Navbar>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+        const unauthenticatedNavBar = () => {
+    return (
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="row justify-content-end links">
             <Nav.Item>
               <Nav.Link href="/aboutus">About Us</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/logout">Logout</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
+         );
+        };
+
+        const unauthenticatedNavBar = () => {
+          return (
+            <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="row justify-content-end links">
+              <Nav.Item>
+                <Nav.Link href="/aboutus">About Us</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/login">Login</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+          );
+        };
       </Navbar>
+
+      {isAuthenticated ? authenticatedNavBar() : unauthenticatedNavBar()}
+
     </div>
   );
 }
