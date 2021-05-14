@@ -1,7 +1,7 @@
 # Just4Giving
 
 > A full-stack app used to connect people who want to donate goods (giver) to people in need (needer).
-
+))
 ## Table of contents
 
 - [General info](#general-info)
@@ -89,7 +89,6 @@ Project is: _in progress_
 
 #### Project Owners :
 
-- [@Bermarte](https://github.com/bermarte)
 - [@Samir M.](https://github.com/samirm00)
 
 #### UX/UI designer :
@@ -113,7 +112,6 @@ Project is: _in progress_
 
 #### Dev-OPs :
 
-- [@Bermarte](https://github.com/bermarte) (Mentor)
 - [@Samir M.](https://github.com/samirm00)
 
 ---
