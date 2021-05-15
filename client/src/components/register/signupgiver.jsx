@@ -5,8 +5,8 @@ import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import {userNeeder} from "../../redux/actions/userTypeAction";
 //import { useSelector, useDispatch } from 'react-redux'
-function Signupneeder() {
-    const url = "/giver/signup";
+function Signupgiver() {
+    const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -176,7 +176,7 @@ function Signupneeder() {
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Explain your situation in atleast 100 letters
+                                Explain your situation in at least 100 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -228,4 +228,4 @@ function Signupneeder() {
         </div>
     );
 }
-export default Signupneeder;
+export default Signupgiver;

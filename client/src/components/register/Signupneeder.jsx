@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {userNeeder} from "../../redux/actions/userTypeAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupneeder() {
-    const url = "http:localhost:5000/needer/signup";
+    const url = "http:localhost:5000/api/needer/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
