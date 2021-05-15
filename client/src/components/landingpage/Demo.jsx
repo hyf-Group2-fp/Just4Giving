@@ -6,6 +6,7 @@ import team1 from "../../assets/landingpage/team1.png";
 import ReactPlayer from "react-player";
 import video from "../../assets/landingpage/video.mp4";
 import footer from "../../assets/landingpage/illustartion.png";
+import { Link } from "react-router-dom";
 function Demo() {
   return (
     <div className="Demo">
@@ -13,8 +14,12 @@ function Demo() {
         <Jumbotron>
           <h1>Welcome To JUST4GIVING!</h1>
           <p>
+          <Link to={"/signupneeder"}>
             <Button className="btn-sm">I Need Something</Button>
-            <Button>I Want To Donate Something</Button>
+          </Link>
+          <Link to={"/signupgiver"}>
+            <Button className="btn-sm">I Want to donate Something</Button>
+          </Link>
           </p>
         </Jumbotron>
 
