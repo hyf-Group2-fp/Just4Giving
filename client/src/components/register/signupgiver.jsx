@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
@@ -14,12 +14,11 @@ function Signupgiver() {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
-    const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const dispatch = useDispatch();
     // get the needer
-    const usertype = useSelector(state => state.userType.is_needer);
+    const usertype = useSelector(state => state.userType.is_giver);
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -35,11 +34,11 @@ function Signupgiver() {
                 age: age,
                 phone: phone,
                 street: address,
-                description: description,
+                description: "no description",
                 email: email,
                 password: password,
-                is_giver:0,
-                is_needer:1,
+                is_giver:1,
+                is_needer:0,
                 agreement:1
             };
             // const first_name = useSelector()
@@ -55,7 +54,7 @@ function Signupgiver() {
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1) return (<Redirect to="/profileneeder" />);
+    if(usertype === 1) return (<Redirect to="/profilegiver" />);
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
@@ -163,23 +162,7 @@ function Signupgiver() {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    <Form.Row>
-                        <Form.Group as={Col} md="12" controlId="description">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                required
-                                minLength="100"
-                                rows={3}
-                                name="description"
-                                onChange={(e) => setDescription(e.target.value)}
-                            />{" "}
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">
-                                Explain your situation in at least 100 letters
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Form.Row>
+                    
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>

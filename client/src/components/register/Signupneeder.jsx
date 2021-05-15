@@ -169,14 +169,14 @@ function Signupneeder() {
                             <Form.Control
                                 as="textarea"
                                 required
-                                minLength="100"
+                                minLength="200"
                                 rows={3}
                                 name="description"
                                 onChange={(e) => setDescription(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Explain your situation in atleast 100 letters
+                                Explain your situation in at least 200 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
