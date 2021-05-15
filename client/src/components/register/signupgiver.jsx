@@ -3,7 +3,7 @@ import { Form, Col, Button } from "react-bootstrap";
 import axios from 'axios';
 
 function Signupgiver() {
-   const url = "/giver/signup";
+   const url = "http://localhost:5000/giver/signup";
     const [validated, setValidated] = useState(false);
     const[first_name, setFirst_name] = useState('');
     const[last_name, setLast_name] = useState('');
