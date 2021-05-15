@@ -12,7 +12,7 @@ const initialState = {
     last_name:'',
     age:0,
     email:'',
-    address:'',
+    street:'',
     phone:'',
     password:'',
     is_giver:0,
