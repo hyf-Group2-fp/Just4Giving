@@ -15,7 +15,7 @@ app.use("/", require("./routes/home.js"));
 app.use("/", require("./routes/login.js"));
 app.use("/", require("./routes/signup.js"));
 app.use("/", require("./routes/tags.js"));
-app.use("/", require("./routes/caregories"));
+app.use("/", require("./routes/categories"));
 // app.use("/", require("./routes/goods.js"));
 
 module.exports = app;
