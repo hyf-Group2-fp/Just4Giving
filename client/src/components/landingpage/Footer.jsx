@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import Disclaimer from "../disclaimer/Disclaimer";
 
 function Footer() {
-
-  //modal disclaimer
-  const [modalShow, setModalShow] = useState(false);
-
   return (
     <div className="main-footer">
       <Navbar
@@ -17,10 +12,9 @@ function Footer() {
       >
         <Nav>
           <Nav.Item>
-            <Nav.Link className="footer-priv" onClick={() => setModalShow(true)}>
+            <Nav.Link className="footer-priv" href="#privacy">
               | Privacy Policy | Disclaimer |
             </Nav.Link>
-            <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
           </Nav.Item>
         </Nav>
 
