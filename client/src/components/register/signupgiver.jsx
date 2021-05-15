@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import {userNeeder} from "../../redux/actions/userTypeAction";
 //import { useSelector, useDispatch } from 'react-redux'
-function Signupgiver() {
-    const url = "http://localhost:5000/api/giver/signup";
+function Signupneeder() {
+    const url = "/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -14,11 +14,12 @@ function Signupgiver() {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
+    const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const dispatch = useDispatch();
     // get the needer
-    const usertype = useSelector(state => state.userType.is_giver);
+    const usertype = useSelector(state => state.userType.is_needer);
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -33,12 +34,12 @@ function Signupgiver() {
                 last_name: last_name,
                 age: age,
                 phone: phone,
-                address: address,
-                description: 'no description',
+                street: address,
+                description: description,
                 email: email,
                 password: password,
-                is_giver:1,
-                is_needer:0,
+                is_giver:0,
+                is_needer:1,
                 agreement:1
             };
             // const first_name = useSelector()
@@ -51,49 +52,26 @@ function Signupgiver() {
                 console.error("There was an error!", error);
             }
         }
-
-    else{
-        const userdata={
-
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            password: password,
-            street: address,
-            phone: phone,
-            age: age,
-            is_giver: 1,
-            is_needer: 0,
-            description: "no description",
-            agreement: 1
-        }
-        console.log(userdata);
-        axios
-                .post(url, userdata)
-                .then((res) => {
-                    console.log(res.userdata);
-                })
-                .catch((err) => {
-                    console.error("There was an error!", err);
-                });
-    }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1) return (<Redirect to="/profilegiver" />);
+    if(usertype === 1) return (<Redirect to="/profileneeder" />);
     return (
         <div className="forms">
-             <h1 className="text-center formh1"> Who are you?</h1>
+            <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
-               
-                <Form method="post" noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form
+                    method="post"
+                    noValidate
+                    validated={validated}
+                    onSubmit={handleSubmit}
+                >
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first_name">
                             <Form.Label>First name</Form.Label>
                             <Form.Control
                                 required
                                 name="first_name"
-                                
                                 type="text"
                                 minLength="3"
                                 maxLength="20"
@@ -109,7 +87,6 @@ function Signupgiver() {
                             <Form.Control
                                 required
                                 name="last_name"
-                                
                                 type="text"
                                 minLength="1"
                                 maxLength="20"
@@ -127,7 +104,8 @@ function Signupgiver() {
                             <Form.Control
                                 required
                                 type="number"
-                                min={18} max={100}
+                                min={18}
+                                max={100}
                                 name="age"
                                 onChange={(e) => setAge(e.target.value)}
                             />
@@ -146,10 +124,10 @@ function Signupgiver() {
                                 name="phone"
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-                            
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Text className="text-muted">
-                                We'll never share your phone number with anyone else.
+                                We'll never share your phone number with anyone
+                                else.
                             </Form.Text>
                             <Form.Control.Feedback type="invalid">
                                 Enter phone number.
@@ -160,11 +138,9 @@ function Signupgiver() {
                             <Form.Control
                                 type="email"
                                 required
-                                
                                 name="email"
                                 onChange={(e) => setEmail(e.target.value)}
-                        />{" "}
-                            
+                            />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter email address.
@@ -187,13 +163,28 @@ function Signupgiver() {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    
+                    <Form.Row>
+                        <Form.Group as={Col} md="12" controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                required
+                                minLength="100"
+                                rows={3}
+                                name="description"
+                                onChange={(e) => setDescription(e.target.value)}
+                            />{" "}
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Explain your situation in atleast 100 letters
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                    </Form.Row>
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                
                                 minLength="8"
                                 maxLength="20"
                                 required
@@ -229,8 +220,7 @@ function Signupgiver() {
                             feedback="You must agree before submitting."
                         />
                     </Form.Group>
-
-                    <Button type="submit" id="formb">
+                    <Button type="submit" className="formb">
                         Submit
                     </Button>
                 </Form>
@@ -238,5 +228,4 @@ function Signupgiver() {
         </div>
     );
 }
-
-export default Signupgiver;
+export default Signupneeder;
