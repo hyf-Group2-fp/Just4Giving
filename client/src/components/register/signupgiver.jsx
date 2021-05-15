@@ -1,58 +1,60 @@
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
-import axios from 'axios';
-
+import axios from "axios";
+import  { Redirect } from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux";
+import {userNeeder} from "../../redux/actions/userTypeAction";
+//import { useSelector, useDispatch } from 'react-redux'
 function Signupgiver() {
-   const url = "/giver/signup";
+    const url = "http://localhost:5000/giver/signup";
     const [validated, setValidated] = useState(false);
-    const[first_name, setFirst_name] = useState('');
-    const[last_name, setLast_name] = useState('');
-    const[age, setAge] = useState('');
-    const[phone, setPhone] = useState('');
-    const[address, setAddress] = useState('');
-    const[email, setEmail] = useState('');
-    const[password, setPassword] = useState('');
-    const[confirmpassword, setConfirmpassword] = useState('');
-
-
+    const [first_name, setFirst_name] = useState("");
+    const [last_name, setLast_name] = useState("");
+    const [age, setAge] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmpassword, setConfirmpassword] = useState("");
+    const dispatch = useDispatch();
+    // get the needer
+    const usertype = useSelector(state => state.userType.is_giver);
     const handleSubmit = (event) => {
-       
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
+        } else if (password !== confirmpassword) {
+            alert("password and confirmpassword does not match");
+            event.stopPropagation();
+        } else {
+            const userdata = {
+                first_name: first_name,
+                last_name: last_name,
+                age: age,
+                phone: phone,
+                address: address,
+                description: 'no description',
+                email: email,
+                password: password,
+                is_giver:1,
+                is_needer:0,
+                agreement:1
+            };
+            // const first_name = useSelector()
+            console.log(userdata);
+            // dispatch action
+            dispatch(userNeeder(userdata));
+            try {
+                axios.post(url, userdata);
+            } catch (error) {
+                console.error("There was an error!", error);
+            }
         }
-    else if(password!==confirmpassword){
-        alert('password and confirmpassword does not match')
-        event.stopPropagation();
-    }
-    else{
-        const userdata={
-            first_name:first_name,
-            last_name:last_name,
-            age:age,
-            phone:phone,
-            address:address,
-            email:email,
-            password:password
-        }
-        console.log(userdata);
-        axios
-                .post(url, userdata)
-                .then((res) => {
-                    console.log(res.userdata);
-                })
-                .catch((err) => {
-                    console.error("There was an error!", err);
-                });
-    }
         event.preventDefault();
-    
         setValidated(true);
-        
-
-      };
-    
+    };
+    if(usertype === 1) return (<Redirect to="/profilegiver" />);
     return (
         <div className="forms">
              <h1 className="text-center formh1"> Who are you?</h1>
