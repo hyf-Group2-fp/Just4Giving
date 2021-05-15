@@ -1,9 +1,12 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { Brand } from "react-bootstrap/lib/Navbar";
 import logo from "../../assets/landingpage/logo22.png";
 function Navigation() {
   return (
     <div className="margin-t-b">
+      
+      const brand () => {
       <Navbar collapseOnSelect expand="lg" sticky="top">
         <Navbar>
           <Navbar.Brand className="main-brand" href="/">
@@ -17,6 +20,7 @@ function Navigation() {
             JUST4GIVING
           </Navbar.Brand>
         </Navbar>
+      }
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         const authenticatedNavBar = () => {
@@ -51,6 +55,7 @@ function Navigation() {
       </Navbar>
 
       {isAuthenticated ? authenticatedNavBar() : unauthenticatedNavBar()}
+      {!isAuthenticated ? Brand() : }
 
     </div>
   );
