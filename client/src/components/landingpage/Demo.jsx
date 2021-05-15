@@ -14,11 +14,11 @@ function Demo() {
         <Jumbotron>
           <h1>Welcome To JUST4GIVING!</h1>
           <p>
-          <Link to={"/signupneeder"}> 
+          <Link to={"/signupneeder"}>
             <Button className="btn-sm">I Need Something</Button>
           </Link>
           <Link to={"/signupgiver"}>
-            <Button className="btn-sm">I Need Something</Button>
+            <Button className="btn-sm">I Want to donate Something</Button>
           </Link>
           </p>
         </Jumbotron>
