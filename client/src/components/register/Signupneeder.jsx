@@ -1,73 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
-import axios from 'axios';
+import axios from "axios";
+//import { useSelector, useDispatch } from 'react-redux'
 
 function Signupneeder() {
-   const url = "/giver/signup";
+    const url = "/giver/signup";
     const [validated, setValidated] = useState(false);
-    const[first_name, setFirst_name] = useState('');
-    const[last_name, setLast_name] = useState('');
-    const[age, setAge] = useState('');
-    const[phone, setPhone] = useState('');
-    const[address, setAddress] = useState('');
-    const[email, setEmail] = useState('');
-    const[description, setDescription] = useState('');
-    const[password, setPassword] = useState('');
-    const[confirmpassword, setConfirmpassword] = useState('');
-
+    const [first_name, setFirst_name] = useState("");
+    const [last_name, setLast_name] = useState("");
+    const [age, setAge] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
+    const [description, setDescription] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmpassword, setConfirmpassword] = useState("");
+    //  const usertype = useSelector(state => state.user.usertype)
 
     const handleSubmit = (event) => {
-       
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
+        } else if (password !== confirmpassword) {
+            alert("password and confirmpassword does not match");
+            event.stopPropagation();
+        } else {
+            const userdata = {
+                first_name: first_name,
+                last_name: last_name,
+                age: age,
+                phone: phone,
+                address: address,
+                description: description,
+                email: email,
+                password: password,
+            };
+            console.log(userdata);
+            // dispatch action
+            try {
+                axios.post(url, userdata);
+            } catch (error) {
+                console.error("There was an error!", error);
+            }
         }
-    else if(password!==confirmpassword){
-        alert('password and confirmpassword does not match')
-        event.stopPropagation();
-    }
-    else{
-        const userdata={
-            first_name:first_name,
-            last_name:last_name,
-            age:age,
-            phone:phone,
-            address:address,
-            description:description,
-            email:email,
-            password:password
-        }
-        console.log(userdata);
-        axios
-                .post(url, userdata)
-                .then((res) => {
-                    console.log(res.userdata);
-                })
-                .catch((err) => {
-                    console.error("There was an error!", err);
-                });
-    }
         event.preventDefault();
-    
         setValidated(true);
-        
+    };
+    /* useEffect(() => {
+        if (usertype) {
+          //redirect to profile giver
+        }
+    })*/
 
-      };
-    
     return (
         <div className="forms">
-             <h1 className="text-center formh1"> Who are you?</h1>
+            <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
-               
-                <Form method="post" noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form
+                    method="post"
+                    noValidate
+                    validated={validated}
+                    onSubmit={handleSubmit}
+                >
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first_name">
                             <Form.Label>First name</Form.Label>
                             <Form.Control
                                 required
                                 name="first_name"
-                                
                                 type="text"
                                 minLength="3"
                                 maxLength="20"
@@ -83,7 +84,6 @@ function Signupneeder() {
                             <Form.Control
                                 required
                                 name="last_name"
-                                
                                 type="text"
                                 minLength="1"
                                 maxLength="20"
@@ -101,11 +101,12 @@ function Signupneeder() {
                             <Form.Control
                                 required
                                 type="number"
-                                min={18} max={100}
+                                min={18}
+                                max={100}
                                 name="age"
                                 onChange={(e) => setAge(e.target.value)}
                             />
- <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter age between 18-100
                             </Form.Control.Feedback>
@@ -120,10 +121,11 @@ function Signupneeder() {
                                 name="phone"
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-                            
+
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Text className="text-muted">
-                                We'll never share your phone number with anyone else.
+                                We'll never share your phone number with anyone
+                                else.
                             </Form.Text>
                             <Form.Control.Feedback type="invalid">
                                 Enter phone number.
@@ -134,11 +136,9 @@ function Signupneeder() {
                             <Form.Control
                                 type="email"
                                 required
-                                
                                 name="email"
                                 onChange={(e) => setEmail(e.target.value)}
-                        />{" "}
-                            
+                            />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter email address.
@@ -178,13 +178,12 @@ function Signupneeder() {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    
+
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                
                                 minLength="8"
                                 maxLength="20"
                                 required
