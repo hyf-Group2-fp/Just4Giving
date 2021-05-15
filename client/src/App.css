@@ -168,13 +168,6 @@ body .bg-dark {
     font-size: 23px;
     margin-bottom: 6%;
 }
-.formb {
-    margin-left: 75%;
-    width: 170px;
-    height: 50px;
-    font-size: 23px;
-    margin-bottom: 6%;
-}
 /* Media Query */
 @media only screen and (max-width: 800px) {
     .bg2 {
@@ -188,6 +181,14 @@ body .bg-dark {
     }
     .jumbotron button {
         font-size: 15px;
+    }
+    .btn-primary {
+        width: 250px;
+        height: 50px;
+        font-weight: bold;
+    }
+    #formb {
+        margin-left: 30%;
     }
 }
 

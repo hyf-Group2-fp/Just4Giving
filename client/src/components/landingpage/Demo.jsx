@@ -17,6 +17,11 @@ function Demo() {
           <Link to={"/signupneeder"}>  <Button className="btn-sm">I Need Something</Button></Link>
            
             <Button>I Want To Donate Something</Button>
+            <Button className="btn-sm">I Need Something</Button>
+            <Link to={"/signupgiver"}>
+                            <Button>I Want To Donate Something</Button>
+                        </Link>
+
           </p>
         </Jumbotron>
 
