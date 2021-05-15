@@ -1,10 +1,8 @@
 /**
- * user login check profile , check user state
- *
+ * Actions creators (userAction).
+ * the user can perform two actions:
+ * 1- user (log in)
+ * 2- user (log out)
  */
 
-export const toggleUser = () => {
-  return {
-    type: "TOGGLE_AUTH",
-  };
-};
+
