@@ -24,33 +24,7 @@ function Signupgiver() {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        } else if (password !== confirmpassword) {
-            alert("password and confirmpassword does not match");
-            event.stopPropagation();
-        } else {
-            const userdata = {
-                first_name: first_name,
-                last_name: last_name,
-                age: age,
-                phone: phone,
-                address: address,
-                description: 'no description',
-                email: email,
-                password: password,
-                is_giver:1,
-                is_needer:0,
-                agreement:1
-            };
-            // const first_name = useSelector()
-            console.log(userdata);
-            // dispatch action
-            dispatch(userNeeder(userdata));
-            try {
-                axios.post(url, userdata);
-            } catch (error) {
-                console.error("There was an error!", error);
-            }
-        }
+        } 
     else if(password!==confirmpassword){
         alert('password and confirmpassword does not match')
         event.stopPropagation();
@@ -71,17 +45,16 @@ function Signupgiver() {
             agreement: 1
         }
         console.log(userdata);
-        axios
-                .post(url, userdata)
-                .then((res) => {
-                    console.log(res.userdata);
-                })
-                .catch((err) => {
-                    console.error("There was an error!", err);
-                });
-    }
-        event.preventDefault();
-        setValidated(true);
+          // dispatch action
+          dispatch(userNeeder(userdata));
+          try {
+              axios.post(url, userdata);
+          } catch (error) {
+              console.error("There was an error!", error);
+          }
+      }
+      event.preventDefault();
+      setValidated(true);
     };
     if(usertype === 1) return (<Redirect to="/profilegiver" />);
     return (
