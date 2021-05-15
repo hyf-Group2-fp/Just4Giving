@@ -3,7 +3,7 @@ import { Form, Col, Button } from "react-bootstrap";
 import axios from 'axios';
 
 function Signupgiver() {
-   const url = "http://localhost:5000/giver/signup";
+   const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const[first_name, setFirst_name] = useState('');
     const[last_name, setLast_name] = useState('');
@@ -28,13 +28,18 @@ function Signupgiver() {
     }
     else{
         const userdata={
-            first_name:first_name,
-            last_name:last_name,
-            age:age,
-            phone:phone,
-            address:address,
-            email:email,
-            password:password
+
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            password: password,
+            street: address,
+            phone: phone,
+            age: age,
+            is_giver: 1,
+            is_needer: 0,
+            description: "no description",
+            agreement: 1
         }
         console.log(userdata);
         axios
