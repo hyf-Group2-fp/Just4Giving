@@ -51,10 +51,7 @@ function Signupgiver() {
                 console.error("There was an error!", error);
             }
         }
-    else if(password!==confirmpassword){
-        alert('password and confirmpassword does not match')
-        event.stopPropagation();
-    }
+
     else{
         const userdata={
 
