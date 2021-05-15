@@ -15,7 +15,6 @@ const initialState = {
     street:'',
     phone:'',
     password:'',
-    image:'',
     is_giver:0,
     is_needer:0,
     description:'',

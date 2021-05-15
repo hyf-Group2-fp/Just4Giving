@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {userNeeder} from "../../redux/actions/userTypeAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupgiver() {
-    const url = "http://localhost:5000/giver/signup";
+    const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -51,6 +51,35 @@ function Signupgiver() {
                 console.error("There was an error!", error);
             }
         }
+    else if(password!==confirmpassword){
+        alert('password and confirmpassword does not match')
+        event.stopPropagation();
+    }
+    else{
+        const userdata={
+
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            password: password,
+            street: address,
+            phone: phone,
+            age: age,
+            is_giver: 1,
+            is_needer: 0,
+            description: "no description",
+            agreement: 1
+        }
+        console.log(userdata);
+        axios
+                .post(url, userdata)
+                .then((res) => {
+                    console.log(res.userdata);
+                })
+                .catch((err) => {
+                    console.error("There was an error!", err);
+                });
+    }
         event.preventDefault();
         setValidated(true);
     };
@@ -105,7 +134,7 @@ function Signupgiver() {
                                 name="age"
                                 onChange={(e) => setAge(e.target.value)}
                             />
- <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter age between 18-100
                             </Form.Control.Feedback>

@@ -5,19 +5,19 @@ const User = require("../models/User.js");
 const app = express();
 
 app.post("/giver/signup", async (req, res) => {
-    const {
-        first_name,
-        last_name,
-        email,
-        password,
-        street,
-        phone,
-        age,
-        is_giver,
-        is_needer,
-        description,
-        agreement,
-    } = req.body;
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    street,
+    phone,
+    age,
+    is_giver,
+    is_needer,
+    description,
+    agreement,
+  } = req.body;
 
     try {
         const name = await User.create({
