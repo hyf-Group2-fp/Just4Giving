@@ -1,10 +1,13 @@
 const express = require("express");
+const cors = require('cors');
 const User = require("../models/User.js");
 
 // initialize express
 const app = express();
 
-app.post("/signup", async (req, res) => {
+app.use(cors());
+
+app.post("/giver/signup", async (req, res) => {
   const {
     first_name,
     last_name,
