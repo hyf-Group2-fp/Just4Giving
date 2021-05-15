@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
+import  { Redirect } from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux";
+import {userNeeder} from "../../redux/actions/userTypeAction";
 //import { useSelector, useDispatch } from 'react-redux'
-
 function Signupneeder() {
-    const url = "/giver/signup";
+    const url = "http:localhost:5000/api/needer/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -15,8 +17,9 @@ function Signupneeder() {
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    //  const usertype = useSelector(state => state.user.usertype)
-
+    const dispatch = useDispatch();
+    // get the needer
+    const usertype = useSelector(state => state.userType.is_needer);
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -35,9 +38,14 @@ function Signupneeder() {
                 description: description,
                 email: email,
                 password: password,
+                is_giver:0,
+                is_needer:1,
+                agreement:1
             };
+            // const first_name = useSelector()
             console.log(userdata);
             // dispatch action
+            dispatch(userNeeder(userdata));
             try {
                 axios.post(url, userdata);
             } catch (error) {
@@ -47,12 +55,7 @@ function Signupneeder() {
         event.preventDefault();
         setValidated(true);
     };
-    /* useEffect(() => {
-        if (usertype) {
-          //redirect to profile giver
-        }
-    })*/
-
+    if(usertype === 1) return (<Redirect to="/profileneeder" />);
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
@@ -121,7 +124,6 @@ function Signupneeder() {
                                 name="phone"
                                 onChange={(e) => setPhone(e.target.value)}
                             />
-
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Text className="text-muted">
                                 We'll never share your phone number with anyone
@@ -178,7 +180,6 @@ function Signupneeder() {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>
@@ -219,7 +220,6 @@ function Signupneeder() {
                             feedback="You must agree before submitting."
                         />
                     </Form.Group>
-
                     <Button type="submit" className="formb">
                         Submit
                     </Button>
@@ -228,5 +228,4 @@ function Signupneeder() {
         </div>
     );
 }
-
 export default Signupneeder;
