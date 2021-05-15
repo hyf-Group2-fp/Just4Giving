@@ -1,42 +1,34 @@
 {
-  "name": "Just4Giving",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "bootstrap": "^4.6.0",
-    "react": "^17.0.2",
-    "react-bootstrap": "^1.5.2",
-    "react-dom": "^17.0.2",
-    "react-player": "^2.9.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "reactjs-media": "^1.5.1",
-    "web-vitals": "^1.1.1"
-  },
+  "name": "just4giving",
+  "version": "1.0.0",
   "scripts": {
-    "start": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts build",
-    "test": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts test  --collectCoverage=true",
-    "test:watch": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts test --watch  --collectCoverage=true",
-    "eject": "cross-env SKIP_PREFLIGHT_CHECK=true react-scripts eject"
+    "dev": "concurrently \"npm run dev-api\" \"npm run dev-client\"",
+    "dev-api": "nodemon api/dev.js",
+    "dev-client": "cd client && npm run start",
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "cd api && jest --collectCoverage=true --forceExit",
+    "test:watch": "cd api && jest --watch --collectCoverage=true --runInBand --detectOpenHandles"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
+    "react-redux": "^7.2.4",
+    "sequelize": "^6.6.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "proxy": "http://localhost:5000"
+  "devDependencies": {
+    "concurrently": "^6.0.2",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.3"
+  }
 }

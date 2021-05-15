@@ -1,68 +1,117 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Just4Giving
 
-## Available Scripts
+> A full-stack app used to connect people who want to donate goods (giver) to people in need (needer).
+))
+## Table of contents
 
-In the project directory, you can run:
+- [General info](#general-info)
+- [Screenshots](#screenshots)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Status](#status)
+- [Inspiration](#inspiration)
+- [Authors](#authors)
 
-### `yarn start`
+## General info
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+There are many people in Brussels who want to get rid of objects they no longer use, like furniture, clothes, books, electronics, PCs and so forth, and at the same time want to help the ones in need.
+We call the first group `Needers` and the second `Givers`.
+The idea of the application is to offer a tool to connect those who have items to donate with those in need. This app provides an easy and secure connection between Givers and Needers. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Screenshots
 
-### `yarn test`
+![Example screenshot](https://cdn.jsdelivr.net/gh/hyf-Group2-fp/Just4Giving/img/just4giving.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `yarn build`
+#### UX/UI
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Figma
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Front-End
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTML 5
+- CSS 3
+- BootStrap 4.6
+- JavaScript
+- React 17.0.2
+- Axios 0.21.1
+- Redux 4.1.0
 
-### `yarn eject`
+#### Back-End
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Node.js 14.16.1
+- Express 4.17.1
+- Nodemon 2.0.3
+- PostgreSQL 12
+- VSC 1.51
+- Postman 8.3.0
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Dev-OPs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Heroku
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Setup
 
-## Learn More
+## Code Examples
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+## Features
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+List of features ready and TODOs for future development
 
-### Analyzing the Bundle Size
+-
+-
+-
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+To-do list:
 
-### Making a Progressive Web App
+-
+-
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Status
 
-### Advanced Configuration
+Project is: _in progress_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Inspiration
 
-### Deployment
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+#### Project Coaches :
 
-### `yarn build` fails to minify
+- [@Dirk Jacobs](https://github.com/dirk-jacobs)
+- [@Anthony Meirlaen](https://github.com/Toinne)
+- [@Jan Vanbuel](https://github.com/jvanbuel)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Project Owners :
+
+- [@Samir M.](https://github.com/samirm00)
+
+#### UX/UI designer :
+
+- [@Anisya Purnama](https://github.com/AnisyaPurnama)
+
+#### Front-End :
+
+- [@Bermarte](https://github.com/bermarte) (Mentor)
+- [@Samir M.](https://github.com/samirm00) (Mentor)
+- [@Divya Sree](https://github.com/Divyasree345)
+- [@Sharaf](https://github.com/sharafcs50)
+- [@Peyman](https://github.com/peymanshahmarimikaeeldarehsi)
+
+#### Back-End :
+
+- [@Samir M.](https://github.com/samirm00) (Mentor)
+- [@Bermarte](https://github.com/bermarte)
+- [@Kemi](https://github.com/kemmy72)
+- [@Brain Ketunze](https://github.com/Brainketunze)
+
+#### Dev-OPs :
+
+- [@Samir M.](https://github.com/samirm00)
+
+---

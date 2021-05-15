@@ -1,0 +1,20 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3307,
+      "askForPassword": true,
+      "driver": "MariaDB",
+      "name": "just4giving",
+      "database": "just4giving",
+      "username": "root"
+    }
+  ],
+  "cSpell.words": [
+    "goodformany"
+  ]
+}
