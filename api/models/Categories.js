@@ -1,39 +1,38 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, Model, DataTypes, STRING } = require("sequelize");
 const sequelize = require("../db/db.js");
 const Goods = require("./Goods.js");
+class Categories extends Model {
+  constructor({ category_id, category_name }) {
+    super();
+    this.category_id = category_id;
+    this.category_name = category_name;
+  }
+}
 
-const Categories = sequelize.define(
-  "categories",
+Categories.init(
   {
-    categories_id: {
-      type: Sequelize.INTEGER,
+    category_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
     category_name: {
-      type: Sequelize.STRING(50),
+      type: DataTypes.STRING(50),
       allowNull: false,
-      unique: true,
     },
-    createdAt: Sequelize.DATE,
-    updatedAt: Sequelize.DATE,
   },
   {
-    tableName: "categories",
+    sequelize,
+    modelName: "Categories",
   }
 );
 
 // foreign keys
 
-Goods.hasOne(Categories, {
-  as: "categories",
-  foreignKey: "category_id",
-});
-
-Categories.belongsTo(Goods, {
-  as: "goods",
-  foreignKey: "category_id",
-});
+// Goods.hasOne(Categories, {
+//   as: "categories",
+//   foreignKey: "category_id",
+// });
 
 module.exports = Categories;

@@ -1,23 +1,32 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, Model, DataTypes, STRING } = require("sequelize");
 const sequelize = require("../db/db.js");
 const User = require("./User.js");
 const Goods = require("./Goods.js");
 
-const GoodsForMany = sequelize.define(
-  "goodsformany",
+class GoodsForMany extends Model {
+  constructor({ goodformany_id, goods_id, needer_id }) {
+    super();
+
+    this.goodformany_id = goodformany_id;
+    this.goods_id = goods_id;
+    this.needer_id = needer_id;
+  }
+}
+
+GoodsForMany.init(
   {
     goodformany_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
     goods_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     needer_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 
@@ -25,7 +34,8 @@ const GoodsForMany = sequelize.define(
     updatedAt: Sequelize.DATE,
   },
   {
-    tableName: "goodsformany",
+    sequelize,
+    modelName: "tags",
   }
 );
 

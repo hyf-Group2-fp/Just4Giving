@@ -1,63 +1,93 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, Model, DataTypes, STRING } = require("sequelize");
 const sequelize = require("../db/db.js");
 const User = require("./User.js");
 const Tags = require("./Tags");
 
-const Goods = sequelize.define(
-  "goods",
+class Goods extends Model {
+  constructor({
+    goods_id,
+    giver_id,
+    item_name,
+    category,
+    description,
+    image,
+    quality,
+    quantity,
+    available,
+    taken,
+    owner_id,
+    category_id,
+  }) {
+    super();
+    this.goods_id = goods_id;
+    this.giver_id = giver_id;
+    this.item_name = item_name;
+    this.category = category;
+    this.description = description;
+    this.image = image;
+    this.quality = quality;
+    this.quantity = quantity;
+    this.available = available;
+    this.taken = taken;
+    this.owner_id = owner_id;
+    this.category_id = category_id;
+  }
+}
+
+Goods.init(
   {
     goods_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
     giver_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.TINYINT,
       allowNull: false,
     },
     item_name: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     category: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
     description: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     image: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       default: "Good",
     },
     quality: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       max: 5,
       min: 0,
     },
     quantity: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       max: 100,
       min: 1,
     },
     available: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.TINYINT,
       max: 1,
       min: 0,
     },
     taken: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.TINYINT,
       max: 1,
       min: 0,
     },
     owner_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     category_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
 
@@ -65,19 +95,20 @@ const Goods = sequelize.define(
     updatedAt: Sequelize.DATE,
   },
   {
-    tableName: "goods",
+    sequelize,
+    modelName: "goods",
   }
 );
 
 // foreign keys
 
 User.hasOne(Goods, {
-  as: "goods",
+  // as: "goods",
   foreignKey: "giver_id",
 });
 
 User.hasOne(Goods, {
-  as: "good",
+  as: "goods",
   foreignKey: "owner_id",
 });
 
