@@ -1,5 +1,6 @@
 /**
- * Actions creators (userType).
+ * Actions creators (userType)
+ * --------------------------
  * the user can be :
  * 1- user (giver)
  * 2- user (needer)
