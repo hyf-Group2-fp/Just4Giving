@@ -8,6 +8,8 @@ import Footer from "./components/landingpage/Footer";
 import About from "./components/landingpage/About";
 import Disclaimer from "./components/disclaimer/Disclaimer";
 import Signupgiver from "./components/register/signupgiver";
+import Signupneeder from "./components/register/Signupneeder";
+import Signupgiver from "./components/register/signupgiver";
 
 function App() {
   return (
@@ -23,6 +25,17 @@ function App() {
                  exact
                  component={Signupgiver}
               />
+
+              path="/signupneeder"
+              exact
+              component={Signupneeder}
+           />
+          <Route
+              path="/signupgiver"
+              exact
+              component={Signupgiver}
+
+           />
         </Switch>
         <Footer />
       </Router>
