@@ -48,6 +48,7 @@ function Signupneeder() {
             try {
                await  axios.post('http://localhost:5000/api/needer/signup', userdata);
             } catch (error) {
+                alert('There was an error!');
                 console.error("There was an error!", error);
             }
         }

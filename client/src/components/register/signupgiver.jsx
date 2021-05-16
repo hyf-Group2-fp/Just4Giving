@@ -48,6 +48,7 @@ function Signupgiver() {
             try {
                 axios.post(url, userdata);
             } catch (error) {
+                alert('There was an error!');
                 console.error("There was an error!", error);
             }
         }
