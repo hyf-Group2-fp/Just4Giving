@@ -3,7 +3,7 @@ import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {userNeeder} from "../../redux/actions/userTypeAction";
+import { userGiver} from "../../redux/actions/userTypeAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupgiver() {
     const url = "http://localhost:5000/api/giver/signup";
@@ -44,7 +44,7 @@ function Signupgiver() {
             // const first_name = useSelector()
             console.log(userdata);
             // dispatch action
-            dispatch(userNeeder(userdata));
+            dispatch(userGiver(userdata));
             try {
                 axios.post(url, userdata);
             } catch (error) {

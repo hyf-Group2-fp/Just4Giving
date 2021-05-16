@@ -30,7 +30,7 @@ export const login =(credentials) => {
 
 
         }catch (err) {
-            localStorage.clear() ;
+
             dispatch({type:'LOGIN_ERROR', payload: err.message});
             console.error(err);
 

@@ -5,6 +5,7 @@
  *  1- a giver
  *  2- a needer
  *
+ * Anthony  : all user in one action and one reducer --- >
  *
  */
 
