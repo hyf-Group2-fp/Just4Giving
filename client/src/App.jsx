@@ -8,6 +8,7 @@ import Footer from "./components/landingpage/Footer";
 import About from "./components/landingpage/About";
 import Signupneeder from "./components/register/Signupneeder"
 import Signupgiver from "./components/register/signupgiver"
+import Login from "./components/login/Login"
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
               path="/signupgiver"
               exact
               component={Signupgiver}
+
+           />
+           <Route  path="/login"
+              exact
+              component={Login}
 
            />
         </Switch>

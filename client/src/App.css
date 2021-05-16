@@ -175,6 +175,29 @@ body .bg-dark {
     font-size: 23px;
     margin-bottom: 6%;
 }
+/* sign-in forms*/
+#formblogin {
+    width: 180px;
+    height: 50px;
+    font-size: 22px;
+    margin-left: 30%;
+}
+.inputs {
+    width: 30rem;
+    padding-left: 23%;
+}
+.bg3 {
+    height: 400px;
+    width: 400px;
+}
+.signin {
+    margin-top: 5%;
+}
+.signincard {
+    width: 40rem;
+    text-align: left;
+    margin-left: 35%;
+}
 /* Media Query */
 @media only screen and (max-width: 800px) {
     .bg2 {
@@ -196,6 +219,24 @@ body .bg-dark {
     }
     #formb {
         margin-left: 30%;
+    }
+
+    .inputs {
+        width: 19rem;
+        padding-left: 3%;
+    }
+    #formblogin {
+        height: 40px;
+        font-size: 20px;
+        margin-left: 18%;
+    }
+    .signincard {
+        width: 20rem;
+        text-align: left;
+        margin-left: 9%;
+    }
+    .bg3 {
+        display: none;
     }
 }
 
