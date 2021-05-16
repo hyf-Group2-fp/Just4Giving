@@ -1,4 +1,4 @@
-// store takes two parameters combined reducer and chrome link extension
+// store takes two parameters combined reducer and middlewares .....
 
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension' ;

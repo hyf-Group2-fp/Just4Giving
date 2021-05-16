@@ -43,7 +43,6 @@ export const login =(credentials) => {
 
 export const logout = () => {
     return async function (dispatch){
-        localStorage.clear() ;
 
         // dispatch action
         dispatch({type:'LOGGED_OUT'});

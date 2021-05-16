@@ -25,3 +25,23 @@ export const checkUser = (user_id) => {
 
     }
 }
+
+
+// log in giver
+
+export const logInGiver = (info) => {
+    return{
+        type:'LOGIN_GIVER',
+        payload:info ,
+    }
+}
+
+
+// log in needer
+
+export const loginNeeder = (info) => {
+    return{
+        type:'LOGIN_NEEDER',
+        payload:info ,
+    }
+}

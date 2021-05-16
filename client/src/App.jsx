@@ -9,6 +9,7 @@ import About from "./components/landingpage/About";
 import Signupneeder from "./components/register/Signupneeder";
 import Signupgiver from "./components/register/signupgiver";
 import Disclaimer from "./components/disclaimer/Disclaimer";
+import Login from "./components/login/Login";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               exact
               component={Signupgiver}
            />
+            {/*<Route path="/login" exact component ={Login}></Route>*/}
         </Switch>
         <Footer />
       </Router>
