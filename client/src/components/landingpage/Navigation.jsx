@@ -49,7 +49,7 @@ function Navigation() {
         )};
     return (
         <div className="margin-t-b">
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
             {isAuthenticated ? authenticatedNavBar() : unauthenticatedNavBar()}
             {!isAuthenticated ? brand():null }
         </div>
