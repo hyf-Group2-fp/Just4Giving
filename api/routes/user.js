@@ -49,7 +49,7 @@ app.post("/signup", async (req, res) => {
         case "last_name":
           res
             .status(401)
-            .send("please make sure the first name is added and is correct!");
+            .send("please make sure the last name is added and is correct!");
           break;
         case "password":
           res
