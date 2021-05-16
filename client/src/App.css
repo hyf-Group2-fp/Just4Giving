@@ -175,6 +175,52 @@ body .bg-dark {
     font-size: 23px;
     margin-bottom: 6%;
 }
+/* modal disclaimer */
+.modal-content,
+.transparent{
+    opacity: 0.6;
+}
+.modal-title{
+    background-color: rgb(65, 65, 65);
+    font-size: 50px;
+    border-radius: 22px;
+}
+.disclaimer-card{  
+    border-radius: 50px;
+    box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.40);
+}
+.disclaimer-title{
+    text-shadow: -1px 0 #EB822E, 0 1px #EB822E, 1px 0 #EB822E, 0 -1px #EB822E;
+    font-size: 32px;
+    line-height: 29px;
+}
+.disclaimer-text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.60);
+}
+#terms{
+    background-color: #8ec4de;
+}
+#privacy{
+    background-color: #e9d366;
+}
+#disclaimer{
+    background-color: #66cbdf;
+}
+.img-container{
+    width: 100%;
+    height: 100%;
+}
+#img-humaans-space{
+    background-image: url(./assets/disclaimer/Humaaans_Space.png); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 200px;
+}
 /* Media Query */
 @media only screen and (max-width: 800px) {
     .bg2 {
