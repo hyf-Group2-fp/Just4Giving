@@ -5,6 +5,7 @@ import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import { userGiver} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
+
 function Signupgiver() {
     const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
