@@ -47,12 +47,8 @@ function Signupgiver() {
             dispatch(userGiver(userdata));
             try {
                 const response = await axios.post(url, userdata);
-                if(response.data.status !== 200){
-                    alert('the user does existed already');
-                    return ;
-                }
             } catch (error) {
-                alert('There user does already existed!');
+                alert('The user does already exist!');
                 console.error("There was an error!", error);
             }
         }
