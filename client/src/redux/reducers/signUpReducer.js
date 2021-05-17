@@ -1,6 +1,5 @@
-
 /**
- *  userTypeReducer:
+ *  sign up:
  *  the user can be :
  *  1-  giver
  *  2-  needer
@@ -21,7 +20,7 @@ const initialState = {
     agreement:0,
 };
 
-export const userTypeReducer = (state = initialState , action) => {
+export const signUpReducer = (state = initialState , action) => {
     switch (action.type){
         case 'IS_GIVER':
             return {...state,...action.payload };

@@ -1,5 +1,5 @@
 /**
- * Actions creators (userType)
+ * Actions creators (sign up)
  * --------------------------
  * the user can be :
  * 1- user (giver)
@@ -20,3 +20,4 @@ export const userNeeder = (user) => {
     payload:user ,
   }
 };
+

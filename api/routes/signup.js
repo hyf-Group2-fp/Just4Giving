@@ -38,11 +38,13 @@ app.post("/giver/signup", async (req, res) => {
             `a new user : ${first_name} ${last_name} has been created!`
         );
     } catch (err) {
-        console.error(err);
+        console.error(err.message);
         res.status(500).send("server error");
     }
 });
 
+
 module.exports = app;
 
 // just
+

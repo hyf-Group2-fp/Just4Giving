@@ -3,24 +3,23 @@ import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {userNeeder} from "../../redux/actions/userTypeAction";
+import {userNeeder} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupneeder() {
-    const url = "http:localhost:5000/api/needer/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
     const [age, setAge] = useState("");
     const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    const [street, setStreet] = useState("");
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const dispatch = useDispatch();
     // get the needer
-    const usertype = useSelector(state => state.userType.is_needer);
-    const handleSubmit = (event) => {
+    const usertype = useSelector(state => state.signUp.is_needer);
+    const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -34,7 +33,7 @@ function Signupneeder() {
                 last_name: last_name,
                 age: age,
                 phone: phone,
-                address: address,
+                street: street,
                 description: description,
                 email: email,
                 password: password,
@@ -47,8 +46,13 @@ function Signupneeder() {
             // dispatch action
             dispatch(userNeeder(userdata));
             try {
-                axios.post(url, userdata);
+               const response = await  axios.post('http://localhost:5000/api/needer/signup', userdata);
+               if(response.data.status !== 200){
+                   alert('the user does existed already');
+                   return ;
+               }
             } catch (error) {
+                alert('There user does already existed !');
                 console.error("There was an error!", error);
             }
         }
@@ -155,7 +159,7 @@ function Signupneeder() {
                                 required
                                 minLength="5"
                                 name="address"
-                                onChange={(e) => setAddress(e.target.value)}
+                                onChange={(e) => setStreet(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
