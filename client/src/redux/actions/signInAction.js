@@ -1,22 +1,23 @@
 
 /**
- * Actions creators (userAction).
- * the user can perform two actions:
- * 1- user (log in)
- * 2- user (log out)
+ * Actions creators (sign in ).
+ * the user can :
+ * 1- sign in
+ * 2- sign out
  */
 // import axios
 import axios from 'axios';
 
-// log in action
-export const login =(credentials) => {
+// sign in action
+export const signIn =(credentials) => {
     return async function (dispatch){
 
         const userInfo = credentials ;
+        const url = "http://localhost:5000/api/user/signin" ;
 
         try{
 
-        const response = await  axios.post('/login' , userInfo) ;
+        const response = await  axios.post(url , userInfo) ;
 
         if(response.data.status !== 200){
             throw new Error('Invalid E-mail or Password !!');
@@ -25,13 +26,13 @@ export const login =(credentials) => {
             const data = response.data ;
 
             // dispatch action
-            dispatch({type:'LOGGED_IN', payload:data}) ;
+            dispatch({type:'SIGNED_IN', payload:data}) ;
 
 
 
         }catch (err) {
 
-            dispatch({type:'LOGIN_ERROR', payload: err.message});
+            dispatch({type:'SIGN_IN_ERROR', payload: err.message});
             console.error(err);
 
         }
@@ -39,16 +40,18 @@ export const login =(credentials) => {
     }
 }
 
-// log out action
+// sign out action
 
-export const logout = () => {
+export const signOut = () => {
     return async function (dispatch){
 
+        const url = "http://localhost:5000/api/user/signout" ;
+
         // dispatch action
-        dispatch({type:'LOGGED_OUT'});
+        dispatch({type:'SIGNED_OUT'});
 
         try{
-        const response = await axios.get('/logout');
+        const response = await axios.get(url);
         console.log(response);
         return response;
         } catch (err) {

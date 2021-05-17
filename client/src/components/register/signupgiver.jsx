@@ -3,7 +3,7 @@ import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import { userGiver} from "../../redux/actions/userTypeAction";
+import { userGiver} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupgiver() {
     const url = "http://localhost:5000/api/giver/signup";
@@ -18,8 +18,8 @@ function Signupgiver() {
     const [confirmpassword, setConfirmpassword] = useState("");
     const dispatch = useDispatch();
     // get the needer
-    const usertype = useSelector(state => state.userType.is_giver);
-    const handleSubmit = (event) => {
+    const usertype = useSelector(state => state.signUp.is_giver);
+    const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -46,9 +46,13 @@ function Signupgiver() {
             // dispatch action
             dispatch(userGiver(userdata));
             try {
-                axios.post(url, userdata);
+                const response = await axios.post(url, userdata);
+                if(response.data.status !== 200){
+                    alert('the user does existed already');
+                    return ;
+                }
             } catch (error) {
-                alert('There was an error!');
+                alert('There user does already existed!');
                 console.error("There was an error!", error);
             }
         }

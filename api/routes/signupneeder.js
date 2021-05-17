@@ -39,7 +39,18 @@ app.post("/needer/signup", async (req, res) => {
         );
     } catch (err) {
         console.error(err);
-        res.status(500).send("server error");
+        if (err.errors) {
+            console.log(' error', err);
+            switch (err.errors[0].path) {
+                case 'email':
+                    res.status(401).send({ status: 401, message: ' Your email is not valid' });
+                    break;
+                case 'password':
+                    res.status(401).send({ status: 401, message: 'Password length has to be at least 5 characters' });
+                    break;
+            }
+
+       }
     }
 });
 
@@ -47,4 +58,5 @@ app.post("/needer/signup", async (req, res) => {
 module.exports = app;
 
 // just
+
 

@@ -3,7 +3,7 @@ import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {userNeeder} from "../../redux/actions/userTypeAction";
+import {userNeeder} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupneeder() {
     const [validated, setValidated] = useState(false);
@@ -18,7 +18,7 @@ function Signupneeder() {
     const [confirmpassword, setConfirmpassword] = useState("");
     const dispatch = useDispatch();
     // get the needer
-    const usertype = useSelector(state => state.userType.is_needer);
+    const usertype = useSelector(state => state.signUp.is_needer);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -46,9 +46,13 @@ function Signupneeder() {
             // dispatch action
             dispatch(userNeeder(userdata));
             try {
-               await  axios.post('http://localhost:5000/api/needer/signup', userdata);
+               const response = await  axios.post('http://localhost:5000/api/needer/signup', userdata);
+               if(response.data.status !== 200){
+                   alert('the user does existed already');
+                   return ;
+               }
             } catch (error) {
-                alert('There was an error!');
+                alert('There user does already existed !');
                 console.error("There was an error!", error);
             }
         }
