@@ -51,6 +51,9 @@ function Signupneeder() {
                    alert('the user does existed already');
                    return ;
                }
+               else{
+                return (<Redirect to="/profileneeder" />)
+               }
             } catch (error) {
                 alert('There user does already existed !');
                 console.error("There was an error!", error);
@@ -59,7 +62,7 @@ function Signupneeder() {
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1) return (<Redirect to="/profileneeder" />);
+   // if(usertype === 1) return (<Redirect to="/profileneeder" />);
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
