@@ -16,11 +16,14 @@ function Signupgiver() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
+    const [logged, loggedIn] = useState(false);
     const dispatch = useDispatch();
     // get the needer
     const usertype = useSelector(state => state.signUp.is_giver);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
+        event.preventDefault();
+        event.stopPropagation();
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -46,16 +49,23 @@ function Signupgiver() {
             // dispatch action
             dispatch(userGiver(userdata));
             try {
-                const response = await axios.post(url, userdata);
+                const response = await axios.post(url, userdata).then(
+                    (res) => {
+                        console.log(res.data)
+                        loggedIn(true);
+                    }
+                )
             } catch (error) {
+                loggedIn(false);
                 alert('The user does already exist!');
                 console.error("There was an error!", error);
+                return (<Redirect to="/profilegiver" />)
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1) return (<Redirect to="/profilegiver" />);
+    if(usertype === 1 && logged) return (<Redirect to="/profilegiver" />);
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
