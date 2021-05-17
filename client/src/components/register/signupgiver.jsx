@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
@@ -52,13 +53,15 @@ function Signupgiver() {
             try {
                 const response = await axios.post(url, userdata).then(
                     (res) => {
+                        alert(res.data)
                         console.log(res.data)
                         loggedIn(true);
                     }
                 )
             } catch (error) {
                 loggedIn(false);
-                alert('The user does already exist!');
+                alert('error');
+                //alert('The user does already exist!');
                 console.error("There was an error!", error);
             }
         }
