@@ -36,9 +36,12 @@ Goods.hasOne(GoodsForMany, {
     foreignKey: "goods_id",
 });
 
-GoodsForMany.belongsTo(User, {
-    as: "user",
-    foreignKey: "user_id",
-});
+
+User.hasMany(GoodsForMany, {
+    as:'goodformany',
+    foreignKey:"needer_id",
+})
+
+
 
 module.exports = GoodsForMany;
