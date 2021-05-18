@@ -1,6 +1,7 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../db/db.js");
-const Categories = require("../models/Categories") ;
+
+const Categories = require("./Categories");
 
 const Tags = sequelize.define(
     "tags",
@@ -28,12 +29,20 @@ const Tags = sequelize.define(
     }
 );
 
-// foreign keys one to many , one category has many tags
+// foreign keys
+
+// one to many categories and tags
 
 Categories.hasMany(Tags, {
     as: "tags",
     foreignKey: "category_id",
 });
 
+// tag belong to one category
 
-module.exports = Tags ;
+Tags.belongsTo(Categories, {
+    as: "categories",
+    foreignKey: "category_id",
+});
+
+module.exports = Tags;

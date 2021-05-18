@@ -31,17 +31,17 @@ const GoodsForMany = sequelize.define(
 
 // foreign keys
 
+// one to one goods and goodsForMany
+
 Goods.hasOne(GoodsForMany, {
     as: "goodsformany",
     foreignKey: "goods_id",
 });
 
+// one to many user to goodsForMany
 
 User.hasMany(GoodsForMany, {
-    as:'goodformany',
+    as:"goodformany",
     foreignKey:"needer_id",
 })
-
-
-
 module.exports = GoodsForMany;

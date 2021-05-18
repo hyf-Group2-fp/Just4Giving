@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../db/db.js");
 const User = require("./User.js");
-const Categories = require("../models/Categories") ;
+const Categories = require("./Categories");
 
 const Goods = sequelize.define(
     "goods",
@@ -80,5 +80,12 @@ User.hasOne(Goods, {
     as: "good",
     foreignKey: "owner_id",
 });
+
+// one to many categories and goods
+
+Categories.hasMany(Goods,{
+    as:"categories",
+    foreignKey:"category_id",
+})
 
 module.exports = Goods;
