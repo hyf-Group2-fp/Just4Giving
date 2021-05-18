@@ -41,6 +41,7 @@ app.post('/authenticate', async (req, res) => {
 
   try {
     user = await User.findOne({where: {email}});
+    res.status(200).send({user:user}) ;
   } catch (e) {
     res.sendStatus(401)
     return;
@@ -51,15 +52,15 @@ app.post('/authenticate', async (req, res) => {
     return;
   }
 
-  if (user.validPassword(password)) {
-    // Issue token
-    const payload = {email};
-    const token = jwt.sign(payload, JWT_SECRET, {
-      expiresIn: '1h'
-    });
-
-    res.cookie('token', token, {httpOnly: true}).sendStatus(200);
-  }
+  // if (user.validPassword(password)) {
+  //   // Issue token
+  //   const payload = {email};
+  //   const token = jwt.sign(payload, JWT_SECRET, {
+  //     expiresIn: '1h'
+  //   });
+  //
+  //   res.cookie('token', token, {httpOnly: true}).sendStatus(200);
+  // }
 });
 
 app.get('/checkToken', withAuth, function (req, res) {
