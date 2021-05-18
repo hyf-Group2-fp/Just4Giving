@@ -48,7 +48,7 @@ createCategories().then(() => {
 const createTags = async () => {
     return await Tags.findOrCreate({
         where:{
-            category_id: 1,
+            category_id: 15,
             tag_name:'Chair',
         },
 
@@ -67,7 +67,7 @@ createTags().then(()=> {
 const createGoods = async () => {
     return await Goods.findOrCreate({
      where:{
-         giver_id:1,
+         giver_id:5,
          item_name:"chair",
          category:'furniture',
          description:'a very nice chair ',
@@ -76,7 +76,7 @@ const createGoods = async () => {
          quantity:1,
          available:1,
          taken:0,
-         owner_id:1,
+         owner_id:15,
          category_id:1,
      }
     });
