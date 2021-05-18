@@ -6,7 +6,7 @@ const app = express();
 
 app.put("/goods/:id", async (req, res) => {
   try {
-    res.send(`good put ${req.params.id}`);
+    res.send(`good id ${req.params.id}`);
   } catch (err) {
     console.error(err);
     res.status(500).send("server error");
@@ -15,4 +15,4 @@ app.put("/goods/:id", async (req, res) => {
 
 module.exports = app;
 
-app.use("/", require("./routes/updategood.js"));
+app.use("/", require("./routes/good.js"));
