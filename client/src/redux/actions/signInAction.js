@@ -13,7 +13,8 @@ export const signIn =(credentials) => {
     return async function (dispatch){
 
         const userInfo = credentials ;
-        const url = "http://localhost:5000/api/authenticate" ;
+        //const url = "http://localhost:5000/api/user/signin" ;
+        const url = "http://localhost:5000/api/authenticate";
 
         try{
 
