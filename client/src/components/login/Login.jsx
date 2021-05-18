@@ -1,17 +1,19 @@
 
 import React, { useState } from "react";
 import { Form, Button,Card} from "react-bootstrap";
-import axios from "axios";
- import pic from '../../assets/login/signin.png'
-//import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom'
+import pic from '../../assets/login/signin.png'
 import {useDispatch, useSelector} from "react-redux";
-//import { logInGiver , logInNeeder} from "../../redux/actions/checkProfileAction"
+import {signIn} from "../../redux/actions/signInAction"
 function Login(){
-  const url="http://localhost:5000/api/authenticate";
+  //const url="http://localhost:5000/api/authenticate";
   const [validated,setValidated]=useState(false);
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
   const dispatch=useDispatch();
+  const login =useSelector(state=>state.signIn.isSigned);
+  const is_giver=useSelector(state=>state.signUp.is_giver)
+  const notuser =useSelector(state=>state.signIn.signInError);
   const handleSubmit= async(event)=>{
     const form=event.currentTarget;
     if (form.checkValidity() === false) {
@@ -24,6 +26,7 @@ function Login(){
         password:password
       };
       console.log(userdata);
+      dispatch(signIn(userdata));
       // try{
       //   const response= await axios.post(url,userdata);
       //   console.log(response);
@@ -34,6 +37,18 @@ function Login(){
      // dispatch(logInGiver(userdata));
       // if the user is needer
       // dispatch(logInNeeder(userdata));
+      if (login=== true){
+        alert('successful login')
+        if(is_giver===1){
+          return (<Redirect to="/profilegiver" />)
+        }
+        else{
+          return (<Redirect to="/profileneeder" />)
+        }
+      }
+      else{
+        alert('You dont have an account, please register')
+      }
     }
     event.preventDefault();
     setValidated(true);
@@ -92,5 +107,3 @@ function Login(){
   );
 }
 export default Login;
-
-
