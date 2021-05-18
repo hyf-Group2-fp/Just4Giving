@@ -22,6 +22,7 @@ function Demo() {
           </Link>
           </p>
         </Jumbotron>
+
         <CardDeck className="cards">
           <Card className="shadow-lg rounded card1">
             <Card.Body>
@@ -63,6 +64,7 @@ function Demo() {
             </Card.Body>
           </Card>
         </CardDeck>
+
         <div className="container">
           <div className="player-wrapper">
             <h2 id="videoh">Our Vision</h2>
@@ -75,6 +77,7 @@ function Demo() {
             />
           </div>
         </div>
+
         <div>
           <img className="bg2" src={footer} alt="bg2" />
         </div>
