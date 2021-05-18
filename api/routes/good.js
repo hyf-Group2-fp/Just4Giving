@@ -4,7 +4,7 @@ const Goods = require("../models/Goods.js");
 // initialize express
 const app = express();
 
-app.get("/good/:id", async (req, res) => {
+app.get("/goods/:id", async (req, res) => {
   try {
     res.send(`good ${req.params.id}`);
   } catch (err) {
