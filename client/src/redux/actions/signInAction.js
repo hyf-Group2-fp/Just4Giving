@@ -6,6 +6,7 @@
  * 2- sign out
  */
 // sign in action
+
 export const signIn = (credentials) => {
     return {
         type: "SIGNED_IN",
@@ -24,3 +25,4 @@ export const signOut = () => {
         type: "SIGNED_OUT",
     };
 };
+

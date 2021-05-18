@@ -1,8 +1,10 @@
 const express = require("express");
 const User = require("../models/User.js");
+const cors = require('cors');
 
 // initialize express
 const app = express();
+app.use(cors());
 
 app.post("/giver/signup", async (req, res) => {
   const {
@@ -39,7 +41,9 @@ app.post("/giver/signup", async (req, res) => {
         );
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("server error");
+        //401 or 403: user already exists
+        res.status(401).send("password or email are not valid");
+        //res.status(500).send("server error");
     }
 });
 
