@@ -78,13 +78,13 @@ app.post('/authenticate', async (req, res) => {
     if (isValid) {
       res.send(user);
       // Issue token
-      const payload = {email};
+      // const payload = {email};
 
-        const token = jwt.sign(payload, JWT_SECRET, {
-              expiresIn: '1h'
-            });
+      //   const token = jwt.sign(payload, JWT_SECRET, {
+      //         expiresIn: '1h'
+      //       });
 
-            res.cookie('token', token, {httpOnly: true}).sendStatus(200);
+      //       res.cookie('token', token, {httpOnly: true}).sendStatus(200);
     }
 
     //password is not correct

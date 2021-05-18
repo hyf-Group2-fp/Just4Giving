@@ -59,7 +59,7 @@ function Signupneeder() {
                 )
             } catch (error) {
                 loggedIn(false);
-                alert('error');
+                alert('Email already exist, please try login');
                 //alert('The user does already exist!');
                 console.error("There was an error!", error);
             }
