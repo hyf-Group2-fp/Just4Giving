@@ -30,11 +30,7 @@ function App() {
               exact
               component={Signupgiver}
            />
-           <Route  path="/login"
-              exact
-              component={Login}
-
-           />
+            {/*<Route path="/login" exact component ={Login}></Route>*/}
         </Switch>
         <Footer />
       </Router>

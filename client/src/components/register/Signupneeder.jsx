@@ -6,7 +6,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {userNeeder} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
 function Signupneeder() {
-    const url = "http://localhost:5000/api/needer/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -17,14 +16,11 @@ function Signupneeder() {
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [logged, loggedIn] = useState(false);
     const dispatch = useDispatch();
     // get the needer
     const usertype = useSelector(state => state.signUp.is_needer);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
-        event.preventDefault();
-        event.stopPropagation();
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -50,24 +46,20 @@ function Signupneeder() {
             // dispatch action
             dispatch(userNeeder(userdata));
             try {
-                const response = await axios.post(url, userdata).then(
-                    (res) => {
-                        alert(res.data)
-                        console.log(res.data)
-                        loggedIn(true);
-                    }
-                )
+               const response = await  axios.post('http://localhost:5000/api/needer/signup', userdata);
+               if(response.data.status !== 200){
+                   alert('the user does existed already');
+                   return ;
+               }
             } catch (error) {
-                loggedIn(false);
-                alert('error');
-                //alert('The user does already exist!');
+                alert('There user does already existed !');
                 console.error("There was an error!", error);
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 && logged) return (<Redirect to="/profileneeder" />);
+    if(usertype === 1) return (<Redirect to="/profileneeder" />);
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>

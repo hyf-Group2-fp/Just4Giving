@@ -19,14 +19,9 @@ app.use("/", require("./routes/login.js"));
 app.use("/", require("./routes/signup.js"));
 app.use("/", require("./routes/tags.js"));
 app.use("/", require("./routes/categories.js"));
-<<<<<<< HEAD
 app.use("/", require('./routes/signupneeder.js')) ;
 app.use("/", require("./routes/goods.js"));
 app.use("/", require("./routes/goodsformany.js"));
 
-=======
-app.use("/", require('./routes/goodForMany.js')) ;
-app.use("/", require('./routes/signupneeder.js')) ;
->>>>>>> ca2e7364aecda4df27002683c7a7ce6a0c08e559
 
 module.exports = app;
