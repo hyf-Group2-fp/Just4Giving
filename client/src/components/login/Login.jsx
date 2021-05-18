@@ -1,19 +1,19 @@
-
 import React, { useState } from "react";
 import { Form, Button,Card} from "react-bootstrap";
 import  { Redirect } from 'react-router-dom'
 import pic from '../../assets/login/signin.png'
-import {useDispatch, useSelector} from "react-redux";
-import {signIn} from "../../redux/actions/signInAction"
+import axios from "axios"
+import {useDispatch} from "react-redux";
+import {signIn,signInError} from "../../redux/actions/signInAction"
 function Login(){
-  //const url="http://localhost:5000/api/authenticate";
+  
   const [validated,setValidated]=useState(false);
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
+  const[isGiver, setGiver]=useState(false);
+  const[isNeeder,setNeeder]=useState(false);
   const dispatch=useDispatch();
-  const login =useSelector(state=>state.signIn.isSigned);
-  const is_giver=useSelector(state=>state.signUp.is_giver)
-  const notuser =useSelector(state=>state.signIn.signInError);
+  
   const handleSubmit= async(event)=>{
     const form=event.currentTarget;
     if (form.checkValidity() === false) {
@@ -26,37 +26,44 @@ function Login(){
         password:password
       };
       console.log(userdata);
-      dispatch(signIn(userdata));
-      // try{
-      //   const response= await axios.post(url,userdata);
-      //   console.log(response);
-      // } catch(error){
-      //   console.error('There was an error!',error);
-      // }
-      // if the user is giver
-     // dispatch(logInGiver(userdata));
-      // if the user is needer
-      // dispatch(logInNeeder(userdata));
-      if (login=== true){
-        alert('successful login')
-        if(is_giver===1){
-          return (<Redirect to="/profilegiver" />)
-        }
-        else{
-          return (<Redirect to="/profileneeder" />)
-        }
-      }
-      else{
-        alert('You dont have an account, please register')
-      }
-    }
+      
+      try{
+        const response= await axios.post("http://localhost:5000/api/authenticate",userdata).then(
+          (res) => {
+            dispatch(signIn(userdata));
+           console.log(res.data.user)
+           
+            if (res.data.user.is_giver===true){
+              setGiver(true);
+              alert('giver')
+              return
+            
+            }
+            else
+             if(res.data.user.is_needer===true){
+              setNeeder(true);
+              alert('needer')
+              return
+            }
+            }
+        )
+        
+      } catch(error){
+        alert("please check your credentials")
+        dispatch(signInError()) ;
+        console.error('There was an error!',error);
+      }}
     event.preventDefault();
     setValidated(true);
   };
-//check user login successful
-//check user is giver or is needer
-//if needer go to needer profile
-//if giver go to giver profile
+  if(isGiver){
+    return (<Redirect to="/profilegiver" />)
+  }
+  else
+   if(isNeeder){
+    return (<Redirect to="/profileneeder" />)
+  }
+
   return(
       <div className="forms">
         <h1 className="text-center formh1">Sign-in</h1>
