@@ -4,12 +4,14 @@ const jwt = require('jsonwebtoken');
 const withAuth = require('../middleware');
 const User = require('../models/User');
 var bcrypt = require('bcrypt');
+const cors = require('cors');
 
 const {
   JWT_SECRET
 } = require('../config');
 
 const app = express();
+app.use(cors());
 
 // app.get('/', function (req, res) {
 //   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -76,13 +78,13 @@ app.post('/authenticate', async (req, res) => {
     if (isValid) {
       res.send(user);
       // Issue token
-      //const payload = {email};
+      const payload = {email};
 
-      //   const token = jwt.sign(payload, JWT_SECRET, {
-      //         expiresIn: '1h'
-      //       });
+        const token = jwt.sign(payload, JWT_SECRET, {
+              expiresIn: '1h'
+            });
 
-      //       res.cookie('token', token, {httpOnly: true}).sendStatus(200);
+            res.cookie('token', token, {httpOnly: true}).sendStatus(200);
     }
 
     //password is not correct
