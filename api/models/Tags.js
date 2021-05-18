@@ -31,10 +31,14 @@ const Tags = sequelize.define(
 
 // foreign keys
 
+// one to many categories and tags
+
 Categories.hasMany(Tags, {
     as: "tags",
     foreignKey: "category_id",
 });
+
+// tag belong to one category
 
 Tags.belongsTo(Categories, {
     as: "categories",
