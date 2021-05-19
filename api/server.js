@@ -19,11 +19,10 @@ app.use("/", require("./routes/login.js"));
 app.use("/", require("./routes/signup.js"));
 app.use("/", require("./routes/tags.js"));
 app.use("/", require("./routes/categories.js"));
-app.use("/", require('./routes/signupneeder.js')) ;
-app.use("/", require("./routes/goods.js"));
-app.use("/", require("./routes/goodsformany.js"));
-app.use("/", require("./routes/goods.js")) ;
-
+app.use("/", require('./routes/signupneeder.js'));
+//app.use("/", require("./routes/good.js"));
+app.use("/", require("./routes/updategood.js"));
+//app.use("/", require("./routes/goods.js"));
 
 
 module.exports = app;
