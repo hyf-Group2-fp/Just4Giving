@@ -1,7 +1,8 @@
+
 import React, {useState} from "react";
 import {Form, Button, Card} from "react-bootstrap";
 import {Redirect} from 'react-router-dom'
-import pic from '../../assets/login/signin.png'
+// import pic from '../../assets/login/signin.png'
 import axios from "axios"
 import {useDispatch} from "react-redux";
 import {signIn, signInError} from "../../redux/actions/signInAction"
@@ -114,8 +115,9 @@ function Login() {
                     </Button>
                 </Form>
             </Card>
-            <img className="bg3" src={pic} alt="helping hands"/>
+            {/*<img className="bg3" src={pic} alt="helping hands"/>*/}
         </div>
     );
 }
 export default Login;
+
