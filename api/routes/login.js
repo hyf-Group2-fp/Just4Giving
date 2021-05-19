@@ -3,12 +3,13 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const withAuth = require('../middleware');
 const User = require('../models/User');
-var bcrypt = require('bcrypt');
+const  bcrypt = require('bcrypt');
 const cors = require('cors');
 
-const {
-  JWT_SECRET
-} = require('../config');
+// import the secret token
+const {   JWT_SECRET} = require('../config');
+
+
 
 const app = express();
 app.use(cors());
@@ -27,27 +28,31 @@ app.post('/authenticate', async (req, res) => {
   let user = null;
 
   try {
-    user = await User.findOne({
-      where: {
-        email
-      }
-    });
-  } catch (e) {
-    /* stop further execution in this callback
-    send 401 */
-    res.status(401).send('no access').end();
+
+    user = await User.findOne({where: {email}});
+    res.status(200).send({user:user}) ;
+
+  } catch (err) {
+
+    // stop further execution in this callback 401
+    res.status(401).send('unAuthorized!!').end();
   }
-  //no user found
+
+  //no user
   if (!user) {
-    /*email does not exist
+    /*
+    email does not exist
     maybe redirect to a route
-    res.status(401).location('/foo').end();*/
-    res.status(401).send('no access').end();
+    res.status(401).location('/foo').end();
+
+    */
+    res.status(401).send('Invalid Email or password!!').end();
   }
 
-  var isValidPassword = function (userpass, password) {
 
-    return bcrypt.compareSync(password, userpass);
+  const  isValidPassword = function (userPass, password) {
+
+    return bcrypt.compareSync(password, userPass);
 
   }
   /*
@@ -78,9 +83,10 @@ app.post('/authenticate', async (req, res) => {
 
     //password is not correct
     else {
-      res.status(401).send('no access').end();
+      res.status(401).send('invalid Email or password!!').end();
     }
   });
+
 });
 
 app.get('/checkToken', withAuth, function (req, res) {
