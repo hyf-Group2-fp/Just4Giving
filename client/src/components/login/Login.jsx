@@ -43,14 +43,14 @@ function Login() {
                         console.log(userdata.password);
 
                         //delete this line, just for reference
-                        console.log(res.data.email);                
+                        console.log('here',res.data.user.email);                
 
-                        if (res.data.is_giver === true) {
+                        if (res.data.user.is_giver === true) {
                             setGiver(true);
                             alert('giver')
                             return
 
-                        } else if (res.data.is_needer === true) {
+                        } else if (res.data.user.is_needer === true) {
                             setNeeder(true);
                             alert('needer')
                             return
