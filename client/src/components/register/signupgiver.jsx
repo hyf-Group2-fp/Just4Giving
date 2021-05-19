@@ -60,7 +60,7 @@ function Signupgiver() {
                 )
             } catch (error) {
                 loggedIn(false);
-                alert('error');
+                alert('email already exist, please try login');
                 //alert('The user does already exist!');
                 console.error("There was an error!", error);
             }
