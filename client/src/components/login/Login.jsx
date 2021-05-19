@@ -43,7 +43,7 @@ function Login() {
                         console.log(userdata.password);
 
                         //delete this line, just for reference
-                        console.log(res.data.user.Buttonemail);                
+                        console.log(res.data.user.mail);                
 
                         if (res.data.user.is_giver === true) {
                             setGiver(true);
