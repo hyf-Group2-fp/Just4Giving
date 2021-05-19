@@ -52,7 +52,13 @@ function Signupgiver() {
                     return ;
                 }
             } catch (error) {
+
                 alert('There user does already existed!');
+
+                loggedIn(false);
+                alert('email already exist, please try login');
+                //alert('The user does already exist!');
+
                 console.error("There was an error!", error);
             }
         }

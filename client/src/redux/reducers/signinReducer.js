@@ -7,12 +7,10 @@
  *  @Error : sign in error
  *
  */
-
 const initialState = {
     isSigned: false,
     signInError: false,
 };
-
 export const signInReducer = (state = initialState, action) => {
     switch (action.type) {
         case "SIGNED_IN":
