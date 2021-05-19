@@ -13,31 +13,10 @@ const {
 const app = express();
 app.use(cors());
 
-// app.get('/', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
-
-// app.get('/home', function (req, res) {
-//   res.send('Welcome!');
-// });
-
 app.get('/secret', withAuth, function (req, res) {
   res.send('You are visiting a protected page.');
 });
 
-// app.post('/register', async (req, res) => {
-//   const {email, password} = req.body;
-//   //const user = new User({email, password});
-
-//   try {
-//     await user.save();
-//   } catch (e) {
-//     res.sendStatus(500)
-//     return;
-//   }
-
-//   res.sendStatus(200);
-// });
 
 app.post('/authenticate', async (req, res) => {
   const {
@@ -54,8 +33,8 @@ app.post('/authenticate', async (req, res) => {
       }
     });
   } catch (e) {
-    // stop further execution in this callback
-    //send 401
+    /* stop further execution in this callback
+    send 401 */
     res.status(401).send('no access').end();
   }
   //no user found
@@ -71,20 +50,30 @@ app.post('/authenticate', async (req, res) => {
     return bcrypt.compareSync(password, userpass);
 
   }
-  //password from the request
-  //user.password from the response
+  /*
+  confront
+  password from the request
+  ser.password from the response
+  */
 
   bcrypt.compare(password, user.password, function (err, isValid) {
     if (isValid) {
-      res.send(user);
+
       // Issue token
-      // const payload = {email};
+      const mail = user.email;
+      const payload = {
+        mail: mail
+      };
 
-      //   const token = jwt.sign(payload, JWT_SECRET, {
-      //         expiresIn: '1h'
-      //       });
+      const token = jwt.sign(payload, JWT_SECRET, {
+        expiresIn: '1h'
+      });
+      //send token and data
+      res.json({
+        token,
+        user
+      });
 
-      //       res.cookie('token', token, {httpOnly: true}).sendStatus(200);
     }
 
     //password is not correct
@@ -97,5 +86,6 @@ app.post('/authenticate', async (req, res) => {
 app.get('/checkToken', withAuth, function (req, res) {
   res.sendStatus(200);
 });
+
 
 module.exports = app;
