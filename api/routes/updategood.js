@@ -4,32 +4,21 @@ const Goods = require("../models/Goods.js");
 // initialize express
 const app = express();
 
-app.put("/goods/:id", async (req, res) => {
+// update good
+app.put('/goods/:id' , async (req,res) => {
+  const id = req.params.id ;
+  const item_name = req.body.item_name ;
   try {
-    res.send(`good id put ${req.params.id}`);
-  } catch (err) {
+    const updatedGood = await Goods.update({item_name:item_name},{
+      where:{
+        goods_id:id ,
+      }
+    }) ;
+    res.status(200).send(`the goods with the id : ${id} has been updated`)
+  }catch (err) {
     console.error(err);
-    res.status(500).send("server error");
   }
 });
-
-
-
-// app.put("/goods", (req, res) => {
-//   const id =req.body.id;
-//   const good = req.body.good;
-
-//   db.query("UPDATE category SET good = ? WHERE id = ?",
-//   [good, id],
-//   (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send (result);
-//     }
-//   }
-//  );
-// })
 
 module.exports = app;
 
