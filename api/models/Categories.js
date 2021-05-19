@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../db/db.js");
-const Goods = require("./Goods.js");
+
 
 const Categories = sequelize.define(
     "categories",
@@ -24,16 +24,5 @@ const Categories = sequelize.define(
     }
 );
 
-// foreign keys
-
-Goods.hasOne(Categories, {
-    as: "categories",
-    foreignKey: "category_id",
-});
-
-Categories.belongsTo(Goods, {
-    as: "goods",
-    foreignKey: "category_id",
-});
 
 module.exports = Categories;

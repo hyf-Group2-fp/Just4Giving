@@ -23,6 +23,7 @@ app.use("/", require('./routes/goodForMany.js')) ;
 app.use("/", require('./routes/signupneeder.js')) ;
 app.use("/", require("./routes/good.js"));
 app.use("/", require("./routes/updategood.js"));
+//app.use("/", require("./routes/goods.js"));
 
 
 module.exports = app;
