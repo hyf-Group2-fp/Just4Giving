@@ -11,7 +11,9 @@ import About from "./components/landingpage/About";
 import Signupneeder from "./components/register/Signupneeder";
 import Signupgiver from "./components/register/signupgiver";
 import Login from "./components/login/Login";
-
+import Giver from "./components/giver/Giverprofile"
+import Newitem from "./components/giver/Newitem"
+import Itemview from "./components/giver/Itemview"
 function App() {
   return (
     <div className="App">
@@ -28,7 +30,11 @@ function App() {
            />
           <Route
               path="/signupgiver"    exact  component={Signupgiver}
-
+           />
+           <Route path="/profilegiver"
+           exact component={Giver}/>
+           <Route path="/newgoods" exact component={Newitem}/>
+           <Route component={Itemview} path="/itemview" />
           />
             <Route path="/login" exact component ={Login}></Route>
         </Switch>

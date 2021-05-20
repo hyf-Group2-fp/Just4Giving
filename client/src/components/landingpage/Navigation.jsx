@@ -2,10 +2,15 @@ import React, {useState} from "react";
 import { Navbar, Nav } from "react-bootstrap";
 // import { Brand } from "react-bootstrap/lib/Navbar";
 import logo from "../../assets/landingpage/logo22.png";
+import signIn from "../../redux/actions/signInAction";
+
 function Navigation() {
+    const signin="";
     const [isAuthenticated , setIsAuthenticated] = useState(false);
     const authenticatedNavBar = () => {
         return (
+            
+        
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="row justify-content-end links">
                     <Nav.Item>
@@ -16,10 +21,22 @@ function Navigation() {
                     </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
+            
         )};
     const unauthenticatedNavBar = () => {
         return (
-            <Navbar>
+            
+                <Navbar collapseOnSelect expand="lg" sticky="top">
+            <Navbar.Brand className="main-brand" href="/">
+                <img
+                    src={logo}
+                    width="60"
+                    height="60"
+                    className="d-inline-block align-top"
+                    alt="just4giving logo"
+                />
+                JUST4GIVING
+            </Navbar.Brand>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="row justify-content-end links">
                         <Nav.Item>
@@ -32,26 +49,26 @@ function Navigation() {
                 </Navbar.Collapse>
             </Navbar>
         )};
-    const brand = () => {
-        return (
-            <Navbar collapseOnSelect expand="lg" sticky="top">
-                <Navbar.Brand className="main-brand" href="/">
-                    <img
-                        src={logo}
-                        width="60"
-                        height="60"
-                        className="d-inline-block align-top"
-                        alt="just4giving logo"
-                    />
-                    JUST4GIVING
-                </Navbar.Brand>
-            </Navbar>
-        )};
+//   const brand = () => {
+//         return (
+//             <Navbar collapseOnSelect expand="lg" sticky="top">
+//                 <Navbar.Brand className="main-brand" href="/">
+//                     <img
+//                         src={logo}
+//                         width="60"
+//                           height="60"
+//                         className="d-inline-block align-top"
+//                         alt="just4giving logo"
+//                     />
+//                     JUST4GIVING
+//                 </Navbar.Brand>
+//             </Navbar>
+//         )};
     return (
         <div className="margin-t-b">
             {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
             {isAuthenticated ? authenticatedNavBar() : unauthenticatedNavBar()}
-            {!isAuthenticated ? brand():null }
+            {/* {!isAuthenticated ? brand():null } */}
         </div>
     )
 }

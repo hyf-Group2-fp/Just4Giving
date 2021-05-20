@@ -44,10 +44,10 @@ body .bg-dark {
     color: #e9d366 !important;
     font-size: 35px;
     text-shadow: 2px 2px 4px #000000;
+    padding-top: 0;
 }
 .links {
     width: 100%;
-
     margin-right: 20px;
     font-size: 20px;
     text-shadow: 2px 2px 4px black;
@@ -162,65 +162,123 @@ body .bg-dark {
     background-color: white;
 }
 #formb {
-    margin-left: 75%;
+    margin-left: 85%;
     width: 170px;
     height: 50px;
     font-size: 23px;
     margin-bottom: 6%;
 }
 .formb {
-    margin-left: 75%;
+    margin-left: 82%;
     width: 170px;
     height: 50px;
     font-size: 23px;
     margin-bottom: 6%;
 }
+
+
+/* sign-in forms*/
+#formblogin {
+    width: 180px;
+    height: 50px;
+    font-size: 22px;
+    margin-left: 35%;
+}
+.inputs {
+    width: 30rem;
+    padding-left: 23%;
+}
+.bg3 {
+    height: 400px;
+    width: 400px;
+}
+.signin {
+    margin-top: 5%;
+}
+.signincard {
+    width: 40rem;
+    text-align: left;
+    margin-left: 35%;
+}
 /* modal disclaimer */
 .modal-content,
-.transparent{
+.transparent {
     opacity: 0.6;
 }
-.modal-title{
+.modal-title {
     background-color: rgb(65, 65, 65);
     font-size: 50px;
     border-radius: 22px;
 }
-.disclaimer-card{  
+.disclaimer-card {
     border-radius: 50px;
-    box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.40);
+    box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
 }
-.disclaimer-title{
-    text-shadow: -1px 0 #EB822E, 0 1px #EB822E, 1px 0 #EB822E, 0 -1px #EB822E;
+.disclaimer-title {
+    text-shadow: -1px 0 #eb822e, 0 1px #eb822e, 1px 0 #eb822e, 0 -1px #eb822e;
     font-size: 32px;
     line-height: 29px;
 }
-.disclaimer-text{
-    font-family: 'Poppins', sans-serif;
+.disclaimer-text {
+    font-family: "Poppins", sans-serif;
     font-size: 18px;
     line-height: 27px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.60);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
 }
-#terms{
+#terms {
     background-color: #8ec4de;
 }
-#privacy{
+#privacy {
     background-color: #e9d366;
 }
-#disclaimer{
+#disclaimer {
     background-color: #66cbdf;
 }
-.img-container{
+.img-container {
     width: 100%;
     height: 100%;
 }
-#img-humaans-space{
-    background-image: url(./assets/disclaimer/Humaaans_Space.png); 
+#img-humaans-space {
+    background-image: url(./assets/disclaimer/Humaaans_Space.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 200px;
     height: 200px;
 }
+
+/* giver profile*/
+.banner {
+    background-image: url("./assets/giver/banner.png");
+    background-repeat: no-repeat;
+    background-size: 2000px 220px;
+    text-align: right;
+}
+
+.welcome {
+    color: orange;
+    margin-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.welcome p {
+    font-size: 24;
+}
+.welcome button {
+    width: 12rem;
+    font-size: 20px;
+    margin: 0;
+    height: 40px;
+    margin-top: 1%;
+}
+/*new item posting*/
+.itemview {
+    text-align: left;
+    font-size: 20px;
+    margin-top: 20%;
+    margin-right: 10%;
+}
+
 /* Media Query */
 @media only screen and (max-width: 800px) {
     .bg2 {
