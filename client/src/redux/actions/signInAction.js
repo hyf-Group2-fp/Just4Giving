@@ -5,7 +5,9 @@
  * 1- sign in
  * 2- sign out
  */
+
 // sign in action
+
 
 export const signIn = (credentials) => {
     return {
@@ -13,16 +15,22 @@ export const signIn = (credentials) => {
         payload: credentials,
     };
 };
+
 // sign in error
 export const signInError = () => {
     return {
         type: "SIGN_IN_ERROR",
     };
 };
+
+
+
 // sign out action
 export const signOut = () => {
     return {
-        type: "SIGNED_OUT",
-    };
-};
+
+        type:'SIGNED_OUT',
+    }
+}
+
 

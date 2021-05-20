@@ -3,7 +3,7 @@ const Goods = require("../models/Goods.js");
 
 // initialize express
 const app = express();
-
+// post
 app.post("/goods", async (req, res) => {
   const {
     giver_id,
@@ -40,5 +40,6 @@ app.post("/goods", async (req, res) => {
     res.status(500).send("server error");
   }
 });
+
 
 module.exports = app;

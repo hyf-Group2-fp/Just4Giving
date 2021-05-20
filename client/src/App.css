@@ -176,6 +176,7 @@ body .bg-dark {
     margin-bottom: 6%;
 }
 
+
 /* sign-in forms*/
 #formblogin {
     width: 180px;
@@ -245,6 +246,7 @@ body .bg-dark {
     width: 200px;
     height: 200px;
 }
+
 /* giver profile*/
 .banner {
     background-image: url("./assets/giver/banner.png");
@@ -277,7 +279,6 @@ body .bg-dark {
     margin-right: 10%;
 }
 
-
 /* Media Query */
 @media only screen and (max-width: 800px) {
     .bg2 {
@@ -299,24 +300,6 @@ body .bg-dark {
     }
     #formb {
         margin-left: 30%;
-    }
-
-    .inputs {
-        width: 19rem;
-        padding-left: 3%;
-    }
-    #formblogin {
-        height: 40px;
-        font-size: 20px;
-        margin-left: 18%;
-    }
-    .signincard {
-        width: 20rem;
-        text-align: left;
-        margin-left: 9%;
-    }
-    .bg3 {
-        display: none;
     }
 }
 

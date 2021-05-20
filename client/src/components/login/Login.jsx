@@ -1,7 +1,8 @@
+
 import React, {useState} from "react";
 import {Form, Button, Card} from "react-bootstrap";
 import {Redirect} from 'react-router-dom'
-import pic from '../../assets/login/signin.png'
+// import pic from '../../assets/login/signin.png'
 import axios from "axios"
 import {useDispatch} from "react-redux";
 import {signIn, signInError} from "../../redux/actions/signInAction"
@@ -44,9 +45,10 @@ function Login(props) {
                         //console.log(userdata.password);
 
                         //delete this line, just for reference
-                       console.log(res.data.first_name);                
+                        console.log(res.data.first_name);                
+                        console.log(res.data.user.mail);                
 
-                        if (res.data.is_giver === true) {
+                        if (res.data.user.is_giver === true) {
                             setGiver(true);
                             alert('giver')
                             const name=res.data.first_name;
@@ -55,7 +57,7 @@ function Login(props) {
                             
                             return
 
-                        } else if (res.data.is_needer === true) {
+                        } else if (res.data.user.is_needer === true) {
                             setNeeder(true);
                             alert('needer')
                             setFirst_name(res.data.first_name);
@@ -121,8 +123,9 @@ function Login(props) {
                     </Button>
                 </Form>
             </Card>
-            <img className="bg3" src={pic} alt="helping hands"/>
+            {/*<img className="bg3" src={pic} alt="helping hands"/>*/}
         </div>
     );
 }
 export default Login;
+

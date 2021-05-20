@@ -1,103 +1,62 @@
-const { cryptPassword } = require('../utils/encryption');
-const User = require('../models/User.js');
-const Categories = require("../models/Categories");
-const Tags = require("../models/Tags");
-const Goods = require("../models/Goods");
-const GoodsForMany = require("../models/GoodsForMany");
-
-// create users
-const createUsers = async () => {
-  return await User.findOrCreate({
-      where: {
-          first_name:'Julie',
-          last_name :'Bean',
-          email:'juli3@gmail.com',
-          street:'first street 23',
-          phone:'234533335',
-          age: 24,
-          is_giver:1,
-          is_needer:0,
-          description:'I love helping others , it is really  ',
-      },
-      defaults: {password: await cryptPassword('JonSmith123'), agreement:1}
-    });
-}
-
-createUsers()
-  .then(() => {
-    process.exit();
-  });
-
-// create categories
-
-const createCategories = async () => {
-    return await  Categories.findOrCreate({
-        where:{
-            category_name:'Books',
-        },
-    })
-}
-
-createCategories().then(() => {
-    process.exit();
-});
+        const { cryptPassword } = require('../utils/encryption');
+        const User = require('../models/User.js');
 
 
-// create a tags
+        // user1
+        const createUser1 = async () => {
+            return await User
+                .findOrCreate({
+                    where: {
+                        first_name:'Sonic',
+                        last_name :'Bean',
+                        email:'sonic123@gmail.com',
+                        street:'first street 23',
+                        phone:'234533335',
+                        age: 24,
+                        is_giver:0,
+                        is_needer:1,
+                        description:'I love and want  helping others!!',
+                    },
+                    defaults: {password: await cryptPassword('JonSmith123'), agreement:1}
+                });
+        }
 
-const createTags = async () => {
-    return await Tags.findOrCreate({
-        where:{
-            category_id: 15,
-            tag_name:'Chair',
-        },
-
-    });
-
-}
-
-createTags().then(()=> {
-    process.exit();
-});
+        createUser1().then(() => {
+            process.exit();
+        }) ;
 
 
 
-//create goods
+        // user2
+        const createUser2 = async () => {
+            return await User
+                .findOrCreate({
+                    where: {
+                        first_name:'James',
+                        last_name :'Cameron',
+                        email:'james12@gmail.com',
+                        street:' street 25',
+                        phone:'234533335',
+                        age: 24,
+                        is_giver:0,
+                        is_needer:1,
+                        description:'I love helping others ',
+                    },
+                    defaults: {password: await cryptPassword('james1234'), agreement:1}
+                });
+        }
 
-const createGoods = async () => {
-    return await Goods.findOrCreate({
-     where:{
-         giver_id:5,
-         item_name:"chair",
-         category:'furniture',
-         description:'a very nice chair ',
-         image:'',
-         quality: 1,
-         quantity:1,
-         available:1,
-         taken:0,
-         owner_id:15,
-         category_id:1,
-     }
-    });
-}
+        createUser2().then(() => {
+            process.exit();
+        }) ;
 
-createGoods().then(() => {
-    process.exit() ;
 
-});
 
-// create goodsForMany
 
-const createGoodsForMany = async () => {
-    return await  GoodsForMany.findOrCreate({
-        where:{
-            goods_id:1 ,
-            needer_id:1,
-        },
-    });
-}
 
-createGoodsForMany().then(() => {
-    process.exit();
-});
+        const jane = await User.create({ firstName: "Jane", lastName: "Doe" });
+        console.log("Jane's auto-generated ID:", jane.id);
+
+
+
+
