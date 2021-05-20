@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 // import all reducers
 import {signUpReducer} from './signUpReducer' ;
 import { signInReducer} from './signinReducer' ;
+import {userInfoReducer} from './userInfoReducer'
 
 
 
@@ -11,6 +12,7 @@ import { signInReducer} from './signinReducer' ;
 const allReducers = combineReducers({
   signUp:signUpReducer,
   signIn:signInReducer,
+  uerInfo:userInfoReducer ,
 });
 
 export default allReducers;
