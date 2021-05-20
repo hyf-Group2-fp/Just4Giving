@@ -25,7 +25,7 @@ app.use("/", require("./routes/good.js"));
 app.use("/", require("./routes/deletegood.js"));
 app.use("/", require("./routes/updategood.js"));
 app.use("/", require("./routes/getGoods.js"));
-//app.use("/", require("./routes/goods.js"));
+app.use("/", require("./routes/goods.js"));
 
 
 module.exports = app;

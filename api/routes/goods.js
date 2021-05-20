@@ -34,7 +34,7 @@ app.post("/goods", async (req, res) => {
       category_id,
     });
     console.log(name);
-    res.status(200).send(`a new user : ${giver_id} has been created!`);
+    res.status(200).send(`a new item : ${item_name} has been created!`);
   } catch (err) {
     console.error(err);
     res.status(500).send("server error");
