@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { userGiver} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
 
-function Signupgiver() {
+function Signupgiver(props) {
     const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
@@ -68,7 +68,8 @@ function Signupgiver() {
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 && logged) return (<Redirect to="/profilegiver" />);
+    if(usertype === 1 && logged) return (<Redirect to={{ pathname: '/profilegiver', state:first_name }} />
+    );
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>

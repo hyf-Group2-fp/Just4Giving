@@ -10,7 +10,9 @@ import Signupneeder from "./components/register/Signupneeder";
 import Signupgiver from "./components/register/signupgiver";
 import Disclaimer from "./components/disclaimer/Disclaimer";
 import Login from "./components/login/Login";
-
+import Giver from "./components/giver/Giverprofile"
+import Newitem from "./components/giver/Newitem"
+import Itemview from "./components/giver/Itemview"
 function App() {
   return (
     <div className="App">
@@ -35,6 +37,10 @@ function App() {
               component={Login}
 
            />
+           <Route path="/profilegiver"
+           exact component={Giver}/>
+           <Route path="/newgoods" exact component={Newitem}/>
+           <Route component={Itemview} path="/itemview" />
         </Switch>
         <Footer />
       </Router>
