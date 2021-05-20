@@ -45,7 +45,7 @@ function Login(props) {
                         //console.log(userdata.password);
 
                         //delete this line, just for reference
-                        console.log(res.data.first_name);                
+                        console.log(res.data.user.first_name);                
                         console.log(res.data.user.mail);                
 
                         if (res.data.user.is_giver === true) {
