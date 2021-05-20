@@ -17,6 +17,7 @@ app.put('/goods/:id' , async (req,res) => {
     res.status(200).send(`the goods with the id : ${id} has been updated`)
   }catch (err) {
     console.error(err);
+    res.status(500).send("server error");
   }
 });
 
