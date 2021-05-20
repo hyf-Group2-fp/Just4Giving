@@ -5,9 +5,7 @@ import  { Redirect } from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import { userGiver} from "../../redux/actions/signUpAction";
 //import { useSelector, useDispatch } from 'react-redux'
-
 function Signupgiver(props) {
-
     const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
@@ -18,11 +16,14 @@ function Signupgiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
+    const [logged, loggedIn] = useState(false);
     const dispatch = useDispatch();
     // get the needer
     const usertype = useSelector(state => state.signUp.is_giver);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
+        event.preventDefault();
+        event.stopPropagation();
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -48,19 +49,17 @@ function Signupgiver(props) {
             // dispatch action
             dispatch(userGiver(userdata));
             try {
-                const response = await axios.post(url, userdata);
-                if(response.data.status !== 200){
-                    alert('the user does existed already');
-                    return ;
-                }
+                const response = await axios.post(url, userdata).then(
+                    (res) => {
+                        alert(res.data)
+                        console.log(res.data)
+                        loggedIn(true);
+                    }
+                )
             } catch (error) {
-
-                alert('There user does already existed!');
-
                 loggedIn(false);
                 alert('email already exist, please try login');
                 //alert('The user does already exist!');
-
                 console.error("There was an error!", error);
             }
         }
@@ -176,7 +175,6 @@ function Signupgiver(props) {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>
@@ -226,3 +224,16 @@ function Signupgiver(props) {
     );
 }
 export default Signupgiver;
+
+
+
+
+
+
+
+
+
+
+
+
+
