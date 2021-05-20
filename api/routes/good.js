@@ -4,6 +4,9 @@ const Goods = require("../models/Goods.js");
 // initialize express
 const app = express();
 
+
+
+
 // get a good by id , same for all table 
 app.get("/goods/:id", async (req, res) => {
   const id = req.params.id;

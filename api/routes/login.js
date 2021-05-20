@@ -29,11 +29,13 @@ app.post('/authenticate', async (req, res) => {
 
   try {
 
-    user = await User.findOne({where: {email}});
+    user = await User.findOne({
+      where: {email:email}
+    });
+
     res.status(200).send({user:user}) ;
 
   } catch (err) {
-
     // stop further execution in this callback 401
     res.status(401).send('unAuthorized!!').end();
   }
@@ -74,7 +76,7 @@ app.post('/authenticate', async (req, res) => {
         expiresIn: '1h'
       });
       //send token and data
-      res.json({
+      res.status(200).json({
         token,
         user
       });

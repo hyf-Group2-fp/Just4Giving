@@ -1,21 +1,45 @@
 
-// signed user
+/**
+ * User Action :
+ * ------------
+ *
+ *
+ */
 
-export const signedUserGiver =(userInfo) => {
+export const userGiver = (user) => {
     return{
-        type:'SIGNED_USER_GIVER',
-        payload:userInfo ,
+        type:'IS_GIVER',
+        payload:user
+    }
+};
+
+
+export const userNeeder = (user) => {
+    return{
+        type:'IS_NEEDER',
+        payload:user ,
+    }
+};
+
+export const signedUserInfo =(user) => {
+    return{
+        type:'SIGNED_USER_INFO',
+        payload:user ,
 
 
     }
 }
 
 
-export const signedUserNeeder =(userInfo) => {
+export const signedUserError = () => {
     return{
-        type:'SIGNED_USER_NEEDER',
-        payload:userInfo ,
+        type:'SIGNED_IN_ERROR',
+    }
+}
 
 
+export const signedUserOut = () => {
+    return{
+        type:'SIGNED_OUT',
     }
 }

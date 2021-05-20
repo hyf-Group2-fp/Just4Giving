@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
+
+//Redux
 import {useDispatch, useSelector} from "react-redux";
-import { userGiver} from "../../redux/actions/signUpAction";
-//import { useSelector, useDispatch } from 'react-redux'
-function Signupgiver(props) {
+import { userGiver} from "../../redux/actions/userInfoAction.js";
+
+function SignUpGiver(props) {
     const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
@@ -16,10 +18,11 @@ function Signupgiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [logged, loggedIn] = useState(false);
+    const [logged, setLogged] = useState(false);
     const dispatch = useDispatch();
-    // get the needer
-    const usertype = useSelector(state => state.signUp.is_giver);
+
+    // get the giver
+    const usertype = useSelector(state => state.userInfo.is_giver);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -44,29 +47,28 @@ function Signupgiver(props) {
                 is_needer:0,
                 agreement:1
             };
-            // const first_name = useSelector()
-            console.log(userdata);
+
             // dispatch action
             dispatch(userGiver(userdata));
             try {
                 const response = await axios.post(url, userdata).then(
                     (res) => {
-                        alert(res.data)
+
                         console.log(res.data)
-                        loggedIn(true);
+                        setLogged(true);
+
                     }
                 )
             } catch (error) {
-                loggedIn(false);
+                setLogged(false);
                 alert('email already exist, please try login');
-                //alert('The user does already exist!');
                 console.error("There was an error!", error);
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 && logged) return (<Redirect to={{ pathname: '/profilegiver', state:first_name }} />
+    if(usertype === 1 && logged) return (<Redirect to={{ pathname: '/profilegiver' }} />
     );
     return (
         <div className="forms">
@@ -223,7 +225,7 @@ function Signupgiver(props) {
         </div>
     );
 }
-export default Signupgiver;
+export default SignUpGiver;
 
 
 

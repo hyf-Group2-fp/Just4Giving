@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
+
+// Redux
 import {useDispatch, useSelector} from "react-redux";
-import {userNeeder} from "../../redux/actions/signUpAction";
-//import { useSelector, useDispatch } from 'react-redux'
-function Signupneeder() {
+import {userNeeder} from "../../redux/actions/userInfoAction.js";
+
+function SignUpNeeder() {
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -17,8 +19,11 @@ function Signupneeder() {
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const dispatch = useDispatch();
+
     // get the needer
-    const usertype = useSelector(state => state.signUp.is_needer);
+    const signedInError = useSelector(state => state.userInfo.signedInError);
+    const usertype = useSelector(state => state.userInfo.is_needer);
+
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -52,7 +57,7 @@ function Signupneeder() {
                    return ;
                }
             } catch (error) {
-                loggedIn(false);
+                ;
                 alert('Email already exist, please try login');
                 //alert('The user does already exist!');
 
@@ -235,4 +240,4 @@ function Signupneeder() {
         </div>
     );
 }
-export default Signupneeder;
+export default SignUpNeeder;

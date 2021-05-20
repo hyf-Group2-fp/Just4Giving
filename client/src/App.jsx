@@ -8,12 +8,12 @@ import Navigation from "./components/landingpage/Navigation";
 import Demo from "./components/landingpage/Demo";
 import Footer from "./components/landingpage/Footer";
 import About from "./components/landingpage/About";
-import Signupneeder from "./components/register/Signupneeder";
-import Signupgiver from "./components/register/signupgiver";
+import SignUpNeeder from "./components/register/SignUpNeeder";
+import SignUpGiver from "./components/register/signUpGiver";
 import Login from "./components/login/Login";
 import Giver from "./components/giver/Giverprofile"
-import Newitem from "./components/giver/Newitem"
-import Itemview from "./components/giver/Itemview"
+import NewItem from "./components/giver/NewItem"
+import ItemView from "./components/giver/ItemView"
 function App() {
   return (
     <div className="App">
@@ -26,15 +26,15 @@ function App() {
           <Route
               path="/signupneeder"
               exact
-              component={Signupneeder}
+              component={SignUpNeeder}
            />
           <Route
-              path="/signupgiver"    exact  component={Signupgiver}
+              path="/signupgiver"    exact  component={SignUpGiver}
            />
            <Route path="/profilegiver"
            exact component={Giver}/>
-           <Route path="/newgoods" exact component={Newitem}/>
-           <Route component={Itemview} path="/itemview" />
+           <Route path="/newgoods" exact component={NewItem}/>
+           <Route component={ItemView} path="/itemview" />
           />
             <Route path="/login" exact component ={Login}></Route>
         </Switch>

@@ -1,14 +1,19 @@
 import axios from "axios";
 import React from "react";
 import {Button} from 'react-bootstrap'
+import {useSelector} from "react-redux";
 
-const Itemview = props => {
-  const url="";
+const ItemView = (props) => {
+    // access the state
+    const id = useSelector(state => state.userInfo.user_id) ;
+    const url=`http://localhost:5000/api/user/goods/${id}`;
+    // props
     const item=( props.location.state.item) ;
     const description=(props.location.state.description);
     const category=(props.location.state.category);
     const quality=(props.location.state.quality);
     const quantity=(props.location.state.quantity);
+    // good object
     const newItem={
         item:item,
         description:description,
@@ -17,6 +22,7 @@ const Itemview = props => {
         category:category,
     }
     console.log(newItem);
+
     const handleNewItem= () =>{
       const response = axios.post(url, newItem) ;
       console.log(response) ;
@@ -40,4 +46,4 @@ const Itemview = props => {
   );
 };
 
-export default Itemview;
+export default ItemView;
