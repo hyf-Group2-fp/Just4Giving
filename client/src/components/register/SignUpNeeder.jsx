@@ -13,11 +13,14 @@ function SignUpNeeder() {
     const [last_name, setLast_name] = useState("");
     const [age, setAge] = useState("");
     const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    const [street, setStreet] = useState("");
     const [email, setEmail] = useState("");
+    const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [description, setDescription] = useState('') ;
+
+
+
     const dispatch = useDispatch();
 
     // get the needer
@@ -40,34 +43,38 @@ function SignUpNeeder() {
                 last_name: last_name,
                 age: age,
                 phone: phone,
-                street: address,
+                street: street,
                 description: description,
                 email: email,
                 password: password,
-                is_giver:0,
-                is_needer:1,
-                agreement:1
+                is_giver: 0,
+                is_needer: 1,
+                agreement: 1
             };
+
 
             try {
                 const response = await axios.post(url, userdata).then(
                     (res) => {
 
-                        console.log(res) ;
+                        console.log(res);
                         // dispatch action
                         dispatch(userNeeder(userdata));
                     }
                 )
             } catch (error) {
-                alert('Email already exist, please try login');
-
+                alert('email already exist, please try login');
+                console.error("There was an error!", error);
             }
         }
+
         event.preventDefault();
         setValidated(true);
     };
     if(usertype === 1) return (<Redirect to={{ pathname: '/profileneeder' }} />
     );
+
+
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
@@ -167,7 +174,7 @@ function SignUpNeeder() {
                                 required
                                 minLength="5"
                                 name="address"
-                                onChange={(e) => setAddress(e.target.value)}
+                                onChange={(e) => setStreet(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">

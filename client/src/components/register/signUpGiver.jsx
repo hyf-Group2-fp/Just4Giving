@@ -14,7 +14,7 @@ function SignUpGiver(props) {
     const [last_name, setLast_name] = useState("");
     const [age, setAge] = useState("");
     const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    const [street, setStreet] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
@@ -39,7 +39,7 @@ function SignUpGiver(props) {
                 last_name: last_name,
                 age: age,
                 phone: phone,
-                street: address,
+                street: street,
                 description: "no description",
                 email: email,
                 password: password,
@@ -170,7 +170,7 @@ function SignUpGiver(props) {
                                 required
                                 minLength="5"
                                 name="address"
-                                onChange={(e) => setAddress(e.target.value)}
+                                onChange={(e) => setStreet(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">

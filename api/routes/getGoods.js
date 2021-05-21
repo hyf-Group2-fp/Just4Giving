@@ -1,11 +1,9 @@
 const express = require("express");
 const Goods = require("../models/Goods.js");
-
 // initialize express
 const app = express();
-
-// get a good by id , same for all table 
-app.get("/user/goods/:id", async (req, res) => {
+// get a good by id
+app.get("/user/good/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const good = await Goods.findOne({
@@ -28,5 +26,4 @@ app.get("/user/goods/:id", async (req, res) => {
     res.status(500).send("server error")
   }
 });
-
 module.exports = app;
