@@ -1,11 +1,12 @@
 
 import React, {useState} from "react";
 import {Form, Button, Card} from "react-bootstrap";
-import {Redirect} from 'react-router-dom'
-// import pic from '../../assets/login/signin.png'
+import {Redirect} from 'react-router-dom';
+// import pic from '../../assets/login/signin.png';
 import axios from "axios"
-import {useDispatch} from "react-redux";
-import {signIn, signInError} from "../../redux/actions/signInAction"
+import {useDispatch, useSelector} from "react-redux";
+import { signedUserInfo, signedUserError} from "../../redux/actions/userInfoAction";
+
 function Login(props) {
 
     const [validated,
@@ -14,12 +15,7 @@ function Login(props) {
         setEmail] = useState("");
     const [password,
         setPassword] = useState("");
-    const [isGiver,
-        setGiver] = useState(false);
-    const [isNeeder,
-        setNeeder] = useState(false);
-        const[first_name, setFirst_name]=useState("");
-    const dispatch = useDispatch();
+    const dispatch = useDispatch() ;
 
     const handleSubmit = async(event) => {
         const form = event.currentTarget;
@@ -40,34 +36,22 @@ function Login(props) {
                     .post("http://localhost:5000/api/authenticate", userdata)
 
                     .then((res) => {
-                        dispatch(signIn(userdata));
-                        //console.log(userdata.email);
-                        //console.log(userdata.password);
 
-                        //delete this line, just for reference
-                        console.log(res.data.user.first_name);                
-                        console.log(res.data.user.mail);                
-
-                        if (res.data.user.is_giver === true) {
-                            setGiver(true);
-                            alert('giver')
-                            const name=res.data.first_name;
-                            console.log(name);
-                            setFirst_name(name);
-                            
-                            return
-
+                        // dispatch action
+                        const user = res.data.user ;
+                        dispatch(signedUserInfo(user)) ;
+                         if (res.data.user.is_giver === true) {
+                            alert('giver') ;
+                             return;
                         } else if (res.data.user.is_needer === true) {
-                            setNeeder(true);
                             alert('needer')
-                            setFirst_name(res.data.first_name);
-                            return
+                            return;
                         }
                     })
 
             } catch (error) {
                 alert("please check your credentials")
-                dispatch(signInError());
+                dispatch(signedUserError());
                 console.error('There was an error!', error);
             }
         }
@@ -75,11 +59,13 @@ function Login(props) {
         setValidated(true);
     };
     //choose what to do pass props with the data of the user
+    const isGiver = useSelector(state => state.userInfo.is_giver) ;
+    const isNeeder = useSelector(state => state.userInfo.is_needer) ;
     if (isGiver) {
-        return (<Redirect to={{ pathname: '/profilegiver', state:first_name }}
+        return (<Redirect to={{ pathname: '/profilegiver' }}
 />)
     } else if (isNeeder) {
-        return (<Redirect to={{ pathname: '/profileneeder', state:first_name }}/>)
+        return (<Redirect to={{ pathname: '/profileneeder'}}/>)
     }
 
     return (

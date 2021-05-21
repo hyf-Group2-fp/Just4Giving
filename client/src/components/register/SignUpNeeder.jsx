@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
+
+// Redux
 import {useDispatch, useSelector} from "react-redux";
-import { userGiver} from "../../redux/actions/signUpAction";
-//import { useSelector, useDispatch } from 'react-redux'
-function Signupgiver(props) {
-    const url = "http://localhost:5000/api/giver/signup";
+import {userNeeder} from "../../redux/actions/userInfoAction.js";
+
+function SignUpNeeder() {
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -18,8 +19,11 @@ function Signupgiver(props) {
     const [confirmpassword, setConfirmpassword] = useState("");
     const [logged, loggedIn] = useState(false);
     const dispatch = useDispatch();
+
     // get the needer
-    const usertype = useSelector(state => state.signUp.is_giver);
+    const signedInError = useSelector(state => state.userInfo.signedInError);
+    const usertype = useSelector(state => state.userInfo.is_needer);
+
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -57,8 +61,8 @@ function Signupgiver(props) {
                     }
                 )
             } catch (error) {
-                loggedIn(false);
-                alert('email already exist, please try login');
+                ;
+                alert('Email already exist, please try login');
                 //alert('The user does already exist!');
                 console.error("There was an error!", error);
             }
@@ -223,4 +227,4 @@ function Signupgiver(props) {
         </div>
     );
 }
-export default Signupgiver;
+export default SignUpNeeder;

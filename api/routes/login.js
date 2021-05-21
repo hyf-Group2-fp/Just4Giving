@@ -69,7 +69,7 @@ app.post('/authenticate', async (req, res) => {
         expiresIn: '1h'
       });
       //send token and data
-      res.json({
+      res.status(200).json({
         token,
         user
       });

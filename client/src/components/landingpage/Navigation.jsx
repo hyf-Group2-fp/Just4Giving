@@ -1,74 +1,70 @@
 import React, {useState} from "react";
 import { Navbar, Nav } from "react-bootstrap";
-// import { Brand } from "react-bootstrap/lib/Navbar";
 import logo from "../../assets/landingpage/logo22.png";
-import signIn from "../../redux/actions/signInAction";
+import {useSelector} from "react-redux";
 
 function Navigation() {
-    const signin="";
-    const [isAuthenticated , setIsAuthenticated] = useState(false);
+    // check if the user is sign in
+    const signIn = useSelector(state => state.userInfo.signedIn) ;
+
     const authenticatedNavBar = () => {
         return (
-            
-        
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="row justify-content-end links">
-                    <Nav.Item>
-                        <Nav.Link href="/aboutus">About Us</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link href="/logout">Logout</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-            </Navbar.Collapse>
-            
-        )};
-    const unauthenticatedNavBar = () => {
-        return (
-            
-                <Navbar collapseOnSelect expand="lg" sticky="top">
-            <Navbar.Brand className="main-brand" href="/">
-                <img
-                    src={logo}
-                    width="60"
-                    height="60"
-                    className="d-inline-block align-top"
-                    alt="just4giving logo"
-                />
-                JUST4GIVING
-            </Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg" sticky="top">
+                <Navbar.Brand className="main-brand" href="/">
+                    <img
+                        src={logo}
+                        width="60"
+                        height="60"
+                        className="d-inline-block align-top"
+                        alt="just4giving logo"
+                    />
+                    JUST4GIVING
+                </Navbar.Brand>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="row justify-content-end links">
                         <Nav.Item>
                             <Nav.Link href="/aboutus">About Us</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="/login">Login</Nav.Link>
+                            <Nav.Link href="/logout">Log Out</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+            
         )};
-//   const brand = () => {
-//         return (
-//             <Navbar collapseOnSelect expand="lg" sticky="top">
-//                 <Navbar.Brand className="main-brand" href="/">
-//                     <img
-//                         src={logo}
-//                         width="60"
-//                           height="60"
-//                         className="d-inline-block align-top"
-//                         alt="just4giving logo"
-//                     />
-//                     JUST4GIVING
-//                 </Navbar.Brand>
-//             </Navbar>
-//         )};
+    const unauthenticatedNavBar = () => {
+        return (
+                <Navbar collapseOnSelect expand="lg" sticky="top">
+                        <Navbar.Brand className="main-brand" href="/">
+                            <img
+                                src={logo}
+                                width="60"
+                                height="60"
+                                className="d-inline-block align-top"
+                                alt="just4giving logo"
+                            />
+                            JUST4GIVING
+                        </Navbar.Brand>
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav className="row justify-content-end links">
+                                <Nav.Item>
+                                    <Nav.Link href="/aboutus">About Us</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link href="/login">Log In</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Navbar.Collapse>
+                </Navbar>
+        )};
+
     return (
         <div className="margin-t-b">
-            {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
-            {isAuthenticated ? authenticatedNavBar() : unauthenticatedNavBar()}
-            {/* {!isAuthenticated ? brand():null } */}
+             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <>
+            { signIn ?   authenticatedNavBar() : unauthenticatedNavBar()}
+            </>
         </div>
     )
 }

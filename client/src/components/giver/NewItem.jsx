@@ -1,15 +1,23 @@
 import react, { useState } from 'react';
 import { Form, Col, Button,InputGroup } from 'react-bootstrap';
-import  { Redirect } from 'react-router-dom'
-function Newitem(){
-    const [validated, setValidated] = useState(false);
+import  { Redirect , useHistory } from 'react-router-dom' ;
+
+
+function NewItem(){
+
+const [validated, setValidated] = useState(false);
 const[item, setItem]=useState("");
 const[description, setDescription]=useState('');
 const[category,setCategory]=useState("");
 const[quality,setQuality]=useState("");
 const[quantity,setQuantity]=useState("");
 const[form, setForm]=useState(false);
-  const handleSubmit = (event) => {
+
+// use History
+const history = useHistory() ;
+
+
+const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
         event.stopPropagation();
@@ -17,18 +25,22 @@ const[form, setForm]=useState(false);
       event.preventDefault();
       event.stopPropagation();
     }else{
-    const newitem={
+    const newGood={
         item:item,
         category:category,
         description:description,
         quality:quality,
         quantity:quantity
     }
-console.log(newitem);
+console.log(newGood);
 setForm(true);
 }
 event.preventDefault();
     setValidated(true);
+
+    // redirect
+      history.push('/newgoods')
+
     
   };
   if(form){
@@ -47,10 +59,10 @@ event.preventDefault();
             </Form.Row>
       <Form.Row>
       <Form.Group as={Col} md="4" >
-          <Form.Label>Username</Form.Label>
+          <Form.Label>Item Name</Form.Label>
           <InputGroup hasValidation>
             <InputGroup.Prepend>
-              <InputGroup.Text id="item">what is it</InputGroup.Text>
+              <InputGroup.Text id="item">What Is It</InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
               type="text"
@@ -77,10 +89,14 @@ event.preventDefault();
     custom
     onChange={(e) => setCategory(e.target.value)}
   >
-    <option value="Cloths">Cloths</option>
-    <option value="Books">Books</option>
-    <option value="Furniture">Furniture</option>
+    <option value="Food">Food</option>
+    <option value="Home & Garden">Home & Garden</option>
     <option value="Tools">Tools</option>
+    <option value="Babies">Babies</option>
+    <option value="Sports">Sports</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Books">Books</option>
+      <option value="Others">Others</option>
   </Form.Control>
   </Form.Group>
   <Form.Group as={Col} md="4">
@@ -97,20 +113,20 @@ event.preventDefault();
     <option value="New">New</option>
     <option value="Fairly used">Fairly used</option>
     <option value="Heavily used">Heavily used</option>
-   {/* // <option value="Tools">Tools</option> */}
+
   </Form.Control>
   </Form.Group>
   <Form.Group as={Col} md="2" controlId="quantity">
-                            <Form.Label>Quantity</Form.Label>
-                            <Form.Control
-                                required
-                                type="number"
-                                min={0}
-                                onChange={(e) => setQuantity(e.target.value)}
-                            />
-                            <Form.Control.Feedback></Form.Control.Feedback>
+     <Form.Label>Quantity</Form.Label>
+        <Form.Control
+          required
+           type="number"
+            min={0}
+           onChange={(e) => setQuantity(e.target.value)}
+             />
+          {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
                             
-                        </Form.Group>
+  </Form.Group>
       </Form.Row>
       
       <Form.Row>
@@ -134,4 +150,4 @@ event.preventDefault();
         </div>
     )
 }
-export default Newitem;
+export default NewItem;
