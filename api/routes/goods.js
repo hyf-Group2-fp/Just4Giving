@@ -2,7 +2,8 @@ const express = require("express");
 const Goods = require("../models/Goods.js");
 // initialize express
 const app = express();
-// post
+
+// post a new good
 app.post("/goods", async (req, res) => {
   const {
     giver_id,
@@ -38,13 +39,31 @@ app.post("/goods", async (req, res) => {
     res.status(500).send("server error");
   }
 });
-//get all goods
+
+//get all goods of a user
 app.get('/user/goods/:id' , async (req , res) => {
   const id = req.params.id ;
   try{
     const goods = await Goods.findAll({
       where:{
         giver_id :id ,
+      }
+    }) ;
+    console.log(goods) ;
+    res.status(200).send({goods:goods}) ;
+  }catch (err) {
+    console.error(err);
+    res.status(500).send('something goes wrong!!') ;
+  }
+}) ;
+
+//get all the goods of one category
+app.get('/goods/category/:id' , async (req , res) => {
+  const id = req.params.id ;
+  try{
+    const goods = await Goods.findAll({
+      where:{
+        category_id :id ,
       }
     }) ;
     console.log(goods) ;
