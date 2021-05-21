@@ -3,7 +3,7 @@ import { Button , Card ,} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // component
-// import Goods from "./Goods";
+import Goods from "./Goods";
 
 
 function Giver(){
@@ -24,7 +24,7 @@ return(
 
 
         <div>
-            {/*<Goods/>*/}
+            <Goods/>
         </div>
     </div>
 

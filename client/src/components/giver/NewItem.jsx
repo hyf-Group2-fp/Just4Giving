@@ -89,6 +89,7 @@ event.preventDefault();
     custom
     onChange={(e) => setCategory(e.target.value)}
   >
+      <option value="0">Select...</option>
     <option value="Food">Food</option>
     <option value="Home & Garden">Home & Garden</option>
     <option value="Tools">Tools</option>
@@ -110,9 +111,11 @@ event.preventDefault();
     custom
     onChange={(e) => setQuality(e.target.value)}
   >
+      <option value="0">Select...</option>
     <option value="New">New</option>
     <option value="Fairly used">Fairly used</option>
     <option value="Heavily used">Heavily used</option>
+
 
   </Form.Control>
   </Form.Group>

@@ -1,49 +1,22 @@
-import axios from "axios";
-import React from "react";
-import {Button} from 'react-bootstrap'
-import {useSelector} from "react-redux";
-
-const ItemView = (props) => {
-    // access the state
-    const id = useSelector(state => state.userInfo.user_id) ;
-    const url=`http://localhost:5000/api/user/goods/${id}`;
-    // props
-    const item=( props.location.state.item) ;
-    const description=(props.location.state.description);
-    const category=(props.location.state.category);
-    const quality=(props.location.state.quality);
-    const quantity=(props.location.state.quantity);
-    // good object
-    const newItem={
-        item:item,
-        description:description,
-        quality:quality,
-        quantity:quantity,
-        category:category,
-    }
-    console.log(newItem);
-
-    const handleNewItem= () =>{
-      const response = axios.post(url, newItem) ;
-      console.log(response) ;
+import React  from "react";
 
 
-    }
-  return (<div>
-      <h1 className="text-center formh1">Successfully JUST4GIVING it!</h1>
-      <div className="container itemview">
-<p>Name             :{item}</p>
-<p>Category         :{category}</p>
-<p>Quantity         :{quantity}</p>
-<p>Quality          :{quality}</p>
-<p>Item Description :{description}</p>
+const ItemView =() => {
+    goods.forEach(good => {
+        return(
+            <div>
+                <h1>Successfully Just4Giving </h1>
+                <h4>Item name : {good.item_name}</h4>
+                <h4>Description : {good.description}</h4>
+                <h4>Category : {good.category}</h4>
+                <h4>Quantity : {good.quantity}</h4>
+                <h4>Quality : {good.quality}</h4>
 
-<Button onSubmit={handleNewItem}>Submit</Button>
+            </div>
+        )
+    })
 
-</div>
-  </div>
-    
-  );
-};
+}
 
-export default ItemView;
+
+export default ItemView ;

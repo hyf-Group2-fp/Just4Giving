@@ -1,17 +1,5 @@
  const initialState = {
-     giver_id:0 ,
-     available:[] ,
-     category_id:[] ,
-     description:[] ,
-     createdAt:[],
-     updatedAt:[],
-     goods_id:[],
-     image :[],
-     item_name:[],
-     quality:[],
-     quantity:[] ,
-     taken:[],
-     details:[],
+    goods:[] ,
 
  }
 
@@ -26,6 +14,8 @@
 
         case 'DELETE_GOODS':
             return {...state , ...action.payload} ;
+        default:
+            return  state ;
     }
 
  }

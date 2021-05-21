@@ -13,7 +13,7 @@ import SignUpGiver from "./components/register/signUpGiver";
 import Login from "./components/login/Login";
 import Giver from "./components/giver/Giverprofile"
 import NewItem from "./components/giver/NewItem"
-import ItemView from "./components/giver/ItemView"
+import ItemPreview from "./components/giver/ItemPreview"
 function App() {
   return (
     <div className="App">
@@ -34,7 +34,7 @@ function App() {
            <Route path="/profilegiver"
            exact component={Giver}/>
            <Route path="/newgoods" exact component={NewItem}/>
-           <Route component={ItemView} path="/itemview" />
+           <Route component={ItemPreview} path="/itemview" />
           />
             <Route path="/login" exact component ={Login}></Route>
         </Switch>
