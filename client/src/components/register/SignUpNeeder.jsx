@@ -17,12 +17,12 @@ function SignUpNeeder() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [logged, loggedIn] = useState(false);
+    const [description, setDescription] = useState('') ;
     const dispatch = useDispatch();
 
     // get the needer
-    const signedInError = useSelector(state => state.userInfo.signedInError);
     const usertype = useSelector(state => state.userInfo.is_needer);
+    const url = "http://localhost:5000/api/needer/signup" ;
 
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
@@ -41,43 +41,39 @@ function SignUpNeeder() {
                 age: age,
                 phone: phone,
                 street: address,
-                description: "no description",
+                description: description,
                 email: email,
                 password: password,
-                is_giver:1,
-                is_needer:0,
+                is_giver:0,
+                is_needer:1,
                 agreement:1
             };
-            // const first_name = useSelector()
-            console.log(userdata);
-            // dispatch action
-            dispatch(userGiver(userdata));
+
             try {
                 const response = await axios.post(url, userdata).then(
                     (res) => {
-                        alert(res.data)
-                        console.log(res.data)
-                        loggedIn(true);
+
+                        console.log(res) ;
+                        // dispatch action
+                        dispatch(userNeeder(userdata));
                     }
                 )
             } catch (error) {
-                ;
                 alert('Email already exist, please try login');
-                //alert('The user does already exist!');
-                console.error("There was an error!", error);
+
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 && logged) return (<Redirect to={{ pathname: '/profilegiver', state:first_name }} />
+    if(usertype === 1) return (<Redirect to={{ pathname: '/profileneeder' }} />
     );
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
                 <Form
-                    method="post"
+
                     noValidate
                     validated={validated}
                     onSubmit={handleSubmit}
@@ -121,13 +117,13 @@ function SignUpNeeder() {
                                 required
                                 type="number"
                                 min={18}
-                                max={100}
+                                max={120}
                                 name="age"
                                 onChange={(e) => setAge(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter age between 18-100
+                                Enter age between 18-120
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="4" controlId="phone">
@@ -176,6 +172,23 @@ function SignUpNeeder() {
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter your street name at least 5 letters
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} md="12" controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                required
+                                minLength="200"
+                                rows={3}
+                                name="description"
+                                onChange={(e) => setDescription(e.target.value)}
+                            />{" "}
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Explain your situation in at least 200 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>

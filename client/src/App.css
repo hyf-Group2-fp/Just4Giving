@@ -15,6 +15,7 @@ body .bg-dark {
 .bg {
     background-image: url("./assets/landingpage/landingpage.jpg");
     height: 100%;
+    margin-top: 0;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,7 +63,7 @@ body .bg-dark {
     background: none !important;
 }
 
-/*the main cads */
+/*the main cards */
 .jumbotron h1 {
     color: #e9d366 !important;
     font-size: 50px;

@@ -2,12 +2,12 @@
 import React, {useState} from "react";
 import {Form, Button, Card} from "react-bootstrap";
 import {Redirect} from 'react-router-dom';
-// import pic from '../../assets/login/signin.png';
+import pic from '../../assets/login/signin.png';
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux";
 import { signedUserInfo, signedUserError} from "../../redux/actions/userInfoAction";
 
-function Login(props) {
+function Login() {
 
     const [validated,
         setValidated] = useState(false);
@@ -109,7 +109,7 @@ function Login(props) {
                     </Button>
                 </Form>
             </Card>
-            {/*<img className="bg3" src={pic} alt="helping hands"/>*/}
+            <img className="bg3" src={pic} alt="helping hands"/>
         </div>
     );
 }

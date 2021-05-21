@@ -5,7 +5,7 @@ import  { Redirect } from 'react-router-dom'
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
-import { userGiver} from "../../redux/actions/userInfoAction.js";
+import {userGiver, userNeeder} from "../../redux/actions/userInfoAction.js";
 
 function SignUpGiver(props) {
     const url = "http://localhost:5000/api/giver/signup";
@@ -18,7 +18,7 @@ function SignUpGiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [logged, setLogged] = useState(false);
+
     const dispatch = useDispatch();
 
     // get the giver
@@ -48,19 +48,21 @@ function SignUpGiver(props) {
                 agreement:1
             };
 
-            // dispatch action
-            dispatch(userGiver(userdata));
+
             try {
                 const response = await axios.post(url, userdata).then(
                     (res) => {
 
-                        console.log(res.data)
-                        setLogged(true);
+                        console.log(res.data);
+
+
+                        // dispatch action
+                        dispatch(userGiver(userdata ));
+
 
                     }
                 )
             } catch (error) {
-                setLogged(false);
                 alert('email already exist, please try login');
                 console.error("There was an error!", error);
             }
@@ -68,14 +70,13 @@ function SignUpGiver(props) {
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 && logged) return (<Redirect to={{ pathname: '/profilegiver' }} />
+    if(usertype === 1 ) return (<Redirect to={{ pathname: '/profilegiver' }} />
     );
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
                 <Form
-                    method="post"
                     noValidate
                     validated={validated}
                     onSubmit={handleSubmit}
