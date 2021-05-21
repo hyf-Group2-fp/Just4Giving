@@ -40,6 +40,17 @@ app.post("/goods", async (req, res) => {
   }
 });
 
+//get all the goods 
+app.get('/goods' , async (req , res) => {
+  try{
+    const goods = await Goods.findAll() ;
+    console.log(goods) ;
+    res.status(200).send({goods:goods}) ;
+  }catch (err) {
+    console.error(err);
+    res.status(500).send('something goes wrong!!') ;
+  }
+}) ;
 //get all goods of a user
 app.get('/user/goods/:id' , async (req , res) => {
   const id = req.params.id ;
