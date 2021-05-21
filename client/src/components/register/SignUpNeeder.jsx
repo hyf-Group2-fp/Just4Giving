@@ -13,11 +13,11 @@ function SignUpNeeder() {
     const [last_name, setLast_name] = useState("");
     const [age, setAge] = useState("");
     const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    const [street, setStreet] = useState("");
     const [email, setEmail] = useState("");
+    const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [logged, loggedIn] = useState(false);
     const dispatch = useDispatch();
 
     // get the needer
@@ -26,8 +26,6 @@ function SignUpNeeder() {
 
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
-        event.preventDefault();
-        event.stopPropagation();
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -40,38 +38,36 @@ function SignUpNeeder() {
                 last_name: last_name,
                 age: age,
                 phone: phone,
-                street: address,
-                description: "no description",
+                street: street,
+                description: description,
                 email: email,
                 password: password,
-                is_giver:1,
-                is_needer:0,
+                is_giver:0,
+                is_needer:1,
                 agreement:1
             };
             // const first_name = useSelector()
             console.log(userdata);
             // dispatch action
-            dispatch(userGiver(userdata));
+            dispatch(userNeeder(userdata));
             try {
-                const response = await axios.post(url, userdata).then(
-                    (res) => {
-                        alert(res.data)
-                        console.log(res.data)
-                        loggedIn(true);
-                    }
-                )
+               const response = await  axios.post('http://localhost:5000/api/needer/signup', userdata);
+               if(response.data.status !== 200){
+                   alert('the user does existed already');
+                   return ;
+               }
             } catch (error) {
                 ;
                 alert('Email already exist, please try login');
                 //alert('The user does already exist!');
+
                 console.error("There was an error!", error);
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 && logged) return (<Redirect to={{ pathname: '/profilegiver', state:first_name }} />
-    );
+    if(usertype === 1) return (<Redirect to="/profileneeder" />);
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
@@ -171,11 +167,28 @@ function SignUpNeeder() {
                                 required
                                 minLength="5"
                                 name="address"
-                                onChange={(e) => setAddress(e.target.value)}
+                                onChange={(e) => setStreet(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter your street name at least 5 letters
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} md="12" controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                required
+                                minLength="200"
+                                rows={3}
+                                name="description"
+                                onChange={(e) => setDescription(e.target.value)}
+                            />{" "}
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                                Explain your situation in at least 200 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
