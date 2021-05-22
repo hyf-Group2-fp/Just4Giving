@@ -5,6 +5,8 @@ const withAuth = require('../middleware');
 const User = require('../models/User');
 var bcrypt = require('bcrypt');
 const cors = require('cors');
+//validation
+const { registerValidation } = require('../utils/registerValidation')
 
 const {
   JWT_SECRET
@@ -25,8 +27,11 @@ app.post('/authenticate', async (req, res) => {
   } = req.body;
 
   let user = null;
+  //validation
+  const {error} = registerValidation(req.body);
 
   try {
+
     user = await User.findOne({
       where: {
         email
@@ -38,7 +43,7 @@ app.post('/authenticate', async (req, res) => {
     res.status(401).send('no access').end();
   }
   //no user found
-  if (!user) {
+  if (!user || error) {
     /*email does not exist
     maybe redirect to a route
     res.status(401).location('/foo').end();*/
