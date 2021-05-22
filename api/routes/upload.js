@@ -20,12 +20,29 @@ const fileStorageEngine = multer.diskStorage({
     },
 });
 
-const upload = multer({storage: fileStorageEngine});
+const upload = multer({
+    storage: fileStorageEngine,
+    limits: { fileSize: 2000000},
+    fileFilter:(res,file,cb) =>{
+        if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
+            console.log("file not allowed");
+            return cb(null,false);
+
+        }
+        cb(null, true);
+    }
+
+});
 
 //image is the field's name
 app.post("/upload", upload.single("image"), async (req, res) => {
-    console.log(req.image);
-    res.send(`${dest}/${returnfile}`);
+
+    console.log('test', req.file);
+    if (req.file === undefined) {
+        res.status(422).send("file not allowed")
+    }else{
+        res.status(200).send(`${dest}/${returnfile}`);
+    }
 });
 
 module.exports = app;
