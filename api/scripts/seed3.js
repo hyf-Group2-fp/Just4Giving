@@ -10,7 +10,7 @@ const createGoods = async () => {
             category:'Furniture',
             description:'a very nice chair',
             image:'',
-            quality: 1,
+            quality: 'New',
             quantity:1,
             available:1,
             taken:0,
