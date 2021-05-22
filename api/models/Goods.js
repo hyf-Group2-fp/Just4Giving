@@ -33,9 +33,7 @@ const Goods = sequelize.define(
             defaultValue: "good image",
         },
         quality: {
-            type: Sequelize.INTEGER,
-            max: 5,
-            min: 0,
+            type: Sequelize.STRING,
         },
         quantity: {
             type: Sequelize.INTEGER,
@@ -53,8 +51,7 @@ const Goods = sequelize.define(
             min: 0,
         },
         owner_id: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
+            type: Sequelize.INTEGER
         },
         category_id: {
             type: Sequelize.INTEGER,
