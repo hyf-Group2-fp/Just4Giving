@@ -1,6 +1,7 @@
 import react, { useState } from 'react';
 import { Form, Col, Button,InputGroup } from 'react-bootstrap';
 import  { Redirect , useHistory } from 'react-router-dom' ;
+import Resizer from "react-image-file-resizer";
 
 
 function NewItem(){
@@ -11,6 +12,7 @@ const[description, setDescription]=useState('');
 const[category,setCategory]=useState("");
 const[quality,setQuality]=useState("");
 const[quantity,setQuantity]=useState("");
+const [image , setImage] = useState('') ;
 const[form, setForm]=useState(false);
 
 // use History
@@ -30,7 +32,8 @@ const handleSubmit = (event) => {
         category:category,
         description:description,
         quality:quality,
-        quantity:quantity
+        quantity:quantity,
+        image:image ,
     }
 console.log(newGood);
 setForm(true);
@@ -47,6 +50,34 @@ event.preventDefault();
     return (<Redirect to={{ pathname: '/itemview', state:{item,description,category,quality,quantity }}} />)
   }
 
+  // image resize
+    const resizeFile = (file) =>
+        new Promise((resolve) => {
+            Resizer.imageFileResizer(
+                file,
+                300,
+                300,
+                "PNG",
+                100,
+                0,
+                (uri) => {
+                    resolve(uri);
+                },
+                "base64"
+            );
+        });
+
+    const ImageResize = async (event) => {
+        try {
+            const file = event.target.files[0];
+            const image = await resizeFile(file);
+            setImage(image) ;
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    console.log(image)
+
     return(
         <div className="forms">
         <h1 className="text-center formh1">What you want to give?</h1>
@@ -54,7 +85,7 @@ event.preventDefault();
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Row>
             <Form.Group>
-    <Form.File id="img" label="Upload image" />
+    <Form.File id="img" onChange={ImageResize} label="Upload image" />
   </Form.Group>
             </Form.Row>
       <Form.Row>
