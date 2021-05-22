@@ -47,7 +47,7 @@ event.preventDefault();
     
   };
   if(form){
-    return (<Redirect to={{ pathname: '/itemview', state:{item,description,category,quality,quantity }}} />)
+    return (<Redirect to={{ pathname: '/itemview', state:{item,description,category,quality,quantity,image }}} />)
   }
 
   // image resize
