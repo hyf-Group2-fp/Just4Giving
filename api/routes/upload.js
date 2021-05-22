@@ -9,6 +9,7 @@ app.use(cors());
 
 const dest = "./public/images/uploads";
 var returnfile;
+var msg="";
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, cb) => {
         //call back function
@@ -25,9 +26,7 @@ const upload = multer({
     limits: { fileSize: 2000000},
     fileFilter:(res,file,cb) =>{
         if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
-            console.log("file not allowed");
             return cb(null,false);
-
         }
         cb(null, true);
     }
@@ -37,9 +36,8 @@ const upload = multer({
 //image is the field's name
 app.post("/upload", upload.single("image"), async (req, res) => {
 
-    console.log('test', req.file);
     if (req.file === undefined) {
-        res.status(422).send("file not allowed")
+        res.status(422).send("file not allowed");
     }else{
         res.status(200).send(`${dest}/${returnfile}`);
     }
