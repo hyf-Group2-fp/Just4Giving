@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom'
+
+//Redux
 import {useDispatch, useSelector} from "react-redux";
-import {userNeeder} from "../../redux/actions/signUpAction";
-//import { useSelector, useDispatch } from 'react-redux'
-function Signupneeder() {
+import {userGiver, userNeeder} from "../../redux/actions/userInfoAction.js";
+
+function SignUpGiver(props) {
+    const url = "http://localhost:5000/api/giver/signup";
     const [validated, setValidated] = useState(false);
     const [first_name, setFirst_name] = useState("");
     const [last_name, setLast_name] = useState("");
@@ -13,14 +16,17 @@ function Signupneeder() {
     const [phone, setPhone] = useState("");
     const [street, setStreet] = useState("");
     const [email, setEmail] = useState("");
-    const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
+
     const dispatch = useDispatch();
-    // get the needer
-    const usertype = useSelector(state => state.signUp.is_needer);
+
+    // get the giver
+    const usertype = useSelector(state => state.userInfo.is_giver);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
+        event.preventDefault();
+        event.stopPropagation();
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -34,38 +40,43 @@ function Signupneeder() {
                 age: age,
                 phone: phone,
                 street: street,
-                description: description,
+                description: "no description",
                 email: email,
                 password: password,
-                is_giver:0,
-                is_needer:1,
+                is_giver:1,
+                is_needer:0,
                 agreement:1
             };
-            // const first_name = useSelector()
-            console.log(userdata);
-            // dispatch action
-            dispatch(userNeeder(userdata));
+
+
             try {
-               const response = await  axios.post('http://localhost:5000/api/needer/signup', userdata);
-               if(response.data.status !== 200){
-                   alert('the user does existed already');
-                   return ;
-               }
+                const response = await axios.post(url, userdata).then(
+                    (res) => {
+
+                        console.log(res.data);
+
+
+                        // dispatch action
+                        dispatch(userGiver(userdata ));
+
+
+                    }
+                )
             } catch (error) {
-                alert('There user does already existed !');
+                alert('email already exist, please try login');
                 console.error("There was an error!", error);
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1) return (<Redirect to="/profileneeder" />);
+    if(usertype === 1 ) return (<Redirect to={{ pathname: '/profilegiver' }} />
+    );
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
                 <Form
-                    method="post"
                     noValidate
                     validated={validated}
                     onSubmit={handleSubmit}
@@ -83,7 +94,7 @@ function Signupneeder() {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Atleast 3 letters
+                                At least 3 letters
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
@@ -98,7 +109,7 @@ function Signupneeder() {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letter
+                                At least 1 letter
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -168,23 +179,6 @@ function Signupneeder() {
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={Col} md="12" controlId="description">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                required
-                                minLength="200"
-                                rows={3}
-                                name="description"
-                                onChange={(e) => setDescription(e.target.value)}
-                            />{" "}
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">
-                                Explain your situation in at least 200 letters
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Form.Row>
-                    <Form.Row>
                         <Form.Group as={Col} md="12" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
@@ -232,4 +226,17 @@ function Signupneeder() {
         </div>
     );
 }
-export default Signupneeder;
+export default SignUpGiver;
+
+
+
+
+
+
+
+
+
+
+
+
+

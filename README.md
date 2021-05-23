@@ -44,18 +44,9 @@ The idea of the application is to offer a tool to connect those who have items t
 - Node.js 14.16.1
 - Express 4.17.1
 - Nodemon 2.0.3
-- Mysql2 2.2.5
-- Sequelize 6.6.2
-- Jsonwebtoken 8.5.1
-- Bcrypt 5.0.1
-- Joi 17.4.0
+- PostgreSQL 12
 - VSC 1.51
 - Postman 8.3.0
-- Dotenv 8.2.0
-- Cross-env 7.0.3
-- Cors 2.8.5
-- Body-Parser: 1.19.0
-- Cookie-Parser: 1.4.5
 
 #### Dev-OPs
 

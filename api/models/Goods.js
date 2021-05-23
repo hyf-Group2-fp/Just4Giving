@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../db/db.js");
 const User = require("./User.js");
-const Tags = require("./Tags");
+const Categories = require("./Categories");
 
 const Goods = sequelize.define(
     "goods",
@@ -33,9 +33,7 @@ const Goods = sequelize.define(
             defaultValue: "good image",
         },
         quality: {
-            type: Sequelize.INTEGER,
-            max: 5,
-            min: 0,
+            type: Sequelize.STRING
         },
         quantity: {
             type: Sequelize.INTEGER,
@@ -69,7 +67,7 @@ const Goods = sequelize.define(
     }
 );
 
-// foreign keys
+// foreign keys one to one user and goods
 
 User.hasOne(Goods, {
     as: "goods",
@@ -80,5 +78,12 @@ User.hasOne(Goods, {
     as: "good",
     foreignKey: "owner_id",
 });
+
+// one to many categories and goods
+
+Categories.hasMany(Goods,{
+    as:"categories",
+    foreignKey:"category_id",
+})
 
 module.exports = Goods;
