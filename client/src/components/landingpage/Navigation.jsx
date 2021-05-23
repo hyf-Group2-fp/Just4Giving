@@ -33,7 +33,7 @@ function Navigation() {
                                 <Nav.Link href="/aboutus">About Us</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/login">Log Out</Nav.Link>
+                                <Nav.Link href="/login">Sign Out</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
@@ -63,7 +63,7 @@ function Navigation() {
                                 <Nav.Link href="/aboutus">About Us</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/login">Login</Nav.Link>
+                                <Nav.Link href="/login">Sign In</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>

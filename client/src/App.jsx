@@ -13,7 +13,8 @@ import SignUpGiver from "./components/register/signUpGiver";
 import Login from "./components/login/Login";
 import Giver from "./components/giver/Giverprofile"
 import NewItem from "./components/giver/NewItem"
-import ItemPreview from "./components/giver/ItemPreview"
+import ItemPreview from "./components/giver/ItemPreview";
+import ItemView from './components/giver/ItemView' ;
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,8 @@ function App() {
            <Route component={ItemPreview} path="/itemview" />
           />
             <Route path="/login" exact component ={Login}></Route>
+            <Route path="/profilegiver/item/:id" exact component ={ItemView}></Route>
+
         </Switch>
         <Footer />
       </Router>

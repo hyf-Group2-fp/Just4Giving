@@ -349,3 +349,14 @@ body .bg-dark {
         margin-left: 5rem;
     }
 }
+
+
+/* giver     goods view */
+.itemCards {
+    margin: 2%;
+}
+
+.itemCards button {
+    /*margin-right: 2%;*/
+    width: 230px;
+}
