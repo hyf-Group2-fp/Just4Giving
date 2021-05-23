@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import moment from 'moment' ;
 import {useHistory} from "react-router-dom";
-
+import team  from '../../assets/landingpage/team.png'
 // component
 // import ItemView from "./ItemView";
 
@@ -40,13 +40,13 @@ export default function Goods() {
 
     useEffect( () => {
         FetchGoods() ;
-        },[user_id]) ;
+        },[user_id]) ;       
 
     return (
         <div style={{display:"flex" , flexWrap:'wrap', justifyContent:'space-evenly'}}>
             {goods.map((good, index) => (
-                <Card style={{flexGrow: 1}} key={good.goods_id} style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
+                <Card  className="itemCards" style={{flexGrow: 1, width: '18rem'}} key={good.goods_id} >
+                    <Card.Img  src={team} alt='good' style={{ width: '18rem' }}/>
                     <Card.Body>
                         <Card.Text>  {moment.utc(good.createdAt).local(false).startOf('seconds').fromNow()
 

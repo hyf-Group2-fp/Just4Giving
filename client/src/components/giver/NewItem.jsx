@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Col, Button,InputGroup } from 'react-bootstrap';
 import  { Redirect , useHistory } from 'react-router-dom' ;
 import Resizer from "react-image-file-resizer";
@@ -50,54 +50,76 @@ event.preventDefault();
     return (<Redirect to={{ pathname: '/itemview', state:{item,description,category,quality,quantity,image }}} />)
   }
 
-  // image resize
-    const resizeFile = (file) =>
-        new Promise((resolve) => {
-            Resizer.imageFileResizer(
-                file,
-                300,
-                300,
-                "PNG",
-                100,
-                0,
-                (uri) => {
-                    resolve(uri);
-                },
-                "base64"
-            );
-        });
+  // // image resize
+  //   const resizeFile = (file) =>
+  //       new Promise((resolve) => {
+  //           Resizer.imageFileResizer(
+  //               file,
+  //               300,
+  //               300,
+  //               "PNG",
+  //               100,
+  //               0,
+  //               (uri) => {
+  //                   resolve(uri);
+  //                   console.log(uri); 
+  //               },
+  //               "base64"
+  //           );
+  //       });
 
-    const ImageResize = async (event) => {
-        try {
-            const file = event.target.files[0];
-            const image = await resizeFile(file);
-            setImage(image) ;
-        } catch (err) {
-            console.error(err);
-        }
+  //   const ImageResize = async (event) => {
+  //       try {
+  //           const file = event.target.files[0];
+  //           const image = await resizeFile(file);
+  //           setImage(image) ;
+  //       } catch (err) {
+  //           console.error(err);
+  //       }
+  //   };
+  //   console.log(image)
+ // image to string
+ const uploadImage = async (e) => {
+  const file = e.target.files[0];
+  const base64 = await convertBase64(file);
+  setImage(base64);
+};
+
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+
+    fileReader.onload = () => {
+      resolve(fileReader.result);
     };
-    console.log(image)
 
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};
     return(
         <div className="forms">
-        <h1 className="text-center formh1">What you want to give?</h1>
+        <h1 className="text-center formh1">What do you want to give?</h1>
         <div className="container formview mt">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Row>
             <Form.Group>
-    <Form.File id="img" onChange={ImageResize} label="Upload image" />
+    <Form.File id="img" onChange={uploadImage} label="Image" />
   </Form.Group>
             </Form.Row>
       <Form.Row>
       <Form.Group as={Col} md="4" >
-          <Form.Label>Item Name</Form.Label>
-          <InputGroup hasValidation>
-            <InputGroup.Prepend>
-              <InputGroup.Text id="item">What Is It</InputGroup.Text>
-            </InputGroup.Prepend>
+          <Form.Label>Name</Form.Label>
+
+          {/*<InputGroup hasValidation>*/}
+            {/*<InputGroup.Prepend>*/}
+            {/*  <InputGroup.Text id="item">What Is It</InputGroup.Text>*/}
+            {/*</InputGroup.Prepend>*/}
             <Form.Control
               type="text"
-              placeholder="Enter name"
+              placeholder=" Laptop, Chair, etc..."
               aria-describedby="inputGroupPrepend"
               required
               onChange={(e) => setItem(e.target.value)}
@@ -105,7 +127,7 @@ event.preventDefault();
             <Form.Control.Feedback>
               
             </Form.Control.Feedback>
-          </InputGroup>
+
         </Form.Group>
       </Form.Row>
       <Form.Row>
@@ -170,7 +192,7 @@ event.preventDefault();
             required
             as="textarea"
             rows={3}
-            placeholder="Description"
+            placeholder="Please describe the details of the item, e.g. colour, condition, size, etc..."
             onChange={(e) => setDescription(e.target.value)}
           />
           <Form.Control.Feedback></Form.Control.Feedback>

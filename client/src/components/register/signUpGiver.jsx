@@ -94,7 +94,7 @@ function SignUpGiver(props) {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Atleast 3 letters
+                                At least 3 letters
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
@@ -109,7 +109,7 @@ function SignUpGiver(props) {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letter
+                                At least 1 letter
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
