@@ -2,10 +2,14 @@ import React, {useState} from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import logo from "../../assets/landingpage/logo22.png";
 import {useSelector} from "react-redux";
+//import Disclaimer from "../disclaimer/Disclaimer";
+import Aboutus from "../aboutus/Aboutus";
 
 
 
 function Navigation() {
+    //modal disclaimer
+    const [modalShow, setModalShow] = useState(false);
     // check if the user is sign in
     const signIn = useSelector(state => state.userInfo.signedIn) ;
 
@@ -29,9 +33,12 @@ function Navigation() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="row justify-content-end links">
-                            <Nav.Item>
-                                <Nav.Link href="/aboutus">About Us</Nav.Link>
-                            </Nav.Item>
+                        <Nav.Item>
+                          <Nav.Link onClick={() => setModalShow(true)}>
+                            About Us
+                          </Nav.Link>
+                          <Aboutus show={modalShow} onHide={() => setModalShow(false)} />
+                        </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link href="/login">Sign Out</Nav.Link>
                             </Nav.Item>
@@ -60,7 +67,10 @@ function Navigation() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="row justify-content-end links">
                             <Nav.Item>
-                                <Nav.Link href="/aboutus">About Us</Nav.Link>
+                                <Nav.Link className="footer-priv" onClick={() => setModalShow(true)}>
+                                  About Us
+                                </Nav.Link>
+                                <Aboutus show={modalShow} onHide={() => setModalShow(false)} />
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link href="/login">Sign In</Nav.Link>
