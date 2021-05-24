@@ -385,7 +385,7 @@ body .bg-dark {
 
 .sidebar .closebtn {
     position: absolute;
-    top: 240px;
+    top: 286px;
     right: 5px;
     margin-left: 50px;
     background-image: url(./assets/categories/open_close.png);
@@ -394,11 +394,12 @@ body .bg-dark {
     background-position: center;
     width: 35px;
     height: 35px;
+    z-index: 1;
 }
 
 .sidebar .openbtn {
     position: absolute;
-    top: 240px;
+    top: 286px;
     right: 5px;
     margin-left: 50px;
     background-image: url(./assets/categories/open_close.png);
@@ -407,6 +408,7 @@ body .bg-dark {
     background-position: center;
     width: 35px;
     height: 35px;
+    z-index: 1;
     /* open */
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
@@ -421,6 +423,22 @@ body .bg-dark {
     transition: margin-left .5s;
     /* If you want a transition effect */
     padding: 20px;
+}
+
+/* categories */
+#categories-body{
+}
+.row-categories{
+    display: flex;
+    flex-wrap: wrap;
+}
+.category{
+    /* sidebar width: 300px/2 */
+    height: 122px;
+    border: 1px solid #92c2be;
+}
+.category-title{
+    color:#005dbb;
 }
 
 /* Media Query */
