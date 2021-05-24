@@ -7,7 +7,7 @@ const multer = require("multer");
 const app = express();
 app.use(cors());
 
-const dest = "./public/images/uploads";
+const dest = "./public/uploads/images";
 var returnfile;
 var msg="";
 const fileStorageEngine = multer.diskStorage({
