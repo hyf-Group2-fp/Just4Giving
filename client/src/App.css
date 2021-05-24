@@ -253,6 +253,15 @@ body .bg-dark {
     width: 200px;
     height: 200px;
 }
+#img-humaans-3-caharacters {
+    background-image: url(./assets/aboutus/Humaaans_3_Characters.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 200px;
+}
+
 
 /* giver profile*/
 .banner {

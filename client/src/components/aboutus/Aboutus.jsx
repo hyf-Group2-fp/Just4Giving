@@ -43,14 +43,17 @@ function Aboutus(props) {
                         </Col>
                         <Col lg="4">
                             <div className="img-container d-flex justify-content-center align-items-end">
-                                <div id="img-humaans-space"></div>
+                                {/* <div id="img-humaans-space"></div> */}
                             </div>
-
                         </Col>
                     </Row>
                     {/* mission */}
                     <Row>
-                        <Col lg="4"></Col>
+                        <Col lg="4">
+                            <div className="img-container d-flex justify-content-center align-items-end">
+                                <div id="img-humaans-3-caharacters"></div>
+                            </div>
+                        </Col>
                         <Col>
                             <div className="aboutus-card p-5 m-4" id="mission">
                                 <h4 className="text-center text-white aboutus-title">Mission</h4>
