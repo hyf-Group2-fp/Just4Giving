@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import Disclaimer from "../disclaimer/Disclaimer";
 
 // Redux
 import {useDispatch, useSelector} from "react-redux";
@@ -18,7 +19,7 @@ function SignUpNeeder() {
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-
+    const [modalShow, setModalShow] = useState(false);
 
 
     const dispatch = useDispatch();
@@ -98,7 +99,7 @@ function SignUpNeeder() {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Atleast 3 letters
+                                At least 3 letters
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
@@ -107,13 +108,13 @@ function SignUpNeeder() {
                                 required
                                 name="last_name"
                                 type="text"
-                                minLength="1"
+                                minLength="3"
                                 maxLength="20"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letter
+                                At least 3 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -233,11 +234,16 @@ function SignUpNeeder() {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                        <Form.Check
+                    <a href="#" onClick={()=>setModalShow(true)}><Form.Check
                             required
-                            label="Agree to terms and conditions"
+                            label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
                         />
+                            
+                        
+                        </a>
+                        
+                        <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
                     <Button type="submit" className="formb">
                         Submit
