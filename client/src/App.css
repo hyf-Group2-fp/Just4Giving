@@ -204,35 +204,41 @@ body .bg-dark {
 /* modal disclaimer */
 .modal-content,
 .transparent {
-    opacity: 0.6;
+    opacity: 0.8;
 }
 .modal-title {
     background-color: rgb(65, 65, 65);
     font-size: 50px;
     border-radius: 22px;
 }
-.disclaimer-card {
+.disclaimer-card,
+.aboutus-card {
     border-radius: 50px;
     box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
 }
-.disclaimer-title {
+.disclaimer-title,
+.aboutus-title {
     text-shadow: -1px 0 #eb822e, 0 1px #eb822e, 1px 0 #eb822e, 0 -1px #eb822e;
     font-size: 32px;
     line-height: 29px;
 }
-.disclaimer-text {
+.disclaimer-text,
+.aboutus-text {
     font-family: "Poppins", sans-serif;
     font-size: 18px;
     line-height: 27px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
 }
-#terms {
+#terms,
+#kindness {
     background-color: #8ec4de;
 }
-#privacy {
+#privacy,
+#vision {
     background-color: #e9d366;
 }
-#disclaimer {
+#disclaimer,
+#mission {
     background-color: #66cbdf;
 }
 .img-container {
@@ -247,6 +253,15 @@ body .bg-dark {
     width: 200px;
     height: 200px;
 }
+#img-humaans-3-caharacters {
+    background-image: url(./assets/aboutus/Humaaans_3_Characters.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 200px;
+}
+
 
 /* giver profile*/
 .banner {
