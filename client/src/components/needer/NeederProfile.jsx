@@ -1,7 +1,7 @@
 import { useSelector} from "react-redux";
 
 function Needer(){
-    // dispatch an action
+    // get the first name from state
     const first_name = useSelector(state => state.userInfo.first_name) ;
 
 return(
