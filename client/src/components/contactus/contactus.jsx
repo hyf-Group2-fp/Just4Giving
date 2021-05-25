@@ -103,7 +103,7 @@ function Contactus() {
                         field="message"
                         errors={state.errors}/>
                     
-                    <Button type="submit" className="formb" disabled={state.submitting}>
+                    <Button type="submit" className="btn-submit float-right" disabled={state.submitting}>
                         Submit
                     </Button>
                 </Form>
