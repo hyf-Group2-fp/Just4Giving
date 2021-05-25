@@ -15,6 +15,7 @@ import Giver from "./components/giver/Giverprofile"
 import NewItem from "./components/giver/NewItem"
 import ItemPreview from "./components/giver/ItemPreview";
 import ItemView from './components/giver/ItemView' ;
+import EditItem from './components/giver/EditItem'
 function App() {
   return (
     <div className="App">
@@ -39,6 +40,7 @@ function App() {
           />
             <Route path="/login" exact component ={Login}></Route>
             <Route path="/profilegiver/item/:id" exact component ={ItemView}></Route>
+            <Route path="/edititem/:id" exact component ={EditItem}></Route>
 
         </Switch>
         <Footer />

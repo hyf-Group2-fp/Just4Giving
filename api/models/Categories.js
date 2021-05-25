@@ -16,6 +16,9 @@ const Categories = sequelize.define(
             allowNull: false,
             unique: true,
         },
+        categories_image:{
+            type:Sequelize.STRING(255),
+        },
         createdAt: Sequelize.DATE,
         updatedAt: Sequelize.DATE,
     },
