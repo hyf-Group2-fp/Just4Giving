@@ -82,8 +82,6 @@ function Categories() {
             .remove("closebtn");
     }
 
-    // console.log('test', categories);
-    // console.log('test here', categories[0].category_name)
     return (
         <div>
             <div id="categories-panel" className="sidebar">
@@ -95,14 +93,24 @@ function Categories() {
                     {/* categories */}
                     {
                       categories && 
-                      //console.log('test here', categories[0].category_name)
                       categories.map(category => (
-                        <div className="category col-6"><div className="pt-3 category-title">{category.category_name}</div></div>
+                        <div className="category col-6">
+                            <div className="pt-3 category-title">
+                                {category.category_name}
+                            </div>
+                            {/* image */}
+                            <div className="category-image" id={`cat_img_${category.categories_id}`}>
+                            <img
+                                src={`assets/images/categories/${category.category_image}`}
+                                width="60"
+                                height="60"
+                                alt="just4giving logo"
+                            />
+                            </div>
+                        </div>
                       ))
                     } 
                 </div>
-
-                {/* categories */}
 
             </div>
             <div id="main">
