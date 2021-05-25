@@ -291,6 +291,12 @@ body .bg-dark {
     margin-top: 20%;
     margin-right: 10%;
 }
+/* error message*/
+.error {
+    color: red;
+    font-size: 28px;
+    text-align: center;
+}
 
 /* Media Query */
 @media only screen and (max-width: 800px) {
