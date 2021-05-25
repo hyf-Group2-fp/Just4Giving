@@ -349,3 +349,22 @@ body .bg-dark {
         margin-left: 5rem;
     }
 }
+
+/* contact-us form*/
+#formcontact {
+    width: 180px;
+    height: 60px;
+    font-size: 22px;
+    margin-left: 35%;
+}
+
+.contactuscontainer {
+    width: 40rem;
+    text-align: left;
+    /*margin-left: 35%;*/
+}
+.bg5 {
+    height: 400px;
+    width: 400px;
+    align-content: left;
+}

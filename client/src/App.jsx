@@ -14,6 +14,7 @@ import Login from "./components/login/Login";
 import Giver from "./components/giver/Giverprofile"
 import NewItem from "./components/giver/NewItem"
 import ItemPreview from "./components/giver/ItemPreview"
+import Contactus from "./components/contactus/contactus"
 function App() {
   return (
     <div className="App">
@@ -34,8 +35,8 @@ function App() {
            <Route path="/profilegiver"
            exact component={Giver}/>
            <Route path="/newgoods" exact component={NewItem}/>
-           <Route component={ItemPreview} path="/itemview" />
-          />
+           <Route path="/itemview" component={ItemPreview}  />
+            <Route path="/contactus" component={Contactus} />
             <Route path="/login" exact component ={Login}></Route>
         </Switch>
         <Footer />
