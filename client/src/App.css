@@ -21,8 +21,8 @@ body .bg-dark {
     background-size: cover;
 }
 .bg2 {
-    width: 60%;
-    height: 400px;
+    width: 80%;
+    /* height: 400px; */
     margin-bottom: 0;
 }
 /*Main button*/
@@ -78,6 +78,13 @@ body .bg-dark {
 }
 .cards {
     margin: 0 5% !important;
+}
+.card-rounded{
+    border-radius: 32px !important;
+}
+.card-width{
+    width: 300px !important;
+    min-width: 300px !important;
 }
 .card1 {
     width: 20rem;
@@ -143,6 +150,7 @@ body .bg-dark {
 }
 .mail:hover {
     color: orange;
+    cursor: pointer;
 }
 #videoh {
     color: #e9d366;

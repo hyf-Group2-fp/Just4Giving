@@ -24,7 +24,7 @@ function Demo() {
         </Jumbotron>
 
         <CardDeck className="cards">
-          <Card className="shadow-lg rounded card1">
+          <Card className="shadow-lg card-rounded card-width card1 mt-4">
             <Card.Body>
               <Card.Title id="card1h">Donate</Card.Title>
               <Card.Text id="card1p">
@@ -37,7 +37,7 @@ function Demo() {
               />
             </Card.Body>
           </Card>
-          <Card className="shadow-lg rounded card2">
+          <Card className="shadow-lg card-width card-rounded card2 mt-4">
             <Card.Body>
               <Card.Title id="card2h">Help</Card.Title>
               <Card.Text id="card2p">
@@ -50,7 +50,7 @@ function Demo() {
               />
             </Card.Body>
           </Card>
-          <Card className="shadow-lg rounded card3">
+          <Card className="shadow-lg card-width card-rounded card3 mt-4">
             <Card.Body>
               <Card.Title id="card3h">Connected</Card.Title>
               <Card.Text id="card3p">
@@ -67,11 +67,11 @@ function Demo() {
 
         <div className="container">
           <div className="player-wrapper">
-            <h2 id="videoh">Our Vision</h2>
+            <h2 id="videoh" className="mb-5">Our Vision</h2>
             <ReactPlayer
               className="react-player"
-              width="80%"
-              height="650px"
+              // width="80%"
+              // height="4650px"
               controls={true}
               url={video}
             />
