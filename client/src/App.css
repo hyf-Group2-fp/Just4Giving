@@ -440,6 +440,9 @@ body .bg-dark {
 .category-title{
     color:#005dbb;
 }
+.category-image:hover{
+    cursor: pointer;
+}
 
 /* Media Query */
 @media only screen and (max-width: 800px) {
