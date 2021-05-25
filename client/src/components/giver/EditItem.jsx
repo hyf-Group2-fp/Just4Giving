@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { Form, Col, Button, InputGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 
 function EditItem() {
-
-  const index = useParams().id ;
-  console.log(index) ;
-  const good = useSelector(state => state.goods[index]) ;
-  console.log(good) ;
   const [validated, setValidated] = useState(false);
   const [item, setItem] = useState('');
   const [description, setDescription] = useState('');
@@ -16,12 +12,37 @@ function EditItem() {
   const [quality, setQuality] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [image, setImage] = useState('');
-  const [form, setForm] = useState(false);
+  // const [form, setForm] = useState(false);
 
   // use History
   const history = useHistory();
 
-  const handleSubmit = (event) => {
+  // show the previous good properties
+  // get the selected good index
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchGood = async () => {
+      const response = await axios.get(`http://localhost:5000/api/goods/${id}`);
+      const good = response.data.good;
+      console.log(good);
+      setImage(good.image);
+      setItem(good.item_name);
+      setQuantity(good.quantity);
+      setDescription(good.description);
+
+      if (good.quality == 1) {
+        setQuality('New');
+      } else if (good.quality == 2) {
+        setQuality('Fairly used');
+      } else {
+        setQuality('used');
+      }
+    };
+    fetchGood();
+  }, []);
+
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
@@ -30,7 +51,7 @@ function EditItem() {
       event.stopPropagation();
     } else {
       const newGood = {
-        item: item,
+        item_name: item,
         category: category,
         description: description,
         quality: quality,
@@ -38,15 +59,24 @@ function EditItem() {
         image: image,
       };
       console.log(newGood);
-      setForm(true);
+
+      try {
+        const response = await axios.put(
+          `http://localhost:5000/api/goods/${id}`,
+          newGood
+        );
+        console.log('response', response);
+      } catch (err) {
+        console.error(err);
+      }
+      // setForm(true);
     }
     event.preventDefault();
     setValidated(true);
 
     // redirect
-    history.push('/giverpofile');
+    history.push('/profilegiver');
   };
- 
 
   return (
     <div className="forms">
@@ -61,14 +91,9 @@ function EditItem() {
           <Form.Row>
             <Form.Group as={Col} md="4">
               <Form.Label>Name</Form.Label>
-
-              {/*<InputGroup hasValidation>*/}
-              {/*<InputGroup.Prepend>*/}
-              {/*  <InputGroup.Text id="item">What Is It</InputGroup.Text>*/}
-              {/*</InputGroup.Prepend>*/}
               <Form.Control
                 type="text"
-                placeholder=" Laptop, Chair, etc..."
+                // placeholder=" Laptop, Chair, etc..."
                 aria-describedby="inputGroupPrepend"
                 required
                 onChange={(e) => setItem(e.target.value)}

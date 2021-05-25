@@ -3,13 +3,13 @@ import { Button, Card } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { Redirect, useHistory,  } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import team from '../../assets/landingpage/team.png';
 // component
 // import ItemView from "./ItemView";
 
 // Redux
-import { createGoods , updateGoods } from '../../redux/actions/goodsInfoAction';
+import { createGoods, updateGoods } from '../../redux/actions/goodsInfoAction';
 
 export default function Goods() {
   const [goods, setGoods] = useState({});
@@ -39,31 +39,35 @@ export default function Goods() {
   }, [user_id]);
 
   // details good
-  const detailGood = (item) => {};
+  const detailGood = (id) => {
+    console.log(id);
+    history.push(`/detailsitem/${id}`);
+  };
 
   // edit good
 
-  const editGood = (index) => {
-    console.log(index) ;
-    history.push(`/edititem/${index}`) ;
-   
+  const editGood = (id) => {
+    console.log(id);
+    history.push(`/edititem/${id}`);
   };
 
   // delete good
 
-  const deleteGood = async(id , index) => {  
-    
-    const filterGoods = Object.entries(goods).filter((key, value) => key !== index) ;
-    const newGoods = Object.fromEntries(filterGoods) ;  
-    setGoods(newGoods) ;
+  const deleteGood = async (id, index) => {
+    const filterGoods = Object.entries(goods).filter(
+      (key, value) => key !== index
+    );
+    const newGoods = Object.fromEntries(filterGoods);
+    setGoods(newGoods);
     // send a delete request
 
-    const response = await axios.delete(`http://localhost:5000/api/goods/${id}`) ;
-    console.log(response) ;
-    // refresh the page 
+    const response = await axios.delete(
+      `http://localhost:5000/api/goods/${id}`
+    );
+    console.log(response);
+    // refresh the page
     history.push('/itemdelete');
     history.push('/profilegiver');
-
   };
 
   return (
@@ -95,19 +99,28 @@ export default function Goods() {
 
             <Card.Text>{good.category}</Card.Text>
             <div className="btn-good-group">
-              <Button className='btn-good' size={'sm'} onClick={() => detailGood(good)} 
-              variant="secondary">
+              <Button
+                className="btn-good"
+                size={'sm'}
+                onClick={() => detailGood(good.goods_id)}
+                variant="secondary"
+              >
                 Details
               </Button>
               <Button
-              className='btn-good'
+                className="btn-good"
                 size={'sm'}
-                onClick={() => editGood(index)}
+                onClick={() => editGood(good.goods_id)}
                 variant="info"
               >
                 Edit
               </Button>
-              <Button  className='btn-good' size={'sm'} onClick={() => deleteGood(good.goods_id,index)} variant="danger">
+              <Button
+                className="btn-good"
+                size={'sm'}
+                onClick={() => deleteGood(good.goods_id, index)}
+                variant="danger"
+              >
                 Delete
               </Button>
             </div>
