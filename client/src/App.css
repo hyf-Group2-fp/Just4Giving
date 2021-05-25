@@ -295,7 +295,7 @@ body .bg-dark {
 .error {
     color: red;
     font-size: 28px;
-    text-align: center;
+    text-align: left;
 }
 
 /* Media Query */
