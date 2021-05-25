@@ -1,4 +1,4 @@
-import React, { useState,Link } from "react";
+import React, { useState } from "react";
 import { Form, Col, Button, } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom';
@@ -213,15 +213,11 @@ function SignUpGiver(props) {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                    <a href="#" onClick={()=>setModalShow(true)}><Form.Check
+                    <a href="" onClick={()=>setModalShow(true)}><Form.Check
                             required
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
-                        />
-                            
-                        
-                        </a>
-                        
+                        /> </a>
                         <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
                     <Button type="submit" className="formb">

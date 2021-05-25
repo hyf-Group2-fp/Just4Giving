@@ -170,13 +170,11 @@ body .bg-dark {
     margin-bottom: 6%;
 }
 .formb {
-    margin-left: 82%;
+    margin-left: 85%;
     width: 170px;
     height: 50px;
     font-size: 23px;
-    margin-bottom: 6%;
 }
-
 
 /* sign-in forms*/
 #formblogin {
@@ -262,7 +260,6 @@ body .bg-dark {
     height: 200px;
 }
 
-
 /* giver profile*/
 .banner {
     background-image: url("./assets/giver/banner.png");
@@ -295,8 +292,6 @@ body .bg-dark {
     margin-right: 10%;
 }
 
-
-
 /* Media Query */
 @media only screen and (max-width: 800px) {
     .bg2 {
@@ -317,7 +312,21 @@ body .bg-dark {
         font-weight: bold;
     }
     #formb {
-        margin-left: 30%;
+        margin-left: 15%;
+    }
+    .formb {
+        margin-left: 15%;
+    }
+    .signincard {
+        width: 20rem;
+
+        margin-left: 5%;
+    }
+    .inputs {
+        width: 18rem;
+    }
+    .bg3 {
+        display: none;
     }
 }
 
@@ -363,8 +372,13 @@ body .bg-dark {
     .fa-github {
         margin-left: 5rem;
     }
+    #formb {
+        margin-left: 15%;
+    }
+    .formb {
+        margin-left: 15%;
+    }
 }
-
 
 /* giver     goods view */
 .itemCards {
