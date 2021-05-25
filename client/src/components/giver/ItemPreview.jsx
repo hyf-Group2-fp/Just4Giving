@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState} from "react";
+import React from "react";
 import {Button} from 'react-bootstrap'
 import {useSelector} from "react-redux";
 
@@ -15,6 +15,7 @@ const ItemPreview = (props) => {
     const category=(props.location.state.category);
     const quality=Number(props.location.state.quality);
     const quantity=(props.location.state.quantity);
+    const image =(props.location.state.image);
 
 
 
@@ -24,7 +25,7 @@ const ItemPreview = (props) => {
         giver_id:giver_id,
         item_name:item,
         description:description,
-        image:'',
+        image:image,
         quality:quality,
         quantity:quantity,
         category:category,
@@ -54,6 +55,7 @@ const ItemPreview = (props) => {
     return (<div>
         <h1 className="text-center formh1">Successfully JUST4GIVING it!</h1>
         <div className="container itemview">
+            <img src={image} alt='good'/>
             <p>Name             :{item}</p>
             <p>Category         :{category}</p>
             <p>Quantity         :{quantity}</p>

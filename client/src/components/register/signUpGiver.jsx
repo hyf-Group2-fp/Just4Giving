@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import React, { useState,Link } from "react";
+import { Form, Col, Button, } from "react-bootstrap";
 import axios from "axios";
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import Disclaimer from "../disclaimer/Disclaimer";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
-import {userGiver, userNeeder} from "../../redux/actions/userInfoAction.js";
+import {userGiver} from "../../redux/actions/userInfoAction.js";
 
 function SignUpGiver(props) {
     const url = "http://localhost:5000/api/giver/signup";
@@ -18,7 +19,7 @@ function SignUpGiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-
+    const [modalShow, setModalShow] = useState(false);
     const dispatch = useDispatch();
 
     // get the giver
@@ -94,7 +95,7 @@ function SignUpGiver(props) {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Atleast 3 letters
+                                At least 3 letters
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
@@ -103,13 +104,13 @@ function SignUpGiver(props) {
                                 required
                                 name="last_name"
                                 type="text"
-                                minLength="1"
+                                minLength="3"
                                 maxLength="20"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letter
+                                At least 3 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -174,7 +175,7 @@ function SignUpGiver(props) {
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter your street name at least 5 letters
+                                Enter your street name in at least 5 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -212,11 +213,16 @@ function SignUpGiver(props) {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                        <Form.Check
+                    <a href="#" onClick={()=>setModalShow(true)}><Form.Check
                             required
-                            label="Agree to terms and conditions"
+                            label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
                         />
+                            
+                        
+                        </a>
+                        
+                        <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
                     <Button type="submit" className="formb">
                         Submit

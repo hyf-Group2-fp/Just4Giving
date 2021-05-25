@@ -1,5 +1,5 @@
-import {useDispatch, useSelector} from "react-redux";
-import { Button , Card ,} from "react-bootstrap";
+import { useSelector} from "react-redux";
+import { Button ,} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // component

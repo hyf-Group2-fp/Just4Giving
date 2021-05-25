@@ -7,18 +7,22 @@ import {useHistory} from "react-router-dom";
 import team  from '../../assets/landingpage/team.png'
 // component
 // import ItemView from "./ItemView";
+
 // Redux
 import {createGoods } from '../../redux/actions/goodsInfoAction' ;
+
+
 export default function Goods() {
     const [goods , setGoods] = useState([]) ;
     const history = useHistory()
+
     // dispatch an action
     const dispatch = useDispatch() ;
     // access the state
     const user_id = useSelector(state => state.userInfo.user_id) ;
     const createdAt = useSelector(state => state.goods.createdAt) ;
     console.log(user_id) ;
-    const url = `/api/goods/${user_id}` ;
+    const url = `http://localhost:5000/api/user/goods/${user_id}` ;
     // fetch goods
     const FetchGoods = async () => {
         const response = await axios.get(url) ;
@@ -38,7 +42,9 @@ export default function Goods() {
                     <Card.Body>
                         <Card.Text>  {moment.utc(good.createdAt).local(false).startOf('seconds').fromNow()
                         } </Card.Text>
+
                         <Card.Title>{good.item_name}</Card.Title>
+
                         <Card.Text>
                             {good.category}
                         </Card.Text>
