@@ -16,7 +16,7 @@ import NewItem from "./components/giver/NewItem"
 import ItemPreview from "./components/giver/ItemPreview";
 import ItemView from './components/giver/ItemView';
 //for testing purposes
-import Categories from './components/categories/categories';
+// import Categories from './components/categories/categories';
 
 function App() {
     return (
@@ -33,7 +33,7 @@ function App() {
                     <Route path="/login" exact component ={Login}></Route>
                     <Route path="/profilegiver/item/:id" exact component ={ItemView}></Route>
                     {/* for testing purpose */}
-                    <Route path="/categories" exact component ={Categories}></Route>
+                    {/* <Route path="/categories" exact component ={Categories}></Route> */}
                 </Switch>
                 <Footer/>
             </Router>
