@@ -24,7 +24,7 @@ function Contactus() {
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Contact Us</h1>
-            <div className="contactuscontainer">
+            <div className="container contactuscontainer">
                 <Form
                     onSubmit={handleSubmit}>
                     <Form.Row>
@@ -40,7 +40,7 @@ function Contactus() {
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Atleast 3 letters
+                                At least 3 letters
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
 
@@ -50,13 +50,13 @@ function Contactus() {
                                 required
                                 name="last_name"
                                 type="text"
-                                minLength="1"
+                                minLength="3"
                                 maxLength="20"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letter
+                                At least 3 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -72,7 +72,7 @@ function Contactus() {
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter email address.
+                                Enter email address
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -88,7 +88,7 @@ function Contactus() {
                                 as="textarea"
                                 required
                                 minLength="30"
-                                rows={3}
+                                rows={5}
                                 name="message"
                                 onChange={(e) => setMessage(e.target.value)}
                             />{" "}
