@@ -39,24 +39,11 @@ createCategories3().then(() => {
   process.exit();
 });
 
-// create categories 3
-const createCategories3 = async () => {
-  return await Categories.findOrCreate({
-    where: {
-      category_name: 'Babies',
-      categories_image: '',
-    },
-  });
-};
-createCategories3().then(() => {
-  process.exit();
-});
-
 // create categories 4
 const createCategories4 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Sport',
+      category_name: 'Babies',
       categories_image: '',
     },
   });
@@ -69,7 +56,7 @@ createCategories4().then(() => {
 const createCategories5 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Electronics',
+      category_name: 'Sport',
       categories_image: '',
     },
   });
@@ -78,11 +65,11 @@ createCategories5().then(() => {
   process.exit();
 });
 
-// create categories 5
+// create categories 6
 const createCategories6 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Books',
+      category_name: 'Electronics',
       categories_image: '',
     },
   });
@@ -95,7 +82,7 @@ createCategories6().then(() => {
 const createCategories7 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Electronics',
+      category_name: 'Books',
       categories_image: '',
     },
   });
@@ -104,5 +91,17 @@ createCategories7().then(() => {
   process.exit();
 });
 
-// const jane = await Categories.create({ firstName: "Jane", lastName: "Doe" });
-// console.log("Jane's auto-generated ID:", jane.id);
+// create categories 8
+const createCategories8 = async () => {
+  return await Categories.findOrCreate({
+    where: {
+      category_name: 'Electronics',
+      categories_image: '',
+    },
+  });
+};
+createCategories8().then(() => {
+  process.exit();
+});
+
+
