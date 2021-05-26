@@ -117,14 +117,14 @@ function EditItem() {
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="0">Select...</option>
-                <option value="Food">Food</option>
-                <option value="Home & Garden">Home & Garden</option>
-                <option value="Tools">Tools</option>
-                <option value="Babies">Babies</option>
-                <option value="Sports">Sports</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Books">Books</option>
-                <option value="Others">Others</option>
+                <option value="Furnitures" data-id="1">Furnitures</option>
+                <option value="Food" data-id="2">Food</option>
+                <option value="Tools" data-id="3">Tools</option>
+                <option value="Babies" data-id="4">Babies</option>
+                <option value="Electronics" data-id="5">Electronics</option>
+                <option value="Sport" data-id="6">Sport</option>
+                <option value="Books" data-id="7">Books</option>
+                <option value="Other" data-id="8">Other</option>
               </Form.Control>
             </Form.Group>
             <Form.Group as={Col} md="4">
