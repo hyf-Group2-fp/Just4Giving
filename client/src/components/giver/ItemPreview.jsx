@@ -17,7 +17,7 @@ const ItemPreview = (props) => {
   const item = props.location.state.item;
   const description = props.location.state.description;
   const category = props.location.state.category;
-  const quality = Number(props.location.state.quality);
+  const quality = props.location.state.quality;
   const quantity = props.location.state.quantity;
   const image = props.location.state.image;
 
@@ -34,8 +34,8 @@ const ItemPreview = (props) => {
     taken: 0,
     owner_id: giver_id,
     category_id: 5,
-    createdAt: '2021-05-19T17:52:20.000Z',
-    updatedAt: '2021-05-19T17:52:20.000Z',
+    // createdAt: '2021-05-19T17:52:20.000Z',
+    // updatedAt: '2021-05-19T17:52:20.000Z',
   };
 
   const handleNewItem = async () => {

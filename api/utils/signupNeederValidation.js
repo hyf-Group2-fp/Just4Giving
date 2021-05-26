@@ -12,7 +12,8 @@ const signupNeederValidation = data => {
         age: Joi.number().integer().min(18).max(120),
         is_giver: Joi.number().integer().min(0).max(1).required(),
         is_needer: Joi.number().integer().min(0).max(1).required(),
-        description: Joi.string().required().min(200).max(500),
+        //description: Joi.string().required().min(200).max(500),
+        description: Joi.string().required().min(200),
         agreement: Joi.number().min(1).max(1)
     }).unknown();
     return schema.validate(data);
