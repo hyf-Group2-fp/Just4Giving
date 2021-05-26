@@ -1,253 +1,290 @@
 /* Root components style*/
 
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 body {
-    font-family: "Fredoka One", cursive !important;
+  font-family: 'Fredoka One', cursive !important;
 }
 
 body .bg-dark {
-    background: none !important;
+  background: none !important;
 }
 
 /* Landing page*/
 .bg {
-    background-image: url("./assets/landingpage/landingpage.jpg");
-    height: 100%;
-    margin-top: 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url('./assets/landingpage/landingpage.jpg');
+  height: 100%;
+  margin-top: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .bg2 {
-    width: 60%;
-    height: 400px;
-    margin-bottom: 0;
+  width: 60%;
+  height: 400px;
+  margin-bottom: 0;
 }
 
 /*Main button*/
 .btn-primary {
-    margin: 20px;
-    background-color: #eb822e !important;
-    width: 350px;
-    height: 70px;
-    font-weight: bold;
+  margin: 20px;
+  background-color: #eb822e !important;
+  width: 350px;
+  height: 70px;
+  font-weight: bold;
 }
 
 .btn-primary:hover {
-    background-color: cornflowerblue !important;
-    border-color: orangered !important;
+  background-color: cornflowerblue !important;
+  border-color: orangered !important;
 }
 
 /* navigation bar*/
 .navbar {
-    background-color: #66cbdf !important;
+  background-color: #66cbdf !important;
 }
 
 .navbar .navbar-brand {
-    color: #e9d366 !important;
-    font-size: 35px;
-    text-shadow: 2px 2px 4px #000000;
-    padding-top: 0;
+  color: #e9d366 !important;
+  font-size: 35px;
+  text-shadow: 2px 2px 4px #000000;
+  padding-top: 0;
 }
 
 .links {
-    width: 100%;
-    margin-right: 20px;
-    font-size: 20px;
-    text-shadow: 2px 2px 4px black;
+  width: 100%;
+  margin-right: 20px;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px black;
 }
 
 .nav-link {
-    color: white !important;
+  color: white !important;
 }
 
 .nav-link:hover {
-    color: #eb822e !important;
+  color: #eb822e !important;
 }
 
 .jumbotron {
-    background: none !important;
+  background: none !important;
 }
 
 /*the main cards */
 .jumbotron h1 {
-    color: #e9d366 !important;
-    font-size: 50px;
-    text-shadow: 2px 2px 4px #000000;
+  color: #e9d366 !important;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .jumbotron p {
-    margin-top: 2%;
-    font-size: 30px;
+  margin-top: 2%;
+  font-size: 30px;
 }
 
 .jumbotron button {
-    font-size: 23px;
+  font-size: 23px;
 }
 
 .cards {
-    margin: 0 5% !important;
+  margin: 0 5% !important;
 }
 
 .card1 {
-    width: 20rem;
-    background-color: lightblue !important;
+  width: 20rem;
+  background-color: lightblue !important;
 }
 
 #card1h {
-    color: white;
-    font-size: 35px;
-    text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
+  color: white;
+  font-size: 35px;
+  text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
 }
 
 #card1p {
-    color: white;
-    font-size: 25px;
-    text-shadow: 2px 2px 4px #000000;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .card2 {
-    width: 20rem;
-    background-color: #e9d366 !important;
+  width: 20rem;
+  background-color: #e9d366 !important;
 }
 
 #card2h {
-    color: white;
-    font-size: 35px;
-    text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
+  color: white;
+  font-size: 35px;
+  text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
 }
 
 #card2p {
-    color: white;
-    font-size: 25px;
-    text-shadow: 2px 2px 4px #000000;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .card3 {
-    width: 20rem;
-    background-color: lightblue !important;
+  width: 20rem;
+  background-color: lightblue !important;
 }
 
 #card3h {
-    color: white !important;
-    font-size: 35px;
-    text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
+  color: white !important;
+  font-size: 35px;
+  text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;
 }
 
 #card3p {
-    color: white;
-    font-size: 25px;
-    text-shadow: 2px 2px 4px #000000;
+  color: white;
+  font-size: 25px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 /* video */
 .player-wrapper {
-    position: relative;
-    margin-top: 20%;
+  position: relative;
+  margin-top: 20%;
 }
 
 .react-player {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 /* footer*/
 .github {
-    color: white;
+  color: white;
 }
 
 .github:hover {
-    color: orange;
+  color: orange;
 }
 
 .mail {
-    color: white;
+  color: white;
 }
 
 .mail:hover {
-    color: orange;
+  color: orange;
 }
 
 #videoh {
-    color: #e9d366;
-    font-size: 40px;
-    text-shadow: 2px 2px 4px #000000;
+  color: #e9d366;
+  font-size: 40px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 /*signupforms*/
 .forms {
-    text-align: left;
-    background-color: #fbf5f5;
+  text-align: left;
+  background-color: #fbf5f5;
 }
 
 .formh1 {
-    color: #eb822e;
-    padding-top: 3%;
-    padding-bottom: 1%;
+  color: #eb822e;
+  padding-top: 3%;
+  padding-bottom: 1%;
 }
 
 .formview {
-    background-color: white;
+  background-color: white;
 }
 
 #formb {
-    margin-left: 85%;
-    width: 170px;
-    height: 50px;
-    font-size: 23px;
-    margin-bottom: 6%;
+  margin-left: 85%;
+  width: 170px;
+  height: 50px;
+  font-size: 23px;
+  margin-bottom: 6%;
 }
 
 .formb {
+<<<<<<< HEAD
+  margin-left: 82%;
+  width: 170px;
+  height: 50px;
+  font-size: 23px;
+  margin-bottom: 6%;
+=======
     margin-left: 85%;
     width: 170px;
     height: 50px;
     font-size: 23px;
+>>>>>>> 33f4297de9132d163d8d8838862920983cf3ffce
 }
 
 /* sign-in forms*/
 #formblogin {
-    width: 180px;
-    height: 50px;
-    font-size: 22px;
-    margin-left: 35%;
+  width: 180px;
+  height: 50px;
+  font-size: 22px;
+  margin-left: 35%;
 }
 
 .inputs {
-    width: 30rem;
-    padding-left: 23%;
+  width: 30rem;
+  padding-left: 23%;
 }
 
 .bg3 {
-    height: 400px;
-    width: 400px;
+  height: 400px;
+  width: 400px;
 }
 
 .signin {
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .signincard {
-    width: 40rem;
-    text-align: left;
-    margin-left: 35%;
+  width: 40rem;
+  text-align: left;
+  margin-left: 35%;
 }
 
 /* modal disclaimer */
 .modal-content,
 .transparent {
+<<<<<<< HEAD
+  opacity: 0.6;
+=======
     opacity: 0.8;
+>>>>>>> 33f4297de9132d163d8d8838862920983cf3ffce
 }
 
 .modal-title {
-    background-color: rgb(65, 65, 65);
-    font-size: 50px;
-    border-radius: 22px;
+  background-color: rgb(65, 65, 65);
+  font-size: 50px;
+  border-radius: 22px;
 }
+<<<<<<< HEAD
+.disclaimer-card {
+  border-radius: 50px;
+  box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
+}
+.disclaimer-title {
+  text-shadow: -1px 0 #eb822e, 0 1px #eb822e, 1px 0 #eb822e, 0 -1px #eb822e;
+  font-size: 32px;
+  line-height: 29px;
+}
+.disclaimer-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+}
+#terms {
+  background-color: #8ec4de;
+}
+#privacy {
+  background-color: #e9d366;
+}
+#disclaimer {
+  background-color: #66cbdf;
+=======
 
 .disclaimer-card,
 .aboutus-card {
@@ -283,20 +320,21 @@ body .bg-dark {
 #disclaimer,
 #mission {
     background-color: #66cbdf;
+>>>>>>> 33f4297de9132d163d8d8838862920983cf3ffce
 }
 
 .img-container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #img-humaans-space {
-    background-image: url(./assets/disclaimer/Humaaans_Space.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 200px;
-    height: 200px;
+  background-image: url(./assets/disclaimer/Humaaans_Space.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
 }
 
 #img-humaans-3-caharacters {
@@ -310,37 +348,37 @@ body .bg-dark {
 
 /* giver profile*/
 .banner {
-    background-image: url("./assets/giver/banner.png");
-    background-repeat: no-repeat;
-    background-size: 2000px 220px;
-    text-align: right;
+  background-image: url('./assets/giver/banner.png');
+  background-repeat: no-repeat;
+  background-size: 2000px 220px;
+  text-align: right;
 }
 
 .welcome {
-    color: orange;
-    margin-right: 5%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+  color: orange;
+  margin-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .welcome p {
-    font-size: 24;
+  font-size: 24;
 }
 
 .welcome button {
-    width: 14rem;
-    font-size: 20px;
-    margin: 0;
-    height: 40px;
-    margin-top: 1%;
+  width: 14rem;
+  font-size: 20px;
+  margin: 0;
+  height: 40px;
+  margin-top: 1%;
 }
 
 /*new item posting*/
 .itemview {
-    text-align: left;
-    font-size: 20px;
-    margin-top: 20%;
-    margin-right: 10%;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 20%;
+  margin-right: 10%;
 }
 /* error message*/
 .error {
@@ -420,6 +458,18 @@ body .bg-dark {
     -ms-filter: "FlipH";
 }
 
+/* goods group button */
+.btn-good-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.btn-good {
+  margin-left: 10px;
+  margin-right: 10px;
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
@@ -511,13 +561,13 @@ body .bg-dark {
         font-size: 15px;
     }
 
-    .cards {
-        margin: 0 5% !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .cards {
+    margin: 0 5% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
     .container {
         margin-bottom: 7rem;
@@ -527,10 +577,10 @@ body .bg-dark {
         margin-left: 6rem;
     }
 
-    .fa,
-    .fa-envelope-square {
-        margin-left: 8rem !important;
-    }
+  .fa,
+  .fa-envelope-square {
+    margin-left: 8rem !important;
+  }
 
     .fa,
     .fa-github {
@@ -573,7 +623,7 @@ body .bg-dark {
 
 /* giver     goods view */
 .itemCards {
-    margin: 2%;
+  margin: 2%;
 }
 
 .itemCards button {

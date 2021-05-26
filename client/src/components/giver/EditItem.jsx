@@ -1,22 +1,48 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import { Form, Col, Button, InputGroup } from 'react-bootstrap';
-import { Redirect, useHistory } from 'react-router-dom';
-import Resizer from 'react-image-file-resizer';
+import { useSelector } from 'react-redux';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 
-function NewItem() {
+function EditItem() {
   const [validated, setValidated] = useState(false);
   const [item, setItem] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [quality, setQuality] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState(0);
   const [image, setImage] = useState('');
-  const [form, setForm] = useState(false);
+  // const [form, setForm] = useState(false);
 
   // use History
   const history = useHistory();
 
-  const handleSubmit = (event) => {
+  // show the previous good properties
+  // get the selected good index
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchGood = async () => {
+      const response = await axios.get(`http://localhost:5000/api/goods/${id}`);
+      const good = response.data.good;
+      console.log(good);
+      setImage(good.image);
+      setItem(good.item_name);
+      setQuantity(good.quantity);
+      setDescription(good.description);
+
+      if (good.quality == 1) {
+        setQuality('New');
+      } else if (good.quality == 2) {
+        setQuality('Fairly used');
+      } else {
+        setQuality('used');
+      }
+    };
+    fetchGood();
+  }, []);
+
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
@@ -25,7 +51,7 @@ function NewItem() {
       event.stopPropagation();
     } else {
       const newGood = {
-        item: item,
+        item_name: item,
         category: category,
         description: description,
         quality: quality,
@@ -33,35 +59,33 @@ function NewItem() {
         image: image,
       };
       console.log(newGood);
-      setForm(true);
+
+      try {
+        const response = await axios.put(
+          `http://localhost:5000/api/goods/${id}`,
+          newGood
+        );
+        console.log('response', response);
+      } catch (err) {
+        console.error(err);
+      }
+      // setForm(true);
     }
     event.preventDefault();
     setValidated(true);
 
     // redirect
-    history.push('/newgoods');
+    history.push('/profilegiver');
   };
-  if (form) {
-    return (
-      <Redirect
-        to={{
-          pathname: '/itemview',
-          state: { item, description, category, quality, quantity, image },
-        }}
-      />
-    );
-  }
-
-  const onChangehandler = async (e) => {};
 
   return (
     <div className="forms">
-      <h1 className="text-center formh1">What do you want to give?</h1>
+      <h1 className="text-center formh1">What do you want to change?</h1>
       <div className="container formview mt">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Row>
             <Form.Group>
-              <Form.File id="img" onChange={onChangehandler} label="Image" />
+              <Form.File id="img" label="Image" />
             </Form.Group>
           </Form.Row>
           <Form.Row>
@@ -69,7 +93,7 @@ function NewItem() {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder=" Laptop, Chair, etc..."
+                // placeholder=" Laptop, Chair, etc..."
                 aria-describedby="inputGroupPrepend"
                 required
                 onChange={(e) => setItem(e.target.value)}
@@ -156,4 +180,4 @@ function NewItem() {
     </div>
   );
 }
-export default NewItem;
+export default EditItem;

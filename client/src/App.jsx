@@ -17,6 +17,8 @@ import NewItem from "./components/giver/NewItem";
 import ItemPreview from "./components/giver/ItemPreview";
 import Contactus from "./components/contactus/contactus";
 import ItemView from './components/giver/ItemView';
+import EditItem from './components/giver/EditItem';
+import DetailsItem from './components/giver/DetailsItem';
 //for testing purposes
 // import Categories from './components/categories/categories';
 
@@ -36,6 +38,8 @@ function App() {
                     <Route path="/login" exact component ={Login}></Route>
                     <Route path="/contactus" component={Contactus}/>
                     <Route path="/profilegiver/item/:id" exact component ={ItemView}></Route>
+		    <Route path="/edititem/:id" exact component={EditItem}></Route>
+          	    <Route path="/detailsitem/:id" exact component={DetailsItem}></Route>
                     {/* for testing purpose */}
                     {/* <Route path="/categories" exact component ={Categories}></Route> */}
                 </Switch>

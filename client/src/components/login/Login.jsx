@@ -1,4 +1,3 @@
-
 import React, {useState} from "react";
 import {Form, Button, Card} from "react-bootstrap";
 import {Redirect} from 'react-router-dom';
@@ -6,9 +5,7 @@ import pic from '../../assets/login/signin.png';
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux";
 import { signedUserInfo, signedUserError} from "../../redux/actions/userInfoAction";
-
 function Login() {
-
     const [validated,
         setValidated] = useState(false);
     const [email,
@@ -30,13 +27,10 @@ function Login() {
                 password: password
             };
             //console.log(userdata);
-
             try {
                 const response = await axios
                     .post("http://localhost:5000/api/authenticate", userdata)
-
                     .then((res) => {
-
                         // dispatch action
                         const user = res.data.user ;
                         dispatch(signedUserInfo(user)) ;
@@ -48,7 +42,6 @@ function Login() {
                         //     return;
                         // }
                     })
-
             } catch (error) {
                 setErrorMessage("Email doesnot exist, Please try Sign Up");
                 // alert("please check your credentials")
@@ -68,7 +61,6 @@ function Login() {
     } else if (isNeeder) {
         return (<Redirect to={{ pathname: '/profileneeder'}}/>)
     }
-
     return (
         <div className="forms">
             <h1 className="text-center formh1">Sign-in</h1>
@@ -116,4 +108,3 @@ function Login() {
     );
 }
 export default Login;
-

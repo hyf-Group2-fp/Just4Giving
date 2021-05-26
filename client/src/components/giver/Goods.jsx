@@ -1,16 +1,15 @@
-import axios from "axios";
-import {Button, Card} from "react-bootstrap";
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import moment from 'moment' ;
-import {useHistory} from "react-router-dom";
-import team  from '../../assets/landingpage/team.png'
+import axios from 'axios';
+import { Button, Card } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+import { useHistory } from 'react-router-dom';
+import team from '../../assets/landingpage/team.png';
 // component
 // import ItemView from "./ItemView";
 
 // Redux
-import {createGoods } from '../../redux/actions/goodsInfoAction' ;
-
+import { createGoods, updateGoods } from '../../redux/actions/goodsInfoAction';
 
 export default function Goods() {
     const [goods , setGoods] = useState([]) ;
