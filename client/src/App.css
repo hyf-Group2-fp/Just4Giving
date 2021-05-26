@@ -522,6 +522,31 @@ body .bg-dark {
     }
 }
 
+/* contact-us form*/
+#formcontact {
+    width: 180px;
+    height: 60px;
+    font-size: 22px;
+    margin-left: 35%;
+}
+
+.contactuscontainer {
+    width: 40rem;
+    text-align: left;
+    /*margin-left: 35%;*/
+}
+.bg5 {
+    height: 400px;
+    width: 400px;
+    align-content: left;
+}
+.btn-submit {
+    width: 170px;
+    height: 50px;
+    font-size: 23px;
+    margin-bottom: 6%;
+    margin-right: 0px;
+}
 
 /* giver     goods view */
 .itemCards {
