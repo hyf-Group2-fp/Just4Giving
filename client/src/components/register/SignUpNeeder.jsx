@@ -20,7 +20,7 @@ function SignUpNeeder() {
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const [modalShow, setModalShow] = useState(false);
-
+    const [errorMessage, setErrorMessage] = useState("");
 
     const dispatch = useDispatch();
 
@@ -36,7 +36,8 @@ function SignUpNeeder() {
             event.preventDefault();
             event.stopPropagation();
         } else if (password !== confirmpassword) {
-            alert("password and confirmpassword does not match");
+            setErrorMessage("Password and Confirm password are not same, try again");
+            // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -64,7 +65,8 @@ function SignUpNeeder() {
                     }
                 )
             } catch (error) {
-                alert('email already exist, please try login');
+                setErrorMessage("Email already exist, Please try Sign In");
+                // alert('email already exist, please try login');
                 console.error("There was an error!", error);
             }
         }
@@ -189,6 +191,7 @@ function SignUpNeeder() {
                             <Form.Control
                                 as="textarea"
                                 required
+                                placeholder="Example: I am Sabrina, I came from Palestine. I just move to Belgium last month with my husband and my little daughter. I live in Brussel, I stay in a studio with very limited furniture. I know this app from a friend, I hope I could find some stuff that could be useful for me."
                                 minLength="200"
                                 rows={3}
                                 name="description"
@@ -234,7 +237,7 @@ function SignUpNeeder() {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                    <a href="#" onClick={()=>setModalShow(true)}><Form.Check
+                    <a href="" onClick={()=>setModalShow(true)}><Form.Check
                             required
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
@@ -245,6 +248,7 @@ function SignUpNeeder() {
                         
                         <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
+                    {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" className="formb">
                         Submit
                     </Button>

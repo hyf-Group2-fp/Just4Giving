@@ -203,13 +203,11 @@ body .bg-dark {
 }
 
 .formb {
-    margin-left: 82%;
+    margin-left: 85%;
     width: 170px;
     height: 50px;
     font-size: 23px;
-    margin-bottom: 6%;
 }
-
 
 /* sign-in forms*/
 #formblogin {
@@ -310,7 +308,6 @@ body .bg-dark {
     height: 200px;
 }
 
-
 /* giver profile*/
 .banner {
     background-image: url("./assets/giver/banner.png");
@@ -345,7 +342,12 @@ body .bg-dark {
     margin-top: 20%;
     margin-right: 10%;
 }
-
+/* error message*/
+.error {
+    color: red;
+    font-size: 28px;
+    text-align: left;
+}
 
 /* starts needer's categories panel */
 #categories-header {
@@ -469,7 +471,21 @@ body .bg-dark {
     }
 
     #formb {
-        margin-left: 30%;
+        margin-left: 15%;
+    }
+    .formb {
+        margin-left: 15%;
+    }
+    .signincard {
+        width: 20rem;
+
+        margin-left: 5%;
+    }
+    .inputs {
+        width: 18rem;
+    }
+    .bg3 {
+        display: none;
     }
 }
 
@@ -520,7 +536,14 @@ body .bg-dark {
     .fa-github {
         margin-left: 5rem;
     }
+    #formb {
+        margin-left: 15%;
+    }
+    .formb {
+        margin-left: 15%;
+    }
 }
+
 
 /* contact-us form*/
 #formcontact {

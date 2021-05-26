@@ -16,7 +16,7 @@ function Login() {
     const [password,
         setPassword] = useState("");
     const dispatch = useDispatch() ;
-
+    const [errorMessage, setErrorMessage] = useState("");
     const handleSubmit = async(event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -40,17 +40,18 @@ function Login() {
                         // dispatch action
                         const user = res.data.user ;
                         dispatch(signedUserInfo(user)) ;
-                         if (res.data.user.is_giver === true) {
-                            alert('giver') ;
-                             return;
-                        } else if (res.data.user.is_needer === true) {
-                            alert('needer')
-                            return;
-                        }
+                        //  if (res.data.user.is_giver === true) {
+                        //     alert('giver') ;
+                        //      return;
+                        // } else if (res.data.user.is_needer === true) {
+                        //     alert('needer')
+                        //     return;
+                        // }
                     })
 
             } catch (error) {
-                alert("please check your credentials")
+                setErrorMessage("Email doesnot exist, Please try Sign Up");
+                // alert("please check your credentials")
                 dispatch(signedUserError());
                 console.error('There was an error!', error);
             }
@@ -104,6 +105,7 @@ function Login() {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
+                    {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" id="formblogin">
                         Sign-in
                     </Button>

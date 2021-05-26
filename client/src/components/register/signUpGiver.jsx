@@ -1,4 +1,4 @@
-import React, { useState,Link } from "react";
+import React, { useState } from "react";
 import { Form, Col, Button, } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom';
@@ -20,6 +20,7 @@ function SignUpGiver(props) {
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const [modalShow, setModalShow] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const dispatch = useDispatch();
 
     // get the giver
@@ -32,7 +33,8 @@ function SignUpGiver(props) {
             event.preventDefault();
             event.stopPropagation();
         } else if (password !== confirmpassword) {
-            alert("password and confirmpassword does not match");
+            setErrorMessage("Password and Confirm password are not same, try again.");
+           // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -64,7 +66,8 @@ function SignUpGiver(props) {
                     }
                 )
             } catch (error) {
-                alert('email already exist, please try login');
+                setErrorMessage("Email already exist, Please try Sign In.");
+                // alert('email already exist, please try login');
                 console.error("There was an error!", error);
             }
         }
@@ -213,20 +216,18 @@ function SignUpGiver(props) {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                    <a href="#" onClick={()=>setModalShow(true)}><Form.Check
+                    <a href="" onClick={()=>setModalShow(true)}><Form.Check
                             required
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
-                        />
-                            
-                        
-                        </a>
-                        
+                        /> </a>
                         <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
+                    {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" className="formb">
                         Submit
                     </Button>
+                  
                 </Form>
             </div>
         </div>
