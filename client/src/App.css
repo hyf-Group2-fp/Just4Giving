@@ -203,10 +203,10 @@ body .bg-dark {
 }
 
 .formb {
-    margin-left: 85%;
-    width: 170px;
-    height: 50px;
-    font-size: 23px;
+  margin-left: 85%;
+  width: 170px;
+  height: 50px;
+  font-size: 23px;
 }
 
 /* sign-in forms*/
@@ -240,7 +240,7 @@ body .bg-dark {
 /* modal disclaimer */
 .modal-content,
 .transparent {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .modal-title {
@@ -249,40 +249,64 @@ body .bg-dark {
   border-radius: 22px;
 }
 
-.disclaimer-card,
+.disclaimer-card {
+  border-radius: 50px;
+  box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
+}
+.disclaimer-title {
+  text-shadow: -1px 0 #eb822e, 0 1px #eb822e, 1px 0 #eb822e, 0 -1px #eb822e;
+  font-size: 32px;
+  line-height: 29px;
+}
+.disclaimer-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+}
+#terms {
+  background-color: #8ec4de;
+}
+#privacy {
+  background-color: #e9d366;
+}
+#disclaimer {
+  background-color: #66cbdf;
+}
+>>>>>>>39ec7572779967e94b7e7a2bf6a600b5ce8855e3 .disclaimer-card,
 .aboutus-card {
-    border-radius: 50px;
-    box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
+  box-shadow: 10px 5px 4px rgba(0, 0, 0, 0.4);
 }
 
 .disclaimer-title,
 .aboutus-title {
-    text-shadow: -1px 0 #eb822e, 0 1px #eb822e, 1px 0 #eb822e, 0 -1px #eb822e;
-    font-size: 32px;
-    line-height: 29px;
+  text-shadow: -1px 0 #eb822e, 0 1px #eb822e, 1px 0 #eb822e, 0 -1px #eb822e;
+  font-size: 32px;
+  line-height: 29px;
 }
 
 .disclaimer-text,
 .aboutus-text {
-    font-family: "Poppins", sans-serif;
-    font-size: 18px;
-    line-height: 27px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
 }
 
 #terms,
 #kindness {
-    background-color: #8ec4de;
+  background-color: #8ec4de;
 }
 
 #privacy,
 #vision {
-    background-color: #e9d366;
+  background-color: #e9d366;
 }
 
 #disclaimer,
 #mission {
-    background-color: #66cbdf;
+  background-color: #66cbdf;
 }
 
 .img-container {
@@ -300,12 +324,12 @@ body .bg-dark {
 }
 
 #img-humaans-3-caharacters {
-    background-image: url(./assets/aboutus/Humaaans_3_Characters.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 200px;
-    height: 200px;
+  background-image: url(./assets/aboutus/Humaaans_3_Characters.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
 }
 
 /* giver profile*/
@@ -344,80 +368,80 @@ body .bg-dark {
 }
 /* error message*/
 .error {
-    color: red;
-    font-size: 28px;
-    text-align: left;
+  color: red;
+  font-size: 28px;
+  text-align: left;
 }
 
 /* starts needer's categories panel */
 #categories-header {
-    background-color: #0067CF;
-    padding: 14px 0px;
+  background-color: #0067cf;
+  padding: 14px 0px;
 }
 
 #categories-title-text {
-    font-size: 20px;
-    color: #fff;
+  font-size: 20px;
+  color: #fff;
 }
 
 /* The sidebar menu */
 .sidebar {
-    border-radius: 25px;
-    height: 550px;
-    width: 300px;
-    /* change this with JavaScript */
-    position: fixed;
-    z-index: 1;
-    top: 250px;
-    left: 300px;
-    background-color: #A2D4D0;
-    overflow-x: hidden;
-    transition: 0.5s;
+  border-radius: 25px;
+  height: 550px;
+  width: 300px;
+  /* change this with JavaScript */
+  position: fixed;
+  z-index: 1;
+  top: 250px;
+  left: 300px;
+  background-color: #a2d4d0;
+  overflow-x: hidden;
+  transition: 0.5s;
 }
 
 /* The sidebar links */
 .sidebar a {
-    /* padding: 8px 8px 8px 32px; */
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+  /* padding: 8px 8px 8px 32px; */
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
 .sidebar .closebtn {
-    position: absolute;
-    top: 286px;
-    right: 5px;
-    margin-left: 50px;
-    background-image: url(./assets/categories/open_close.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 35px;
-    height: 35px;
-    z-index: 1;
+  position: absolute;
+  top: 286px;
+  right: 5px;
+  margin-left: 50px;
+  background-image: url(./assets/categories/open_close.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 35px;
+  height: 35px;
+  z-index: 1;
 }
 
 .sidebar .openbtn {
-    position: absolute;
-    top: 286px;
-    right: 5px;
-    margin-left: 50px;
-    background-image: url(./assets/categories/open_close.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 35px;
-    height: 35px;
-    z-index: 1;
-    /* open */
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
+  position: absolute;
+  top: 286px;
+  right: 5px;
+  margin-left: 50px;
+  background-image: url(./assets/categories/open_close.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 35px;
+  height: 35px;
+  z-index: 1;
+  /* open */
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: 'FlipH';
 }
 
 /* goods group button */
@@ -435,94 +459,94 @@ body .bg-dark {
 }
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-    transition: margin-left .5s;
-    /* If you want a transition effect */
-    padding: 20px;
+  transition: margin-left 0.5s;
+  /* If you want a transition effect */
+  padding: 20px;
 }
 
 /* categories */
-#categories-body{
+#categories-body {
 }
-.row-categories{
-    display: flex;
-    flex-wrap: wrap;
+.row-categories {
+  display: flex;
+  flex-wrap: wrap;
 }
-.category{
-    /* sidebar width: 300px/2 */
-    height: 122px;
-    border: 1px solid #92c2be;
+.category {
+  /* sidebar width: 300px/2 */
+  height: 122px;
+  border: 1px solid #92c2be;
 }
-.category-title{
-    color:#005dbb;
+.category-title {
+  color: #005dbb;
 }
-.category-image:hover{
-    cursor: pointer;
+.category-image:hover {
+  cursor: pointer;
 }
 
 /* Media Query */
 @media only screen and (max-width: 800px) {
-    .bg2 {
-        display: none;
-    }
+  .bg2 {
+    display: none;
+  }
 
-    .navbar .navbar-brand {
-        font-size: 25px;
-    }
+  .navbar .navbar-brand {
+    font-size: 25px;
+  }
 
-    .jumbotron h1 {
-        font-size: 30px;
-    }
+  .jumbotron h1 {
+    font-size: 30px;
+  }
 
-    .jumbotron button {
-        font-size: 15px;
-    }
+  .jumbotron button {
+    font-size: 15px;
+  }
 
-    .btn-primary {
-        width: 250px;
-        height: 50px;
-        font-weight: bold;
-    }
+  .btn-primary {
+    width: 250px;
+    height: 50px;
+    font-weight: bold;
+  }
 
-    #formb {
-        margin-left: 15%;
-    }
-    .formb {
-        margin-left: 15%;
-    }
-    .signincard {
-        width: 20rem;
+  #formb {
+    margin-left: 15%;
+  }
+  .formb {
+    margin-left: 15%;
+  }
+  .signincard {
+    width: 20rem;
 
-        margin-left: 5%;
-    }
-    .inputs {
-        width: 18rem;
-    }
-    .bg3 {
-        display: none;
-    }
+    margin-left: 5%;
+  }
+  .inputs {
+    width: 18rem;
+  }
+  .bg3 {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .bg2 {
-        display: none;
-    }
+  .bg2 {
+    display: none;
+  }
 
-    .navbar .navbar-brand {
-        font-size: 25px;
-        text-align: center;
-    }
+  .navbar .navbar-brand {
+    font-size: 25px;
+    text-align: center;
+  }
 
-    .main-brand {
-        margin-left: 5rem;
-    }
+  .main-brand {
+    margin-left: 5rem;
+  }
 
-    .jumbotron h1 {
-        font-size: 30px;
-    }
+  .jumbotron h1 {
+    font-size: 30px;
+  }
 
-    .jumbotron button {
-        font-size: 15px;
-    }
+  .jumbotron button {
+    font-size: 15px;
+  }
 
   .cards {
     margin: 0 5% !important;
@@ -532,56 +556,55 @@ body .bg-dark {
     align-items: center;
   }
 
-    .container {
-        margin-bottom: 7rem;
-    }
+  .container {
+    margin-bottom: 7rem;
+  }
 
-    .footer-priv {
-        margin-left: 6rem;
-    }
+  .footer-priv {
+    margin-left: 6rem;
+  }
 
   .fa,
   .fa-envelope-square {
     margin-left: 8rem !important;
   }
 
-    .fa,
-    .fa-github {
-        margin-left: 5rem;
-    }
-    #formb {
-        margin-left: 15%;
-    }
-    .formb {
-        margin-left: 15%;
-    }
+  .fa,
+  .fa-github {
+    margin-left: 5rem;
+  }
+  #formb {
+    margin-left: 15%;
+  }
+  .formb {
+    margin-left: 15%;
+  }
 }
-
 
 /* contact-us form*/
 #formcontact {
-    width: 180px;
-    height: 60px;
-    font-size: 22px;
-    margin-left: 35%;
+  width: 180px;
+  height: 60px;
+  font-size: 22px;
+  margin-left: 35%;
 }
 
 .contactuscontainer {
-    width: 40rem;
-    text-align: left;
-    /*margin-left: 35%;*/
+  width: 40rem;
+  text-align: left;
+  /*margin-left: 35%;*/
 }
 .bg5 {
-    height: 400px;
-    width: 400px;
-    align-content: left;
+  height: 400px;
+  width: 400px;
+  align-content: left;
 }
 .btn-submit {
-    width: 170px;
-    height: 50px;
-    font-size: 23px;
-    margin-bottom: 6%;
-    margin-right: 0px;
+  width: 170px;
+  height: 50px;
+  font-size: 23px;
+  margin-bottom: 6%;
+  margin-right: 0px;
 }
 
 /* giver     goods view */
@@ -590,6 +613,6 @@ body .bg-dark {
 }
 
 .itemCards button {
-    /*margin-right: 2%;*/
-    width: 230px;
+  /*margin-right: 2%;*/
+  width: 230px;
 }
