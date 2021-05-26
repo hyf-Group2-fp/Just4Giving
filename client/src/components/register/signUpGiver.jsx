@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Col, Button, } from "react-bootstrap";
 import axios from "axios";
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import Disclaimer from "../disclaimer/Disclaimer";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
-import {userGiver, userNeeder} from "../../redux/actions/userInfoAction.js";
+import {userGiver} from "../../redux/actions/userInfoAction.js";
 
 function SignUpGiver(props) {
     const url = "http://localhost:5000/api/giver/signup";
@@ -18,7 +19,8 @@ function SignUpGiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-
+    const [modalShow, setModalShow] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const dispatch = useDispatch();
 
     // get the giver
@@ -31,7 +33,8 @@ function SignUpGiver(props) {
             event.preventDefault();
             event.stopPropagation();
         } else if (password !== confirmpassword) {
-            alert("password and confirmpassword does not match");
+            setErrorMessage("Password and Confirm password are not same, try again.");
+           // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -63,7 +66,8 @@ function SignUpGiver(props) {
                     }
                 )
             } catch (error) {
-                alert('email already exist, please try login');
+                setErrorMessage("Email already exist, Please try Sign In.");
+                // alert('email already exist, please try login');
                 console.error("There was an error!", error);
             }
         }
@@ -103,13 +107,13 @@ function SignUpGiver(props) {
                                 required
                                 name="last_name"
                                 type="text"
-                                minLength="1"
+                                minLength="3"
                                 maxLength="20"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                At least 1 letter
+                                At least 3 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -174,7 +178,7 @@ function SignUpGiver(props) {
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter your street name at least 5 letters
+                                Enter your street name in at least 5 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -212,15 +216,18 @@ function SignUpGiver(props) {
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                        <Form.Check
+                    <a href="" onClick={()=>setModalShow(true)}><Form.Check
                             required
-                            label="Agree to terms and conditions"
+                            label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
-                        />
+                        /> </a>
+                        <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
+                    {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" className="formb">
                         Submit
                     </Button>
+                  
                 </Form>
             </div>
         </div>

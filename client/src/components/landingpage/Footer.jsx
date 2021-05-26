@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
+import { Redirect } from "react-router";
 import Disclaimer from "../disclaimer/Disclaimer";
+import {useHistory} from "react-router-dom";
+ 
+
 
 function Footer() {
   //modal disclaimer
   const [modalShow, setModalShow] = useState(false);
+  const history = useHistory()
   return (
     <div className="main-footer">
       <Navbar
@@ -26,7 +31,8 @@ function Footer() {
 
         <Nav>
           <Nav.Item className="footer-item">
-            <i
+            <i 
+            onClick={()=> history.push('/contactus') } 
               className="fa fa-envelope-square fa-2x mail"
               style={{ paddingRight: "20px" }}
             ></i>
