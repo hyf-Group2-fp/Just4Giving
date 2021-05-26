@@ -12,16 +12,12 @@ const ItemView =() => {
     // get the item id from the url
     const itemIndex =useParams().id;
     console.log(itemIndex) ;
-
     // access goods
     const goods = useSelector(state => state.goods);
-
     // copy goods state
     const goods_copy = cloneDeep(goods) ;
     const currentGood = goods_copy[itemIndex] ;
     const currentGoodId = currentGood.goods_id ;
-
-
 
 
     // dispatch
@@ -42,13 +38,11 @@ const ItemView =() => {
             dispatch(createGoods(goods_copy)) ;
             const response = axios.delete(`http://localhost:5000/api/goods/${currentGoodId}`);
 
-
         }
     }
 
     return (
         <div>
-
                 <h1>Successfully Just4Giving </h1>
                 <h4>Item name : {currentGood.item_name}</h4>
                 <h4>Description : {currentGood.description}</h4>
@@ -57,10 +51,6 @@ const ItemView =() => {
                 <h4>Quality : {currentGood.quality === 1 ? 'New' :'Used'}</h4>
                 <Button onClick={editItem}>Edit</Button>
                 <Button onClick={deleteItem}>Delete</Button>
-
         </div>
     )
 };
-
-
-export default ItemView ;
