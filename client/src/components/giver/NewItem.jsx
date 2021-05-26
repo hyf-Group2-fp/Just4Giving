@@ -93,14 +93,14 @@ function NewItem() {
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="0">Select...</option>
-                <option value="Furnitures">Furnitures</option>
-                <option value="Food">Food</option>
-                <option value="Tools">Tools</option>
-                <option value="Babies">Babies</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Sport">Sport</option>
-                <option value="Books">Books</option>
-                <option value="Other">Other</option>
+                <option value="Furnitures" id="1">Furnitures</option>
+                <option value="Food" id="2">Food</option>
+                <option value="Tools" id="3">Tools</option>
+                <option value="Babies" id="4">Babies</option>
+                <option value="Electronics" id="5">Electronics</option>
+                <option value="Sport" id="6">Sport</option>
+                <option value="Books" id="7">Books</option>
+                <option value="Other" id="8">Other</option>
               </Form.Control>
             </Form.Group>
             <Form.Group as={Col} md="4">
