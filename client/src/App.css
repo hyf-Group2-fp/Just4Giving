@@ -203,18 +203,10 @@ body .bg-dark {
 }
 
 .formb {
-<<<<<<< HEAD
-  margin-left: 82%;
-  width: 170px;
-  height: 50px;
-  font-size: 23px;
-  margin-bottom: 6%;
-=======
     margin-left: 85%;
     width: 170px;
     height: 50px;
     font-size: 23px;
->>>>>>> 33f4297de9132d163d8d8838862920983cf3ffce
 }
 
 /* sign-in forms*/
@@ -248,11 +240,7 @@ body .bg-dark {
 /* modal disclaimer */
 .modal-content,
 .transparent {
-<<<<<<< HEAD
-  opacity: 0.6;
-=======
     opacity: 0.8;
->>>>>>> 33f4297de9132d163d8d8838862920983cf3ffce
 }
 
 .modal-title {
@@ -284,7 +272,7 @@ body .bg-dark {
 }
 #disclaimer {
   background-color: #66cbdf;
-=======
+}
 
 .disclaimer-card,
 .aboutus-card {
@@ -320,7 +308,6 @@ body .bg-dark {
 #disclaimer,
 #mission {
     background-color: #66cbdf;
->>>>>>> 33f4297de9132d163d8d8838862920983cf3ffce
 }
 
 .img-container {
@@ -470,6 +457,7 @@ body .bg-dark {
 .btn-good {
   margin-left: 10px;
   margin-right: 10px;
+}
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;

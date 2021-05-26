@@ -54,3 +54,5 @@ const ItemView =() => {
         </div>
     )
 };
+
+export default ItemView;
