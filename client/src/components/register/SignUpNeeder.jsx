@@ -236,7 +236,7 @@ function SignUpNeeder() {
                             />{" "}
                         </Form.Group>
                     </Form.Row>
-                    <Form.Group>
+                    {/* <Form.Group>
                     <a href="" onClick={()=>setModalShow(true)}><Form.Check
                             required
                             label="Agree to the terms and conditions "
@@ -247,7 +247,7 @@ function SignUpNeeder() {
                         </a>
                         
                         <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
-                    </Form.Group>
+                    </Form.Group> */}
                     {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" className="formb">
                         Submit
