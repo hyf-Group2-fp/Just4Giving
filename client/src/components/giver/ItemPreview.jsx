@@ -21,6 +21,33 @@ const ItemPreview = (props) => {
   const quantity = props.location.state.quantity;
   const image = props.location.state.image;
 
+  let category_id = 0;
+  if (category === 'Furnitures') {
+    category_id = 1;
+  }
+  if (category === 'Food') {
+    category_id = 2;
+  }
+  if (category === 'Tools') {
+    category_id = 3;
+  }
+  if (category === 'Babies') {
+    category_id = 4;
+  }
+  if (category === 'Electronics') {
+    category_id = 5;
+  }
+  if (category === 'Sport') {
+    category_id = 6;
+  }
+  if (category === 'Books') {
+    category_id = 7;
+  }
+  if (category === 'Other') {
+    category_id = 8;
+  }
+
+  console.log(category_id);
   // good object
   const newItem = {
     giver_id: giver_id,
@@ -33,7 +60,7 @@ const ItemPreview = (props) => {
     available: 1,
     taken: 0,
     owner_id: giver_id,
-    category_id: 5,
+    category_id: category_id,
     // createdAt: '2021-05-19T17:52:20.000Z',
     // updatedAt: '2021-05-19T17:52:20.000Z',
   };
