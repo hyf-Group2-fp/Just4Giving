@@ -34,7 +34,7 @@ const Categories = sequelize.define(
         categories_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
-            autoIncrement: true,
+            // autoIncrement: true,
             primaryKey: true,
         },
         category_name: {

@@ -4,8 +4,9 @@ const Categories = require('../models/Categories');
 const createCategories1 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Food',
-      categories_image: '',
+      category_name: 'Furnitures',
+      category_image: 'furnitures.png',
+      categories_id:1,
     },
   });
 };
@@ -17,8 +18,9 @@ createCategories1().then(() => {
 const createCategories2 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Furnitures',
-      categories_image: '',
+      category_name: 'Food',
+      category_image: 'food.png',
+      categories_id:2,
     },
   });
 };
@@ -31,7 +33,8 @@ const createCategories3 = async () => {
   return await Categories.findOrCreate({
     where: {
       category_name: 'Tools',
-      categories_image: '',
+      category_image: 'tools.png',
+      categories_id:3,
     },
   });
 };
@@ -44,7 +47,8 @@ const createCategories4 = async () => {
   return await Categories.findOrCreate({
     where: {
       category_name: 'Babies',
-      categories_image: '',
+      category_image: 'babies.png',
+      categories_id:4,
     },
   });
 };
@@ -56,8 +60,9 @@ createCategories4().then(() => {
 const createCategories5 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Sport',
-      categories_image: '',
+      category_name: 'Electronics',
+      category_image: 'electronics.png',
+      categories_id:5,
     },
   });
 };
@@ -69,8 +74,9 @@ createCategories5().then(() => {
 const createCategories6 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Electronics',
-      categories_image: '',
+      category_name: 'Sport',
+      category_image: 'sport.png',
+      categories_id:6,
     },
   });
 };
@@ -83,7 +89,8 @@ const createCategories7 = async () => {
   return await Categories.findOrCreate({
     where: {
       category_name: 'Books',
-      categories_image: '',
+      category_image: 'books.png',
+      categories_id:7,
     },
   });
 };
@@ -95,8 +102,9 @@ createCategories7().then(() => {
 const createCategories8 = async () => {
   return await Categories.findOrCreate({
     where: {
-      category_name: 'Electronics',
-      categories_image: '',
+      category_name: 'Other',
+      category_image: 'other.png',
+      categories_id:8,
     },
   });
 };
