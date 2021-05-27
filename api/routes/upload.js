@@ -17,14 +17,15 @@ const fileStorageEngine = multer.diskStorage({
         cb(null, dest)
     },
     filename: (req, file, cb) => {
-        returnfile = `${Date.now()}--${file.originalname}`;
+        returnfile = file.originalname;
+        // returnfile = `${Date.now()}--${file.originalname}`;
         cb(null, returnfile);
     },
 });
 
 const upload = multer({
     storage: fileStorageEngine,
-    limits: { fileSize: 2000000},
+    limits: { fileSize: 200000},
     fileFilter:(res,file,cb) =>{
         if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
             return cb(null,false);

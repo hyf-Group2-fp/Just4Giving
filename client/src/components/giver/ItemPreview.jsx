@@ -46,8 +46,11 @@ const ItemPreview = (props) => {
   if (category === 'Other') {
     category_id = 8;
   }
+  if (image!==''){
+    
+  }
+  console.log(category_id, image);
 
-  console.log(category_id);
   // good object
   const newItem = {
     giver_id: giver_id,
@@ -60,9 +63,7 @@ const ItemPreview = (props) => {
     available: 1,
     taken: 0,
     owner_id: giver_id,
-    category_id: category_id,
-    // createdAt: '2021-05-19T17:52:20.000Z',
-    // updatedAt: '2021-05-19T17:52:20.000Z',
+    category_id: category_id
   };
 
   const handleNewItem = async () => {
@@ -73,12 +74,27 @@ const ItemPreview = (props) => {
       console.error(err);
     }
     history.push('/profilegiver');
-  };
+  }; 
+
+  //wait for the image
+  const getImg = () => {
+    setTimeout(function(){
+      document.getElementById('preview').src = 'assets/images/uploads/'+image;
+  },2000);
+  }
+  getImg();
   return (
     <div>
       <h1 className="text-center formh1">Successfully JUST4GIVING it!</h1>
       <div className="container itemview">
-        <img src={image} alt="good" />
+        {/* preview */}
+        <img
+             src=""
+             id="preview"
+             width="477"
+             height="477"
+             alt="good"
+        />
         <p>Name :{item}</p>
         <p>Category :{category}</p>
         <p>Quantity :{quantity}</p>
