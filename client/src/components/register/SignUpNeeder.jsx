@@ -65,6 +65,8 @@ function SignUpNeeder() {
                     }
                 )
             } catch (error) {
+                
+                // should be error.response.data.message
                 setErrorMessage("Email already exist, Please try Sign In");
                 // alert('email already exist, please try login');
                 console.error("There was an error!", error);
@@ -240,18 +242,20 @@ function SignUpNeeder() {
                             />{" "}
                         </Form.Group>
                     </Form.Row>
-                    {/* <Form.Group>
-                    <a href="" onClick={()=>setModalShow(true)}><Form.Check
+                    <Form.Group>
+                    {/* 
+                    <a href="" onClick={()=>setModalShow(true)}>*/}
+                    <Form.Check
                             required
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
                         />
                             
                         
-                        </a>
+                        {/*</a>*/}
                         
                         <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
-                    </Form.Group> */}
+                    </Form.Group>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" className="formb">
                         Submit
