@@ -90,12 +90,6 @@ function NewItem() {
                   name="image" 
                   
                   />
-              
-            {/* <form action="/api/upload" method="POST" enctype="multipart/form-data"> */}
-                {/* <input type="file" name="image"> */}
-                {/* <button type="submit">Submit</button> */}
-            {/* </form>    */}
-              {/* <Form.File id="img" onChange={onChangehandler} label="Image" name="image" /> */}
             </Form.Group>
           </Form.Row>
           <Form.Row>
