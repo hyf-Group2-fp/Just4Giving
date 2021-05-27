@@ -27,5 +27,6 @@ app.use('/', require('./routes/updategood.js'));
 app.use('/', require('./routes/getGoods.js'));
 app.use('/', require('./routes/goods.js'));
 app.use('/', require('./routes/getGiver.js'));
+app.use('/', require('./routes/sendEmail.js'));
 
 module.exports = app;

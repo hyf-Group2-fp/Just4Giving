@@ -1,15 +1,13 @@
-const express = require("express");
-const User = require("../models/User.js");
+const express = require('express');
+const User = require('../models/User.js');
 const cors = require('cors');
 //validation
-const {
-    signupNeederValidation
-} = require('../utils/signupNeederValidation');
+const { signupNeederValidation } = require('../utils/signupNeederValidation');
 
 // initialize express
 const app = express();
 
-app.post("/needer/signup", async (req, res) => {
+app.post('/needer/signup', async (req, res) => {
     const {
         first_name,
         last_name,
@@ -25,14 +23,11 @@ app.post("/needer/signup", async (req, res) => {
     } = req.body;
 
     //validation
-    const {
-        error
-    } = signupNeederValidation(req.body);
+    const { error } = signupNeederValidation(req.body);
 
     if (error) {
         res.status(400).send(error.details[0].message).end();
     } else {
-
         try {
             const name = await User.create({
                 first_name,
@@ -59,22 +54,20 @@ app.post("/needer/signup", async (req, res) => {
                     case 'email':
                         res.status(401).send({
                             status: 401,
-                            message: ' Your email is not valid'
+                            message: ' Your email is not valid',
                         });
                         break;
                     case 'password':
                         res.status(401).send({
                             status: 401,
-                            message: 'Password length has to be at least 5 characters'
+                            message:
+                                'Password length has to be at least 5 characters',
                         });
                         break;
                 }
-
             }
         }
     }
-
 });
-
 
 module.exports = app;
