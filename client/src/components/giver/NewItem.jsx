@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Col, Button, InputGroup } from 'react-bootstrap';
 import { Redirect, useHistory } from 'react-router-dom';
+import axios, { post } from 'axios';
 import Resizer from 'react-image-file-resizer';
 
 function NewItem() {
@@ -24,6 +25,28 @@ function NewItem() {
       event.preventDefault();
       event.stopPropagation();
     } else {
+
+      
+      //start image
+      // alert(document.querySelector('input[type=file]').files[0].name)
+      // alert(document.querySelector('input[type=file]').files)
+
+      const file = document.querySelector('input[type=file]').files[0]
+      const url = 'http://localhost:5000/api/upload/';
+      const formData = new FormData();
+      formData.append('image', file);
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+      axios.post(url, formData, config)
+        .then((response) => {
+          console.log(response.data);
+        }).catch(err => {
+          console.error({err});
+      });
+
       const newGood = {
         item: item,
         category: category,
@@ -61,7 +84,18 @@ function NewItem() {
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Row>
             <Form.Group>
-              <Form.File id="img" onChange={onChangehandler} label="Image" />
+                <Form.File id="img" 
+                  onChange={onChangehandler} 
+                  label="Image"
+                  name="image" 
+                  
+                  />
+              
+            {/* <form action="/api/upload" method="POST" enctype="multipart/form-data"> */}
+                {/* <input type="file" name="image"> */}
+                {/* <button type="submit">Submit</button> */}
+            {/* </form>    */}
+              {/* <Form.File id="img" onChange={onChangehandler} label="Image" name="image" /> */}
             </Form.Group>
           </Form.Row>
           <Form.Row>
