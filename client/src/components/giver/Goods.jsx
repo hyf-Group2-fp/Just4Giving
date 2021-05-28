@@ -84,8 +84,9 @@ export default function Goods() {
           style={{ flexGrow: 1, width: '18rem' }}
           key={good.goods_id}
         >
-          <Card.Img src={team} alt="good" style={{ width: '18rem' }} />
-          <Card.Body>
+          <Card.Img src={'assets/images/uploads/'+good.image} className="img-center text-center mt-4" alt="good" style={{ width: '18rem' }} />
+          {/* <Card.Img src={team} alt="good" style={{ width: '18rem' }} /> */}
+          <Card.Body className="text-center">
             <Card.Text>
               {' '}
               {moment
