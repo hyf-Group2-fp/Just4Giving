@@ -16,7 +16,7 @@ function Navigation() {
     const authenticatedNavBar = () => {
         return (
 
-            <div className="margin-t-b">
+            <div>
                 <Navbar collapseOnSelect expand="lg" sticky="top">
                     <Navbar>
                         <Navbar.Brand className="main-brand" href="/">

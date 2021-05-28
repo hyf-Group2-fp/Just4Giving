@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/landingpage/Navigation';
 import Demo from './components/landingpage/Demo';
 import Footer from './components/landingpage/Footer';
-import Aboutus from './components/aboutus/Aboutus';
 import SignUpNeeder from './components/register/SignUpNeeder';
 import SignUpGiver from './components/register/signUpGiver';
 import Login from './components/login/Login';

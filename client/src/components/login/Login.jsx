@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Form, Button, Card} from "react-bootstrap";
+import {Form, Button, Card, Container, Row, Col} from "react-bootstrap";
 import {Redirect} from 'react-router-dom';
 import pic from '../../assets/login/signin.png';
 import axios from "axios"
@@ -43,7 +43,7 @@ function Login() {
                         // }
                     })
             } catch (error) {
-                setErrorMessage("Email doesnot exist, Please try Sign Up");
+                setErrorMessage("Email does not exist, Please try Sign Up");
                 // alert("please check your credentials")
                 dispatch(signedUserError());
                 console.error('There was an error!', error);
@@ -64,6 +64,10 @@ function Login() {
     return (
         <div className="forms">
             <h1 className="text-center formh1">Sign-in</h1>
+            <Container>
+                <Row>
+                <Col lg='4'></Col>
+                <Col>
             <Card className="signincard">
                 <Form
                     className="signin"
@@ -103,7 +107,16 @@ function Login() {
                     </Button>
                 </Form>
             </Card>
+            </Col>
+            </Row>
+            <Row>
+            <Col>
+
             <img className="bg3" src={pic} alt="helping hands"/>
+            </Col>
+            <Col lg='4'></Col>
+            </Row>
+            </Container>
         </div>
     );
 }

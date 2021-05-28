@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Form, Col, Button, InputGroup } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { Form, Col, Button } from 'react-bootstrap';
+//import { useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 function EditItem() {
     const [validated, setValidated] = useState(false);

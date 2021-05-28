@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Col, Button, } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom';
-import Disclaimer from "../disclaimer/Disclaimer";
+//import Disclaimer from "../disclaimer/Disclaimer";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
@@ -19,7 +19,7 @@ function SignUpGiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    const [modalShow, setModalShow] = useState(false);
+    //const [modalShow, setModalShow] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const dispatch = useDispatch();
 
@@ -226,7 +226,9 @@ function SignUpGiver(props) {
                         {/* <Disclaimer show={modalShow} onHide={() => setModalShow(false)} /> */}
                     </Form.Group>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
-                    <Button type="submit" className="formb">
+                    {/* btn-submit float-right 
+                    <Button type="submit" className="formb"> */}
+                    <Button type="submit" className="btn-submit float-right">
                         Submit
                     </Button>
                   

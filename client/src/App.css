@@ -2,6 +2,11 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  background-color:#FBF5F5;
 }
 
 body {
@@ -169,6 +174,11 @@ body .bg-dark {
 }
 
 /* footer*/
+footer{
+  /* position:absolute;
+  bottom:0;
+  width:100%; */
+}
 .github {
   color: white;
 }
@@ -197,6 +207,7 @@ body .bg-dark {
 .forms {
   text-align: left;
   background-color: #fbf5f5;
+  
 }
 
 .formh1 {
@@ -229,12 +240,24 @@ body .bg-dark {
   width: 180px;
   height: 50px;
   font-size: 22px;
-  margin-left: 35%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  /* text-align: center; */
+  /* margin-left: 0;*/
+  
+}
+.form-row{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 80%;
 }
 
 .inputs {
   width: 30rem;
-  padding-left: 23%;
 }
 
 .bg3 {
@@ -247,9 +270,9 @@ body .bg-dark {
 }
 
 .signincard {
-  width: 40rem;
+  min-width: 40rem;
   text-align: left;
-  margin-left: 35%;
+  /* margin-left: 35%; */
 }
 
 /* modal disclaimer */
@@ -603,12 +626,12 @@ body .bg-dark {
     margin-left: 15%;
   }
   .signincard {
-    width: 20rem;
+    /* width: 20rem;
 
-    margin-left: 5%;
+    margin-left: 5%; */
   }
   .inputs {
-    width: 18rem;
+    /* width: 18rem; */
   }
   .bg3 {
     display: none;
@@ -622,11 +645,10 @@ body .bg-dark {
 
   .navbar .navbar-brand {
     font-size: 25px;
-    text-align: center;
   }
 
   .main-brand {
-    margin-left: 5rem;
+    /* margin-left: 5rem; */
   }
 
   .jumbotron h1 {
@@ -668,4 +690,5 @@ body .bg-dark {
   .formb {
     margin-left: 15%;
   }
+  
 }
