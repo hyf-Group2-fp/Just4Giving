@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Form, Col, Button } from "react-bootstrap";
 import axios from "axios";
-import  { Redirect } from 'react-router-dom'
+import  { Redirect } from 'react-router-dom';
+import Disclaimer from "../disclaimer/Disclaimer";
 
 // Redux
 import {useDispatch, useSelector} from "react-redux";
@@ -18,8 +19,8 @@ function SignUpNeeder() {
     const [description, setDescription] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-
-
+    const [modalShow, setModalShow] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const dispatch = useDispatch();
 
@@ -35,7 +36,8 @@ function SignUpNeeder() {
             event.preventDefault();
             event.stopPropagation();
         } else if (password !== confirmpassword) {
-            alert("password and confirmpassword does not match");
+            setErrorMessage("Password and Confirm password are not same, try again");
+            // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -63,7 +65,10 @@ function SignUpNeeder() {
                     }
                 )
             } catch (error) {
-                alert('email already exist, please try login');
+                
+                // should be error.response.data.message
+                setErrorMessage("Email already exist, Please try Sign In");
+                // alert('email already exist, please try login');
                 console.error("There was an error!", error);
             }
         }
@@ -93,12 +98,12 @@ function SignUpNeeder() {
                                 name="first_name"
                                 type="text"
                                 minLength="3"
-                                maxLength="20"
+                                maxLength="50"
                                 onChange={(e) => setFirst_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Atleast 3 letters
+                                At least 3 letters
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
@@ -107,13 +112,13 @@ function SignUpNeeder() {
                                 required
                                 name="last_name"
                                 type="text"
-                                minLength="1"
-                                maxLength="20"
+                                minLength="3"
+                                maxLength="50"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
                             <Form.Control.Feedback type="invalid">
-                                Atleast 1 letter
+                                At least 3 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -141,6 +146,8 @@ function SignUpNeeder() {
                                 placeholder="+32"
                                 value={validated.phone}
                                 name="phone"
+                                minLength="5"
+                                maxLength="255"
                                 onChange={(e) => setPhone(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
@@ -173,6 +180,7 @@ function SignUpNeeder() {
                                 type="text"
                                 required
                                 minLength="5"
+                                maxLength="255"
                                 name="address"
                                 onChange={(e) => setStreet(e.target.value)}
                             />{" "}
@@ -188,7 +196,9 @@ function SignUpNeeder() {
                             <Form.Control
                                 as="textarea"
                                 required
+                                placeholder="Example: I am Sabrina, I came from Palestine. I just move to Belgium last month with my husband and my little daughter. I live in Brussel, I stay in a studio with very limited furniture. I know this app from a friend, I hope I could find some stuff that could be useful for me."
                                 minLength="200"
+                                maxLength="500"
                                 rows={3}
                                 name="description"
                                 onChange={(e) => setDescription(e.target.value)}
@@ -205,7 +215,7 @@ function SignUpNeeder() {
                             <Form.Control
                                 type="password"
                                 minLength="8"
-                                maxLength="20"
+                                maxLength="255"
                                 required
                                 name="password"
                                 onChange={(e) => setPassword(e.target.value)}
@@ -227,18 +237,26 @@ function SignUpNeeder() {
                             <Form.Control
                                 type="password"
                                 minLength="8"
-                                maxLength="20"
+                                maxLength="255"
                                 required
                             />{" "}
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                        <Form.Check
+                    {/* 
+                    <a href="" onClick={()=>setModalShow(true)}>*/}
+                    <Form.Check
                             required
-                            label="Agree to terms and conditions"
+                            label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
                         />
+                            
+                        
+                        {/*</a>*/}
+                        
+                        <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
+                    {errorMessage && <div className="error"> {errorMessage} </div>}
                     <Button type="submit" className="formb">
                         Submit
                     </Button>

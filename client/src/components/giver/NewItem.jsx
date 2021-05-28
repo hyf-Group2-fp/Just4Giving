@@ -1,209 +1,175 @@
-import React, { useState } from 'react';
-import { Form, Col, Button,InputGroup } from 'react-bootstrap';
-import  { Redirect , useHistory } from 'react-router-dom' ;
-import Resizer from "react-image-file-resizer";
+import React, {useState} from 'react';
+import {Form, Col, Button, InputGroup} from 'react-bootstrap';
+import {Redirect, useHistory} from 'react-router-dom';
+import axios from 'axios';
+//import Resizer from 'react-image-file-resizer';
 
+function NewItem() {
+    const [validated, setValidated] = useState(false);
+    const [item, setItem] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [quality, setQuality] = useState('');
+    const [quantity, setQuantity] = useState('');
+    const [image, setImage] = useState('');
+    const [form, setForm] = useState(false);
 
-function NewItem(){
+    // use History
+    const history = useHistory();
 
-const [validated, setValidated] = useState(false);
-const[item, setItem]=useState("");
-const[description, setDescription]=useState('');
-const[category,setCategory]=useState("");
-const[quality,setQuality]=useState("");
-const[quantity,setQuantity]=useState("");
-const [image , setImage] = useState('') ;
-const[form, setForm]=useState(false);
-
-// use History
-const history = useHistory() ;
-
-
-const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    event.preventDefault();
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        event.preventDefault();
         event.stopPropagation();
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }else{
-    const newGood={
-        item:item,
-        category:category,
-        description:description,
-        quality:quality,
-        quantity:quantity,
-        image:image ,
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+
+            //name of the image 
+            //document.querySelector('input[type=file]').files[0].name
+
+            const file = document
+                .querySelector('input[type=file]')
+                .files[0];
+            const url = 'http://localhost:5000/api/upload/';
+
+            //upload image
+            const uploadImg = async() => {
+                const formData = new FormData();
+                formData.append('image', file);
+                const response = await axios.post('http://localhost:5000/api/upload/', formData);
+                console.log(response);
+            }
+            uploadImg();
+
+            const newGood = {
+                item: item,
+                category: category,
+                description: description,
+                quality: quality,
+                quantity: quantity,
+                image: image
+            };
+            console.log(newGood);
+            setForm(true);
+        }
+        event.preventDefault();
+        setValidated(true);
+
+        // redirect
+        history.push('/newgoods');
+    };
+    if (form) {
+        return (<Redirect
+            to={{
+            pathname: '/itemview',
+            state: {
+                item,
+                description,
+                category,
+                quality,
+                quantity,
+                image
+            }
+        }}/>);
     }
-console.log(newGood);
-setForm(true);
-}
-event.preventDefault();
-    setValidated(true);
 
-    // redirect
-      history.push('/newgoods')
+    const onChangehandler = async(e) => {};
 
-    
-  };
-  if(form){
-    return (<Redirect to={{ pathname: '/itemview', state:{item,description,category,quality,quantity,image }}} />)
-  }
-
-  // // image resize
-  //   const resizeFile = (file) =>
-  //       new Promise((resolve) => {
-  //           Resizer.imageFileResizer(
-  //               file,
-  //               300,
-  //               300,
-  //               "PNG",
-  //               100,
-  //               0,
-  //               (uri) => {
-  //                   resolve(uri);
-  //                   console.log(uri); 
-  //               },
-  //               "base64"
-  //           );
-  //       });
-
-  //   const ImageResize = async (event) => {
-  //       try {
-  //           const file = event.target.files[0];
-  //           const image = await resizeFile(file);
-  //           setImage(image) ;
-  //       } catch (err) {
-  //           console.error(err);
-  //       }
-  //   };
-  //   console.log(image)
- // image to string
- const uploadImage = async (e) => {
-  const file = e.target.files[0];
-  const base64 = await convertBase64(file);
-  setImage(base64);
-};
-
-const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
-    return(
+    return (
         <div className="forms">
-        <h1 className="text-center formh1">What do you want to give?</h1>
-        <div className="container formview mt">
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Row>
-            <Form.Group>
-    <Form.File id="img" onChange={uploadImage} label="Image" />
-  </Form.Group>
-            </Form.Row>
-      <Form.Row>
-      <Form.Group as={Col} md="4" >
-          <Form.Label>Name</Form.Label>
+            <h1 className="text-center formh1">What do you want to give?</h1>
+            <div className="container formview mt">
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                    <Form.Row>
+                        <Form.Group>
+                            <Form.File
+                                id="img"
+                                onChange={onChangehandler}
+                                label="Image"
+                                name="image"
+                                onChange={(e) => setImage(document.querySelector('input[type=file]').files[0].name)}/>
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} md="4">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder=" Laptop, Chair, etc..."
+                                aria-describedby="inputGroupPrepend"
+                                required
+                                onChange={(e) => setItem(e.target.value)}/>
+                            <Form.Control.Feedback></Form.Control.Feedback>
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col} md="6">
+                            <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+                                Categories
+                            </Form.Label>
+                            <Form.Control
+                                as="select"
+                                className="my-1 mr-sm-2"
+                                id="category"
+                                custom
+                                onChange={(e) => setCategory(e.target.value)}>
+                                <option value="0">Select...</option>
+                                <option value="Furnitures" data-id="1">Furnitures</option>
+                                <option value="Food" data-id="2">Food</option>
+                                <option value="Tools" data-id="3">Tools</option>
+                                <option value="Babies" data-id="4">Babies</option>
+                                <option value="Electronics" data-id="5">Electronics</option>
+                                <option value="Sport" data-id="6">Sport</option>
+                                <option value="Books" data-id="7">Books</option>
+                                <option value="Other" data-id="8">Other</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col} md="4">
+                            <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+                                Quality
+                            </Form.Label>
+                            <Form.Control
+                                as="select"
+                                className="my-1 mr-sm-2"
+                                id="quality"
+                                custom
+                                onChange={(e) => setQuality(e.target.value)}>
+                                <option value="0">Select...</option>
+                                <option value="New">New</option>
+                                <option value="Fairly used">Fairly used</option>
+                                <option value="Heavily used">Heavily used</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col} md="2" controlId="quantity">
+                            <Form.Label>Quantity</Form.Label>
+                            <Form.Control
+                                required
+                                type="number"
+                                min={0}
+                                onChange={(e) => setQuantity(e.target.value)}/> {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
+                        </Form.Group>
+                    </Form.Row>
 
-          {/*<InputGroup hasValidation>*/}
-            {/*<InputGroup.Prepend>*/}
-            {/*  <InputGroup.Text id="item">What Is It</InputGroup.Text>*/}
-            {/*</InputGroup.Prepend>*/}
-            <Form.Control
-              type="text"
-              placeholder=" Laptop, Chair, etc..."
-              aria-describedby="inputGroupPrepend"
-              required
-              onChange={(e) => setItem(e.target.value)}
-            />
-            <Form.Control.Feedback>
-              
-            </Form.Control.Feedback>
-
-        </Form.Group>
-      </Form.Row>
-      <Form.Row>
-      <Form.Group as={Col} md="6" >
-      <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-    Categories
-  </Form.Label>
-  <Form.Control
-    as="select"
-    className="my-1 mr-sm-2"
-    id="category"
-    custom
-    onChange={(e) => setCategory(e.target.value)}
-  >
-      <option value="0">Select...</option>
-    <option value="Food">Food</option>
-    <option value="Home & Garden">Home & Garden</option>
-    <option value="Tools">Tools</option>
-    <option value="Babies">Babies</option>
-    <option value="Sports">Sports</option>
-      <option value="Electronics">Electronics</option>
-      <option value="Books">Books</option>
-      <option value="Others">Others</option>
-  </Form.Control>
-  </Form.Group>
-  <Form.Group as={Col} md="4">
-  <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-    Quality
-  </Form.Label>
-  <Form.Control
-    as="select"
-    className="my-1 mr-sm-2"
-    id="quality"
-    custom
-    onChange={(e) => setQuality(e.target.value)}
-  >
-      <option value="0">Select...</option>
-    <option value="New">New</option>
-    <option value="Fairly used">Fairly used</option>
-    <option value="Heavily used">Heavily used</option>
-
-
-  </Form.Control>
-  </Form.Group>
-  <Form.Group as={Col} md="2" controlId="quantity">
-     <Form.Label>Quantity</Form.Label>
-        <Form.Control
-          required
-           type="number"
-            min={0}
-           onChange={(e) => setQuantity(e.target.value)}
-             />
-          {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
-                            
-  </Form.Group>
-      </Form.Row>
-      
-      <Form.Row>
-        <Form.Group as={Col} md="12" controlId="description">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            required
-            as="textarea"
-            rows={3}
-            placeholder="Please describe the details of the item, e.g. colour, condition, size, etc..."
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <Form.Control.Feedback></Form.Control.Feedback>
-        </Form.Group>
-        </Form.Row>
-        <Button type="submit" className="formb">
+                    <Form.Row>
+                        <Form.Group as={Col} md="12" controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                required
+                                as="textarea"
+                                rows={3}
+                                placeholder="Please describe the details of the item, e.g. colour, condition, size, etc..."
+                                onChange={(e) => setDescription(e.target.value)}/>
+                            <Form.Control.Feedback></Form.Control.Feedback>
+                        </Form.Group>
+                    </Form.Row>
+                    <Button type="submit" className="formb">
                         Submit
                     </Button>
-        </Form>
+                </Form>
+            </div>
         </div>
-        </div>
-    )
+    );
 }
 export default NewItem;
