@@ -23,8 +23,8 @@ body .bg-dark {
 }
 
 .bg2 {
-  width: 60%;
-  height: 400px;
+  width: 80%;
+  /* height: 400px; */
   margin-bottom: 0;
 }
 
@@ -92,6 +92,13 @@ body .bg-dark {
 .cards {
   margin: 0 5% !important;
 }
+.card-rounded{
+  border-radius: 32px !important;
+}
+.card-width{
+  width: 300px !important;
+  min-width: 300px !important;
+}
 
 .card1 {
   width: 20rem;
@@ -147,12 +154,18 @@ body .bg-dark {
 /* video */
 .player-wrapper {
   position: relative;
-  margin-top: 20%;
+  /* margin-top: 20%; */
+  margin-top: 138px;
+  margin-bottom: 53px;
 }
 
 .react-player {
+  border-radius: 24px;
+  overflow: hidden;
   display: block;
   margin: auto;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* footer*/
@@ -170,12 +183,14 @@ body .bg-dark {
 
 .mail:hover {
   color: orange;
+  cursor: pointer;
 }
 
 #videoh {
   color: #e9d366;
   font-size: 40px;
   text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 78px;
 }
 
 /*signupforms*/
@@ -559,9 +574,9 @@ body .bg-dark {
 
 /* Media Query */
 @media only screen and (max-width: 800px) {
-  .bg2 {
+  /* .bg2 {
     display: none;
-  }
+  } */
 
   .navbar .navbar-brand {
     font-size: 25px;
@@ -601,9 +616,9 @@ body .bg-dark {
 }
 
 @media only screen and (max-width: 600px) {
-  .bg2 {
+  /* .bg2 {
     display: none;
-  }
+  } */
 
   .navbar .navbar-brand {
     font-size: 25px;

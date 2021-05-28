@@ -67,7 +67,7 @@ function Navigation() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="row justify-content-end links">
                             <Nav.Item>
-                                <Nav.Link className="footer-priv" onClick={() => setModalShow(true)}>
+                                <Nav.Link onClick={() => setModalShow(true)}>
                                   About Us
                                 </Nav.Link>
                                 <Aboutus show={modalShow} onHide={() => setModalShow(false)} />
