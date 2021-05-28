@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import moment from 'moment';
+import { useHistory } from 'react-router';
 import team from '../../assets/landingpage/team.png';
+
 // components
 import Categories from '../categories/categories';
 
 function Needer() {
-    // const [goods, setGoods] = useState({});
+    // history
+    const history = useHistory();
     // get the needer first name from state
     const first_name = useSelector((state) => state.userInfo.first_name);
     //const email = useSelector((state) => state.categoryGoods[0].giver_id);
@@ -16,6 +19,12 @@ function Needer() {
     const goodsPerCategory = useSelector((state) => state.categoryGoods);
     // setGoods(goodsPerCategory);
     console.log(goodsPerCategory);
+
+    // details handler function
+
+    const detailsHandler = (id) => {
+        history.push(`profileneeder/details/${id}`);
+    };
 
     return (
         <div className='banner'>
@@ -55,6 +64,14 @@ function Needer() {
 
                             <Card.Text>{good.category}</Card.Text>
                             <div className='btn-good-group'></div>
+
+                            <Button
+                                className='btn-good'
+                                size={'sm'}
+                                onClick={() => detailsHandler(good.goods_id)}
+                                variant='info'>
+                                Details
+                            </Button>
                         </Card.Body>
                     </Card>
                 ))}

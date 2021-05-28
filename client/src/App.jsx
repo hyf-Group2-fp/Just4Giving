@@ -19,38 +19,52 @@ import Contactus from './components/contactus/contactus';
 import ItemView from './components/giver/ItemView';
 import EditItem from './components/giver/EditItem';
 import DetailsItem from './components/giver/DetailsItem';
+import ContactGiver from './components/needer/ContactGiver';
 //for testing purposes
 // import Categories from './components/categories/categories';
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route path="/" exact component={Demo} />
-          <Route path="/signupneeder" exact component={SignUpNeeder} />
-          <Route path="/signupgiver" exact component={SignUpGiver} />
-          <Route path="/profilegiver" exact component={Giver} />
-          <Route path="/profileneeder" exact component={Needer} />
-          <Route path="/newgoods" exact component={NewItem} />
-          <Route path="/itemview" component={ItemPreview} />
-          <Route path="/login" exact component={Login}></Route>
-          <Route path="/contactus" component={Contactus} />
-          <Route
-            path="/profilegiver/item/:id"
-            exact
-            component={ItemView}
-          ></Route>
-          <Route path="/edititem/:id" exact component={EditItem}></Route>
-          <Route path="/detailsitem/:id" exact component={DetailsItem}></Route>
-          {/* for testing purpose */}
-          {/* <Route path="/categories" exact component ={Categories}></Route> */}
-        </Switch>
-        <Footer />
-      </Router>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <Router>
+                <Navigation />
+                <Switch>
+                    <Route path='/' exact component={Demo} />
+                    <Route
+                        path='/signupneeder'
+                        exact
+                        component={SignUpNeeder}
+                    />
+                    <Route path='/signupgiver' exact component={SignUpGiver} />
+                    <Route path='/profilegiver' exact component={Giver} />
+                    <Route path='/profileneeder' exact component={Needer} />
+                    <Route path='/newgoods' exact component={NewItem} />
+                    <Route path='/itemview' component={ItemPreview} />
+                    <Route path='/login' exact component={Login}></Route>
+                    <Route path='/contactus' component={Contactus} />
+                    <Route
+                        path='/profilegiver/item/:id'
+                        exact
+                        component={ItemView}></Route>
+                    <Route
+                        path='/edititem/:id'
+                        exact
+                        component={EditItem}></Route>
+                    <Route
+                        path='/detailsitem/:id'
+                        exact
+                        component={DetailsItem}></Route>
+                    <Route
+                        path='/profileneeder/details/:id'
+                        exact
+                        component={ContactGiver}></Route>
+                    {/* for testing purpose */}
+                    {/* <Route path="/categories" exact component ={Categories}></Route> */}
+                </Switch>
+                <Footer />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
