@@ -24,7 +24,7 @@ export const userNeeder = (user) => {
 export const signedUserInfo =(user) => {
     return {
         type:'SIGNED_USER_INFO',
-        payload:user ,
+        payload: user,
     }
 }
 

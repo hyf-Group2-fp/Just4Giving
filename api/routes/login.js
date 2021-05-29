@@ -18,7 +18,6 @@ app.get('/secret', withAuth, function (req, res) {
   res.send('You are visiting a protected page.');
 });
 
-
 app.post('/authenticate', async (req, res) => {
   const {
     email,
@@ -57,7 +56,7 @@ app.post('/authenticate', async (req, res) => {
       });
 
 
-    res.cookie('token', token, { maxAge: 3600000, httpOnly: true });
+      res.cookie('token', token, { maxAge: 3600000 });
 
       //send token and data
       res.status(200).json({
@@ -74,9 +73,29 @@ app.post('/authenticate', async (req, res) => {
   });
 });
 
-app.get('/checkToken', withAuth, function (req, res) {
-  res.sendStatus(200);
+app.get('/checkToken', withAuth, async function (req, res) {
+  if (res.locals.authenticated_user) {
+    const user = await User.findOne({
+      where: {
+        email: res.locals.authenticated_user
+      }
+    });
+
+    res.status(200).json({
+      user
+    });
+  }
+  else {
+    res.status(500);
+  }
+
 });
+
+app.post('/logout',function (req, res) {
+  res.clearCookie('token');
+  res.status(200).json();
+});
+
 
 
 module.exports = app;

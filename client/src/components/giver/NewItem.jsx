@@ -21,43 +21,28 @@ function NewItem() {
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
 
-            //name of the image 
-            //document.querySelector('input[type=file]').files[0].name
-
-            const file = document
-                .querySelector('input[type=file]')
-                .files[0];
-
+        if (form.checkValidity() === true) {
             //upload image
             const uploadImg = async() => {
                 const formData = new FormData();
-                formData.append('image', file);
+                formData.append('image', image, image.name);
                 const response = await axios.post('http://localhost:5000/api/upload/', formData);
-                console.log(response);
             }
-            uploadImg();
-
-            const newGood = {
-                item: item,
-                category: category,
-                description: description,
-                quality: quality,
-                quantity: quantity,
-                image: image
-            };
-            console.log(newGood);
-            setForm(true);
+            uploadImg()
+              .then(() => {
+                  const newGood = {
+                      item: item,
+                      category: category,
+                      description: description,
+                      quality: quality,
+                      quantity: quantity,
+                      image: image
+                  };
+                  setForm(true);
+                  setValidated(true);
+              });
         }
-        event.preventDefault();
-        setValidated(true);
-
-        // redirect
-        history.push('/newgoods');
     };
     if (form) {
         return (<Redirect
@@ -74,8 +59,6 @@ function NewItem() {
         }}/>);
     }
 
-    const onChangehandler = async(e) => {};
-
     return (
         <div className="forms">
             <h1 className="text-center formh1">What do you want to give?</h1>
@@ -85,10 +68,9 @@ function NewItem() {
                         <Form.Group>
                             <Form.File
                                 id="img"
-                                onChange={onChangehandler}
                                 label="Image"
                                 name="image"
-                                // onChange={(e) => setImage(document.querySelector('input[type=file]').files[0].name)}
+                                onChange={(event) => setImage(event.target.files[0])}
                                 />
                         </Form.Group>
                     </Form.Row>

@@ -11,7 +11,6 @@ const ItemPreview = (props) => {
 
   // access the state
   const giver_id = useSelector((state) => state.userInfo.user_id);
-  // const category_id = useSelector(state => state.goodsInfo.)
 
   const url = `http://localhost:5000/api/goods`;
   // props
@@ -57,7 +56,7 @@ const ItemPreview = (props) => {
     giver_id: giver_id,
     item_name: item,
     description: description,
-    image: image,
+    image: image.name,
     quality: quality,
     quantity: quantity,
     category: category,
@@ -70,27 +69,19 @@ const ItemPreview = (props) => {
   const handleNewItem = async () => {
     try {
       const response = await axios.post(url, newItem);
-      console.log(response);
     } catch (err) {
       console.error(err);
     }
     history.push('/profilegiver');
-  }; 
+  };
 
-  //wait for the image
-  const getImg = () => {
-    setTimeout(function(){
-      document.getElementById('preview').src = 'assets/images/uploads/'+image;
-  },2000);
-  }
-  getImg();
   return (
     <div>
       <h1 className="text-center formh1">Successfully JUST4GIVING it!</h1>
       <div className="container itemview">
         {/* preview */}
         <img
-             src=""
+             src={`assets/images/uploads/${image.name}`}
              id="preview"
              width="477"
              height="477"

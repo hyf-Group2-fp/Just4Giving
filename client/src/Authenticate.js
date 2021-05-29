@@ -20,7 +20,7 @@ function Authenticate() {
         },
       )
       .then(response => {
-        dispatch(signedUserInfo(response));
+        dispatch(signedUserInfo(response.data.user));
       })
   }, []);
 
