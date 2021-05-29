@@ -430,6 +430,9 @@ footer{
 }
 
 /* starts needer's categories panel */
+.categories-container{
+  height: 2000px;
+}
 #categories-header {
   background-color: #0067cf;
   padding: 14px 0px;
@@ -578,7 +581,6 @@ footer{
 .category-image:hover{
   transform:scale(1.1);
 }
-
 /* cards - goods */
 /* card preview: images */
 #preview{

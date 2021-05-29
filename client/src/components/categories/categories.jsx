@@ -108,10 +108,10 @@ function Categories() {
                         ))}
                 </div>
             </div>
-            <div id='main'>
+            {/* <div id='main'> */}
                 {/* this div will be moved together with the panel,
               it can contains the cards */}
-            </div>
+            {/* </div> */}
         </div>
     );
 }
