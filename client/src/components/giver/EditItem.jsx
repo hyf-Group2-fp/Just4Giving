@@ -99,6 +99,7 @@ function EditItem() {
                                 aria-describedby='inputGroupPrepend'
                                 required
                                 onChange={(e) => setItem(e.target.value)}
+                                value={item}
                             />
                             <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
@@ -154,6 +155,7 @@ function EditItem() {
                                 className='my-1 mr-sm-2'
                                 id='quality'
                                 custom
+                                value={quality}
                                 onChange={(e) => setQuality(e.target.value)}>
                                 <option value='0'>Select...</option>
                                 <option value='New'>New</option>
@@ -169,6 +171,7 @@ function EditItem() {
                                 required
                                 type='number'
                                 min={0}
+                                value={quantity}
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
                             {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
@@ -182,6 +185,7 @@ function EditItem() {
                                 required
                                 as='textarea'
                                 rows={3}
+                                value={description}
                                 placeholder='Please describe the details of the item, e.g. colour, condition, size, etc...'
                                 onChange={(e) => setDescription(e.target.value)}
                             />
