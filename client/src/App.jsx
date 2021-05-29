@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,12 +19,12 @@ import ItemView from './components/giver/ItemView';
 import EditItem from './components/giver/EditItem';
 import DetailsItem from './components/giver/DetailsItem';
 import ContactGiver from './components/needer/ContactGiver';
-//for testing purposes
-// import Categories from './components/categories/categories';
+import Authenticate from "./Authenticate";
 
 function App() {
     return (
         <div className='App'>
+            <Authenticate />
             <Router>
                 <Navigation />
                 <Switch>

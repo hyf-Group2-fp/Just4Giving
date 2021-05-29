@@ -5,8 +5,6 @@ import {useSelector} from "react-redux";
 //import Disclaimer from "../disclaimer/Disclaimer";
 import Aboutus from "../aboutus/Aboutus";
 
-
-
 function Navigation() {
     //modal disclaimer
     const [modalShow, setModalShow] = useState(false);
