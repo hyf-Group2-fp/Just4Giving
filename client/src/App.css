@@ -369,19 +369,37 @@ footer{
 }
 
 /* giver profile*/
-.banner {
+.user-space {
   background-image: url('./assets/giver/banner.png');
   background-repeat: no-repeat;
-  background-size: 2000px 272px;
-  /* background-size: 2000px 220px; */
-  text-align: right;
+  background-position: center;
+  background-size: cover;
+  height: 233px;
+  /* text-align: right; */
+}
+.banner{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 233px;
 }
 
 .welcome {
   color: orange;
   margin-right: 5%;
+  /*
   padding-top: 2%;
-  padding-bottom: 122px;
+  padding-bottom: 122px; */
+}
+.avatar{
+  margin-left: 5%;
+  background-image: url('./assets/giver/user.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:contain;
+  width: 180px;
+  height: 180px;
 }
 
 .welcome p {
