@@ -247,7 +247,7 @@ footer{
   /* margin-left: 0;*/
   
 }
-.form-row{
+.form-row-custom{
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
@@ -255,6 +255,7 @@ footer{
   margin-right: auto !important;
   width: 80%;
 }
+
 
 .inputs {
   width: 30rem;

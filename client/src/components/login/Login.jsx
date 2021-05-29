@@ -75,7 +75,7 @@ function Login() {
                     noValidate
                     validated={validated}
                     onSubmit={handleSubmit}>
-                    <Form.Row>
+                    <Form.Row className="form-row-custom">
                         <Form.Group className="inputs" controlId="email">
                             <Form.Label>E-mail</Form.Label>
                             <Form.Control required type="email" onChange={(e) => setEmail(e.target.value)}/>
@@ -85,7 +85,7 @@ function Login() {
                             </Form.Control.Feedback>{" "}
                         </Form.Group>
                     </Form.Row>
-                    <Form.Row>
+                    <Form.Row className="form-row-custom">
                         <Form.Group className="inputs" controlId="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
