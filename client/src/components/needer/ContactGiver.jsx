@@ -75,19 +75,77 @@ const ContactGiver = () => {
                 from: "just4giving.hyf@gmail.com",
                 subject: subject,
                 content: `
-                <h2>Thank you for using Just4Giving</h2>
-                <h2>You have a new needer who are interested in your donated ${subject}</h2>
-                <p>The needer name :  ${userInfo.first_name}  </p>
-                <p>the needer email : ${userInfo.email}</p>
-                <p>About the needer :  ${userInfo.description}</p>
-                <p>Message from the needer is :  ${message}</p>
+                <div
+            style="
+                max-width: 750px;
+                margin: auto;
+                border: 10px solid #ddd;
+                padding: 100px 20px;
+                font-size: 110%;
+                background: #ffffcc;
+                font-weight: bold;
+            "
+        >
+            <h2
+                style="
+                    max-width: 400px;
+                    text-align: center;
+                    color: #e9d366;
+                    margin: auto;
+                    font-size: 35px;
+                    text-shadow: 2px 2px 4px #000000;
+                    padding-top: 0;
+                    background: #66cbdf;
+                "
+            >
+                JUST4GIVING
+            </h2>
+            <p style="text-align: center">
+                You have a new needer who is interested in your donated item
+                ${subject}
+            </p>
+            <h3 style="text-align: center">Details of the needer</h3>
+            <div style="max-width: 600px; margin: auto">
+                <table style="border-collapse: collapse; width: 100%">
+                    <tr>
+                        <td>Name</td>
+                        <td>: ${userInfo.first_name}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>: ${userInfo.email}</td>
+                    </tr>
+                    <tr>
+                        <td>About the needer</td>
+                        <td>: ${userInfo.description}</td>
+                    </tr>
+                    <tr>
+                        <td>Message from the needer</td>
+                        <td>: ${message}</td>
+                    </tr>
+                </table>
+            </div>
+            <h2 style="text-align: center">
+                Thank you for donating on JUST4GIVING
+            </h2>
+            <div style="background: #66cbdf; padding: 5%">
+                <h3 style="margin: auto">
+                    " Globally, helping a stranger is the most popular form of
+                    giving. In a typical month, a massive1.9 billion people will
+                    help a stranger."
+                </h3>
+                <h3 style="text-align: right; padding-right: 20px">
+                    Source: CAF – World Giving Index
+                </h3>
+            </div>
+        </div>
                 `,
             };
             console.log(mailInfo);
             try {
                 const response = await axios.post(url, mailInfo).then((res) => {
                     console.log(res.data);
-                    setErrorMessage("email successfully sent to giver");
+                    setErrorMessage("Email successfully sent to giver");
                 });
             } catch (error) {
                 setErrorMessage("Something wrong happened, try again later");
@@ -120,7 +178,7 @@ const ContactGiver = () => {
                 </div>
 
                 <div className="giverform">
-                    <p>Email of the giver : {giver}</p>
+                    {/* <p>`Email of the giver : ${giver}`</p> */}
 
                     <Form
                         noValidate
@@ -145,7 +203,7 @@ const ContactGiver = () => {
                                 />{" "}
                                 <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                                 <Form.Control.Feedback type="invalid">
-                                    Explain your situation in at least 5 letters
+                                    Write your message in at least 5 letters
                                 </Form.Control.Feedback>
                             </Form.Group>
                         </Form.Row>
