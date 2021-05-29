@@ -614,6 +614,34 @@ footer{
   width: 230px;
 }
 
+/*Contact giver*/
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+.flex-child p {
+    text-align: left;
+}
+.flex-child h4 {
+    text-align: left;
+}
+.flex-child:first-child {
+    margin-right: 20px;
+}
+.itemh {
+    text-transform: uppercase;
+    color: blue;
+}
+.giverD {
+    text-align: left;
+}
+.giverform {
+    text-align: left;
+}
+
 
 /* Media Query */
 @media only screen and (max-width: 800px) {
