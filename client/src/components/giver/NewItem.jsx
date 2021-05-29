@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Col, Button, InputGroup} from 'react-bootstrap';
+import {Form, Col, Button} from 'react-bootstrap';
 import {Redirect, useHistory} from 'react-router-dom';
 import axios from 'axios';
 //import Resizer from 'react-image-file-resizer';
@@ -32,7 +32,6 @@ function NewItem() {
             const file = document
                 .querySelector('input[type=file]')
                 .files[0];
-            const url = 'http://localhost:5000/api/upload/';
 
             //upload image
             const uploadImg = async() => {
@@ -89,7 +88,8 @@ function NewItem() {
                                 onChange={onChangehandler}
                                 label="Image"
                                 name="image"
-                                onChange={(e) => setImage(document.querySelector('input[type=file]').files[0].name)}/>
+                                // onChange={(e) => setImage(document.querySelector('input[type=file]').files[0].name)}
+                                />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>

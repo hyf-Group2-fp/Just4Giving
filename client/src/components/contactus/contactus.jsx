@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+// import axios from 'axios';
+// import { Redirect } from 'react-router-dom';
 import pic from '../../assets/login/signin.png';
 import { useForm, ValidationError } from '@formspree/react';
 
 //Redux
-import { useDispatch, useSelector } from 'react-redux';
-import { userGiver, userNeeder } from '../../redux/actions/userInfoAction.js';
+import { useDispatch } from 'react-redux';
+//import { userGiver, userNeeder } from '../../redux/actions/userInfoAction.js';
 
 function Contactus() {
     const [first_name, setFirst_name] = useState('');
