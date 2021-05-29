@@ -1,4 +1,4 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Button } from 'react-bootstrap';
 import moment from 'moment';
@@ -27,19 +27,26 @@ function Needer() {
     };
 
     return (
-        <div className='banner'>
-            <div className='welcome'>
-                <h1> Hallo {first_name} !</h1>
-                <p>Welcome to JUST4GIVING </p>
-            </div>
+        <div className="user-space">
+        <div className="banner">
+          <div className="avatar"></div>
+          <div className="welcome">
+            <h1> Hello {first_name} !</h1>
+            <p>Welcome to JUST4GIVING </p>
+          </div>
+        </div>
+        
+           <div id='category-box'>
             <Categories />
+            </div>
 
-            <div
-                style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-evenly',
-                }}>
+            <div id="main" 
+                // style={{
+                //     display: 'flex',
+                //     flexWrap: 'wrap',
+                //     justifyContent: 'space-evenly',
+                // }}
+                >
                 {Object.values(goodsPerCategory).map((good) => (
                     <Card
                         className='itemCards'
@@ -76,6 +83,7 @@ function Needer() {
                     </Card>
                 ))}
             </div>
+            
         </div>
     );
 }
