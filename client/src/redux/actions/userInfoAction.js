@@ -22,11 +22,9 @@ export const userNeeder = (user) => {
 };
 
 export const signedUserInfo =(user) => {
-    return{
+    return {
         type:'SIGNED_USER_INFO',
         payload:user ,
-
-
     }
 }
 

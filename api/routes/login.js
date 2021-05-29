@@ -13,7 +13,6 @@ const {
 } = require('../config');
 
 const app = express();
-app.use(cors());
 
 app.get('/secret', withAuth, function (req, res) {
   res.send('You are visiting a protected page.');
@@ -31,35 +30,18 @@ app.post('/authenticate', async (req, res) => {
   const {error} = registerValidation(req.body);
 
   try {
-
     user = await User.findOne({
       where: {
         email
       }
     });
   } catch (e) {
-    /* stop further execution in this callback
-    send 401 */
     res.status(401).send('no access').end();
   }
   //no user found
   if (!user || error) {
-    /*email does not exist
-    maybe redirect to a route
-    res.status(401).location('/foo').end();*/
     res.status(401).send('no access').end();
   }
-
-  var isValidPassword = function (userpass, password) {
-
-    return bcrypt.compareSync(password, userpass);
-
-  }
-  /*
-  confront
-  password from the request
-  ser.password from the response
-  */
 
   bcrypt.compare(password, user.password, function (err, isValid) {
     if (isValid) {
@@ -73,6 +55,10 @@ app.post('/authenticate', async (req, res) => {
       const token = jwt.sign(payload, JWT_SECRET, {
         expiresIn: '1h'
       });
+
+
+    res.cookie('token', token, { maxAge: 3600000, httpOnly: true });
+
       //send token and data
       res.status(200).json({
         token,

@@ -29,7 +29,13 @@ function Login() {
             //console.log(userdata);
             try {
                 const response = await axios
-                    .post("http://localhost:5000/api/authenticate", userdata)
+                    .post(
+                      "http://localhost:5000/api/authenticate",
+                      userdata,
+                      {
+                          withCredentials: true
+                      },
+                    )
                     .then((res) => {
                         // dispatch action
                         const user = res.data.user ;

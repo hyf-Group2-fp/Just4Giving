@@ -2,7 +2,6 @@ const express = require("express");
 
 // initialize express
 const app = express();
-//app.use(cors());
 
 app.get("/upload/test", async (req, res) => {
     res.send(

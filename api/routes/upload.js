@@ -5,7 +5,6 @@ const multer = require("multer");
 
 // initialize express
 const app = express();
-app.use(cors());
 
 //const dest = "./public/uploads/images";
 const dest = "./client/public/assets/images/uploads";
