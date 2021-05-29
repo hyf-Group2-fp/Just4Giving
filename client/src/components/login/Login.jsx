@@ -5,6 +5,7 @@ import pic from '../../assets/login/signin.png';
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux";
 import { signedUserInfo, signedUserError} from "../../redux/actions/userInfoAction";
+import Logout from "../../Logout";
 function Login() {
     const [validated,
         setValidated] = useState(false);
@@ -69,6 +70,7 @@ function Login() {
     }
     return (
         <div className="forms">
+            <Logout />
             <h1 className="text-center formh1">Sign-in</h1>
             <Container>
                 <Row>
