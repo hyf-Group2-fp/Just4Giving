@@ -9,6 +9,8 @@ import Logout from "../../Logout";
 function Login() {
     const [validated,
         setValidated] = useState(false);
+    const [authenticated,
+        setAuthenticated] = useState(false);
     const [email,
         setEmail] = useState("");
     const [password,
@@ -48,6 +50,7 @@ function Login() {
                         //     alert('needer')
                         //     return;
                         // }
+                        setAuthenticated(true);
                     })
             } catch (error) {
                 setErrorMessage("Email does not exist, Please try Sign Up");
@@ -62,11 +65,13 @@ function Login() {
     //choose what to do pass props with the data of the user
     const isGiver = useSelector(state => state.userInfo.is_giver) ;
     const isNeeder = useSelector(state => state.userInfo.is_needer) ;
-    if (isGiver) {
-        return (<Redirect to={{ pathname: '/profilegiver' }}
-/>)
-    } else if (isNeeder) {
-        return (<Redirect to={{ pathname: '/profileneeder'}}/>)
+    if (authenticated) {
+        if (isGiver) {
+            return (<Redirect to={{pathname: '/profilegiver'}}
+            />)
+        } else if (isNeeder) {
+            return (<Redirect to={{pathname: '/profileneeder'}}/>)
+        }
     }
     return (
         <div className="forms">
