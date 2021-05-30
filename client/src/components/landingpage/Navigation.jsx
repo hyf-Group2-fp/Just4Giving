@@ -38,7 +38,7 @@ function Navigation() {
                           <Aboutus show={modalShow} onHide={() => setModalShow(false)} />
                         </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/login">Sign Out</Nav.Link>
+                                <Nav.Link href="/logout">Sign Out</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>

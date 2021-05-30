@@ -10,6 +10,7 @@ import Footer from './components/landingpage/Footer';
 import SignUpNeeder from './components/register/SignUpNeeder';
 import SignUpGiver from './components/register/signUpGiver';
 import Login from './components/login/Login';
+import LogoutPage from './components/login/LogoutPage';
 import Giver from './components/giver/Giverprofile';
 import Needer from './components/needer/NeederProfile';
 import NewItem from './components/giver/NewItem';
@@ -40,6 +41,7 @@ function App() {
                     <Route path='/newgoods' exact component={NewItem} />
                     <Route path='/itemview' component={ItemPreview} />
                     <Route path='/login' exact component={Login}></Route>
+                    <Route path='/logout' exact component={LogoutPage}></Route>
                     <Route path='/contactus' component={Contactus} />
                     <Route
                         path='/profilegiver/item/:id'

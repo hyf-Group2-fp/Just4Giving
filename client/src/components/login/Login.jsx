@@ -28,32 +28,20 @@ function Login() {
             const userdata = {
                 email: email,
                 password: password,
-                withCredentials: true,
-                credentials: 'include'
             };
-            //console.log(userdata);
             try {
-                const response = await axios
-                    .post(
-                      "http://localhost:5000/api/authenticate",
-                      userdata,
-                      {
-                          withCredentials: true
-                      },
-                    )
-                    .then((res) => {
-                        // dispatch action
-                        const user = res.data.user ;
-                        dispatch(signedUserInfo(user)) ;
-                        //  if (res.data.user.is_giver === true) {
-                        //     alert('giver') ;
-                        //      return;
-                        // } else if (res.data.user.is_needer === true) {
-                        //     alert('needer')
-                        //     return;
-                        // }
-                        setAuthenticated(true);
-                    })
+                axios.post(
+                  "http://localhost:5000/api/authenticate",
+                  userdata,
+                  {
+                      withCredentials: true
+                  },
+                ).then((res) => {
+                    // dispatch action
+                    const user = res.data.user ;
+                    dispatch(signedUserInfo(user)) ;
+                    setAuthenticated(true);
+                })
             } catch (error) {
                 setErrorMessage("Email does not exist, Please try Sign Up");
                 // alert("please check your credentials")
@@ -77,7 +65,6 @@ function Login() {
     }
     return (
         <div className="forms">
-            <Logout />
             <h1 className="text-center formh1">Sign-in</h1>
             <Container>
                 <Row>

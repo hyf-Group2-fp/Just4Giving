@@ -7,10 +7,6 @@ function Logout() {
   const dispatch = useDispatch();
   const userInfo = useSelector(state => state.userInfo);
 
-  function eraseCookie(name) {
-    document.cookie = name+'=; Max-Age=-99999999;';
-  }
-
   useEffect(() => {
     if (!userInfo || !userInfo?.signedIn) {
       return;
@@ -19,12 +15,12 @@ function Logout() {
     axios
       .post(
         "http://localhost:5000/api/logout",
+        {},
         {
           withCredentials: true
         },
       )
       .then(response => {
-        eraseCookie('token');
         dispatch(signedUserOut(response));
       })
   }, [userInfo?.signedIn]);

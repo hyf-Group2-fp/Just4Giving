@@ -59,18 +59,7 @@ app.post('/authenticate', async (req, res) => {
         expiresIn: '1h'
       });
 
-      app.use(cors({
-        origin: true,
-        credentials: true
-      }));
-
-
-      res.cookie('token', token, {
-
-        secure: false, // set to true if your using https
-        httpOnly: true,
-      });
-
+      res.cookie('token', token, { maxAge: 3600000, httpOnly: true });
 
       //send token and data
       res.status(200).json({
@@ -105,7 +94,7 @@ app.get('/checkToken', withAuth, async function (req, res) {
 });
 
 app.post('/logout', function (req, res) {
-  res.clearCookie('token');
+  res.cookie('token', '', { maxAge: 0, httpOnly: true });
   res.status(200).json();
 });
 
