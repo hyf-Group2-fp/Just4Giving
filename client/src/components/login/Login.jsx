@@ -27,7 +27,9 @@ function Login() {
         } else {
             const userdata = {
                 email: email,
-                password: password
+                password: password,
+                withCredentials: true,
+                credentials: 'include'
             };
             //console.log(userdata);
             try {

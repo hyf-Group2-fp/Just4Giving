@@ -6,7 +6,9 @@ const User = require('../models/User');
 var bcrypt = require('bcrypt');
 const cors = require('cors');
 //validation
-const { registerValidation } = require('../utils/registerValidation')
+const {
+  registerValidation
+} = require('../utils/registerValidation')
 
 const {
   JWT_SECRET
@@ -26,7 +28,9 @@ app.post('/authenticate', async (req, res) => {
 
   let user = null;
   //validation
-  const {error} = registerValidation(req.body);
+  const {
+    error
+  } = registerValidation(req.body);
 
   try {
     user = await User.findOne({
@@ -55,8 +59,18 @@ app.post('/authenticate', async (req, res) => {
         expiresIn: '1h'
       });
 
+      app.use(cors({
+        origin: true,
+        credentials: true
+      }));
 
-      res.cookie('token', token, { maxAge: 3600000 });
+
+      res.cookie('token', token, {
+
+        secure: false, // set to true if your using https
+        httpOnly: true,
+      });
+
 
       //send token and data
       res.status(200).json({
@@ -84,14 +98,13 @@ app.get('/checkToken', withAuth, async function (req, res) {
     res.status(200).json({
       user
     });
-  }
-  else {
+  } else {
     res.status(500);
   }
 
 });
 
-app.post('/logout',function (req, res) {
+app.post('/logout', function (req, res) {
   res.clearCookie('token');
   res.status(200).json();
 });
