@@ -417,10 +417,16 @@ footer{
 
 /*new item posting*/
 .itemview {
-  text-align: left;
+  /* text-align: left; */
   font-size: 20px;
   margin-top: 20%;
   margin-right: 10%;
+  background-color: #fff;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-radius: 18px;
 }
 /* error message*/
 .error {
@@ -513,6 +519,34 @@ footer{
   margin-left: 10px;
   margin-right: 10px;
 }
+/* detailsitem */
+.detailsItemContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  height: 600px;
+  /* 
+  uncomment to
+  see the height of the div
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+  */ 
+}
+
+.detailsItem{
+  width: 70%;
+  border-radius: 25px !important;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+}
+.detailsItem .card{
+  border-radius: 25px !important;
+}
+.detailsrows{
+  padding: 20px;
+}
 
 /* contact-us form*/
 #formcontact {
@@ -582,6 +616,7 @@ footer{
 /* card preview: images */
 #preview{
   object-fit: cover;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.2);
 }
 .card-container{
   /*   */

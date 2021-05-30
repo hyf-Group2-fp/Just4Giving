@@ -23,14 +23,15 @@ const DetailsItem = () => {
     fetchItem();
   }, []);
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    <div className="detailsItemContainer"
+      // style={{
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      // }}
     >
-      <Card style={{ width: '18rem' }}>
+      <div className="detailsItem" >
+      <Card>
         <Card.Img variant="top" src="" />
         <Card.Body>
           <Card.Title>Good: {good.item_name}</Card.Title>
@@ -44,10 +45,11 @@ const DetailsItem = () => {
               .startOf('seconds')
               .fromNow()}
           </ListGroupItem>
-          <ListGroupItem>Category: {good.category}</ListGroupItem>
+          <ListGroupItem className="detailsrows">Category: {good.category}</ListGroupItem>
         </ListGroup>
-        <Card.Text>Description: {good.description}</Card.Text>
+        <Card.Text className="detailsrows">Description: {good.description}</Card.Text>
       </Card>
+      </div>
     </div>
   );
 };
