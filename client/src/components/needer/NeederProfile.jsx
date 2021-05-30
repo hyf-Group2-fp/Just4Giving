@@ -56,6 +56,7 @@ function Needer() {
               src={'assets/images/uploads/'+good.image}
                 // src={team}
                 alt='good'
+                className='img-center'
                 style={{ width: '18rem' }}
               />
               <Card.Body>
