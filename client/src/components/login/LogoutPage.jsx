@@ -11,15 +11,9 @@ function LogoutPage() {
         <h1 className="text-center formh1">You are logged out</h1>
         <Container>
           <Row>
-            <Col lg='4'></Col>
-            <Col>
-            </Col>
-          </Row>
-          <Row>
             <Col>
               <img className="bg3" src={pic} alt="helping hands"/>
             </Col>
-            <Col lg='4'></Col>
           </Row>
         </Container>
       </div>
