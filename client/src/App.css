@@ -547,7 +547,12 @@ footer{
 .detailsrows{
   padding: 20px;
 }
-
+.detailPict{
+  margin-left: 0;
+  margin-right: 0;
+  object-fit: contain;
+  width: 30%;
+}
 /* contact-us form*/
 #formcontact {
   width: 180px;
