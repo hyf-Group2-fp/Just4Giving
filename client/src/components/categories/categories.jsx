@@ -56,14 +56,14 @@ function Categories() {
         const toggleBtn = document.getElementById('open-close-btn');
 
         document.getElementById('categories-panel').style.left = '0px';
-        document.getElementById('main').style.marginLeft = '250px';
+        document.getElementById('main').style.marginLeft = '262px';
+        //document.getElementById('main').style.marginLeft = '250px';
         toggleBtn.classList.add('closebtn');
         toggleBtn.classList.remove('openbtn');
     };
 
     const closeNav = () => {
         const toggleBtn = document.getElementById('open-close-btn');
-
         document.getElementById('categories-panel').style.left = '-256px';
         document.getElementById('main').style.marginLeft = '0';
         toggleBtn.classList.add('openbtn');

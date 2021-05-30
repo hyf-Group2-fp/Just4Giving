@@ -585,6 +585,7 @@ footer{
   transition: margin-left 0.5s;
   /* If you want a transition effect */
   padding: 20px;
+  margin-left: 28px;
 }
 
 /* categories */
