@@ -53,7 +53,8 @@ function Needer() {
               style={{ flexGrow: 1, width: '18rem' }}
               key={good.goods_id}>
               <Card.Img
-                src={team}
+              src={'assets/images/uploads/'+good.image}
+                // src={team}
                 alt='good'
                 style={{ width: '18rem' }}
               />
