@@ -635,6 +635,7 @@ footer{
 /* giver  goods view */
 .itemCards {
   margin: 12px;
+  max-width: 320px !Important;
   /* min-width: 314px !Important;
   max-width: 320px !Important; */
 }
