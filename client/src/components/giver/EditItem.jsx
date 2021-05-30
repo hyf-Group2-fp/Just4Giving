@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
 //import { useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import {getCategoryId} from "./utils";
 
 function EditItem() {
     const [validated, setValidated] = useState(false);
@@ -33,13 +34,6 @@ function EditItem() {
             setQuantity(good.quantity);
             setDescription(good.description);
             setQuality(good.quality);
-            // if (good.quality == 1) {
-            //   setQuality('New');
-            // } else if (good.quality == 2) {
-            //   setQuality('Fairly used');
-            // } else {
-            //   setQuality('used');
-            // }
         };
         fetchGood();
     }, []);
@@ -52,20 +46,20 @@ function EditItem() {
             event.preventDefault();
             event.stopPropagation();
         } else {
-            const newGood = {
+            const updatedGood = {
                 item_name: item,
                 category: category,
+                category_id: getCategoryId(category),
                 description: description,
                 quality: quality,
                 quantity: quantity,
                 image: image,
             };
-            console.log(newGood);
 
             try {
                 const response = await axios.put(
                     `http://localhost:5000/api/goods/${id}`,
-                    newGood
+                    updatedGood
                 );
                 console.log('response', response);
             } catch (err) {

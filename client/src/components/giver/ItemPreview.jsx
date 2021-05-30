@@ -4,6 +4,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {getCategoryId} from "./utils";
 
 const ItemPreview = (props) => {
   // use history
@@ -21,35 +22,7 @@ const ItemPreview = (props) => {
   const quantity = props.location.state.quantity;
   const image = props.location.state.image;
 
-  let category_id = 0;
-  if (category === 'Furnitures') {
-    category_id = 1;
-  }
-  if (category === 'Food') {
-    category_id = 2;
-  }
-  if (category === 'Tools') {
-    category_id = 3;
-  }
-  if (category === 'Babies') {
-    category_id = 4;
-  }
-  if (category === 'Electronics') {
-    category_id = 5;
-  }
-  if (category === 'Sport') {
-    category_id = 6;
-  }
-  if (category === 'Books') {
-    category_id = 7;
-  }
-  if (category === 'Other') {
-    category_id = 8;
-  }
-  if (image!==''){
-    
-  }
-  console.log(category_id, image);
+  let category_id = getCategoryId(category);
 
   // good object
   const newItem = {
