@@ -2,6 +2,11 @@
 
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  background-color:#FBF5F5;
 }
 
 body {
@@ -23,8 +28,8 @@ body .bg-dark {
 }
 
 .bg2 {
-  width: 60%;
-  height: 400px;
+  width: 80%;
+  /* height: 400px; */
   margin-bottom: 0;
 }
 
@@ -92,6 +97,13 @@ body .bg-dark {
 .cards {
   margin: 0 5% !important;
 }
+.card-rounded{
+  border-radius: 32px !important;
+}
+.card-width{
+  width: 300px !important;
+  min-width: 300px !important;
+}
 
 .card1 {
   width: 20rem;
@@ -147,15 +159,26 @@ body .bg-dark {
 /* video */
 .player-wrapper {
   position: relative;
-  margin-top: 20%;
+  /* margin-top: 20%; */
+  margin-top: 138px;
+  margin-bottom: 53px;
 }
 
 .react-player {
+  border-radius: 24px;
+  overflow: hidden;
   display: block;
   margin: auto;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* footer*/
+footer{
+  /* position:absolute;
+  bottom:0;
+  width:100%; */
+}
 .github {
   color: white;
 }
@@ -170,18 +193,21 @@ body .bg-dark {
 
 .mail:hover {
   color: orange;
+  cursor: pointer;
 }
 
 #videoh {
   color: #e9d366;
   font-size: 40px;
   text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 78px;
 }
 
 /*signupforms*/
 .forms {
   text-align: left;
   background-color: #fbf5f5;
+  
 }
 
 .formh1 {
@@ -214,12 +240,25 @@ body .bg-dark {
   width: 180px;
   height: 50px;
   font-size: 22px;
-  margin-left: 35%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  /* text-align: center; */
+  /* margin-left: 0;*/
+  
 }
+.form-row-custom{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 80%;
+}
+
 
 .inputs {
   width: 30rem;
-  padding-left: 23%;
 }
 
 .bg3 {
@@ -232,9 +271,9 @@ body .bg-dark {
 }
 
 .signincard {
-  width: 40rem;
+  min-width: 40rem;
   text-align: left;
-  margin-left: 35%;
+  /* margin-left: 35%; */
 }
 
 /* modal disclaimer */
@@ -260,9 +299,8 @@ body .bg-dark {
 }
 .disclaimer-text {
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 21px;
   line-height: 27px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
 }
 #terms {
   background-color: #8ec4de;
@@ -289,9 +327,8 @@ body .bg-dark {
 .disclaimer-text,
 .aboutus-text {
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 21px;
   line-height: 27px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
 }
 
 #terms,
@@ -333,18 +370,37 @@ body .bg-dark {
 }
 
 /* giver profile*/
-.banner {
+.user-space {
   background-image: url('./assets/giver/banner.png');
   background-repeat: no-repeat;
-  background-size: 2000px 220px;
-  text-align: right;
+  background-position: center;
+  background-size: cover;
+  height: 233px;
+  /* text-align: right; */
+}
+.banner{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 233px;
 }
 
 .welcome {
   color: orange;
   margin-right: 5%;
+  /*
   padding-top: 2%;
-  padding-bottom: 2%;
+  padding-bottom: 122px; */
+}
+.avatar{
+  margin-left: 5%;
+  background-image: url('./assets/giver/user.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:contain;
+  width: 180px;
+  height: 180px;
 }
 
 .welcome p {
@@ -361,10 +417,16 @@ body .bg-dark {
 
 /*new item posting*/
 .itemview {
-  text-align: left;
+  /* text-align: left; */
   font-size: 20px;
   margin-top: 20%;
   margin-right: 10%;
+  background-color: #fff;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-radius: 18px;
 }
 /* error message*/
 .error {
@@ -457,11 +519,73 @@ body .bg-dark {
   margin-left: 10px;
   margin-right: 10px;
 }
+/* detailsitem */
+.detailsItemContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  height: 600px;
+  /* 
+  uncomment to
+  see the height of the div
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+  */ 
+}
+
+.detailsItem{
+  width: 50%;
+  border-radius: 25px !important;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
+}
+.detailsItem .card{
+  border-radius: 25px !important;
+}
+.detailsrows{
+  padding: 20px;
+}
+.detailPict{
+  margin-left: 0;
+  margin-right: 0;
+  object-fit: contain;
+  width: 30%;
+}
+/* contact-us form*/
+#formcontact {
+  width: 180px;
+  height: 60px;
+  font-size: 22px;
+  margin-left: 35%;
+}
+
+.contactuscontainer {
+  width: 40rem;
+  text-align: left;
+  /*margin-left: 35%;*/
+}
+.bg5 {
+  height: 400px;
+  width: 400px;
+  align-content: left;
+}
+.btn-submit {
+  width: 170px;
+  height: 50px;
+  font-size: 23px;
+  margin-bottom: 6%;
+  margin-right: -16px;
+  /* margin-right: 0px; */
+}
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left 0.5s;
   /* If you want a transition effect */
   padding: 20px;
+  margin-left: 28px;
 }
 
 /* categories */
@@ -494,22 +618,77 @@ body .bg-dark {
 .category-image:hover{
   transform:scale(1.1);
 }
-
 /* cards - goods */
 /* card preview: images */
 #preview{
   object-fit: cover;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.2);
 }
+.card-container{
+  /*   */
+  justify-content: space-evenly;
+}
+
 .img-center {
   margin-right: auto;
   margin-left: auto;
 }
+/* giver  goods view */
+.itemCards {
+  margin: 12px;
+  max-width: 320px !Important;
+  /* min-width: 314px !Important;
+  max-width: 320px !Important; */
+}
+.itemCards:last-of-type {
+  /* margin-right: 2px; */
+  /* align-self:initial */
+}
+
+.card-container:after {
+  /* content: ''; */
+  
+} 
+
+.itemCards button {
+  /*margin-right: 2%;*/
+  width: 230px;
+}
+
+/*Contact giver*/
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+.flex-child p {
+    text-align: left;
+}
+.flex-child h4 {
+    text-align: left;
+}
+.flex-child:first-child {
+    margin-right: 20px;
+}
+.itemh {
+    text-transform: uppercase;
+    color: blue;
+}
+.giverD {
+    text-align: left;
+}
+.giverform {
+    text-align: left;
+}
+
 
 /* Media Query */
 @media only screen and (max-width: 800px) {
-  .bg2 {
+  /* .bg2 {
     display: none;
-  }
+  } */
 
   .navbar .navbar-brand {
     font-size: 25px;
@@ -536,12 +715,12 @@ body .bg-dark {
     margin-left: 15%;
   }
   .signincard {
-    width: 20rem;
+    /* width: 20rem;
 
-    margin-left: 5%;
+    margin-left: 5%; */
   }
   .inputs {
-    width: 18rem;
+    /* width: 18rem; */
   }
   .bg3 {
     display: none;
@@ -549,17 +728,16 @@ body .bg-dark {
 }
 
 @media only screen and (max-width: 600px) {
-  .bg2 {
+  /* .bg2 {
     display: none;
-  }
+  } */
 
   .navbar .navbar-brand {
     font-size: 25px;
-    text-align: center;
   }
 
   .main-brand {
-    margin-left: 5rem;
+    /* margin-left: 5rem; */
   }
 
   .jumbotron h1 {
@@ -601,40 +779,5 @@ body .bg-dark {
   .formb {
     margin-left: 15%;
   }
-}
-
-/* contact-us form*/
-#formcontact {
-  width: 180px;
-  height: 60px;
-  font-size: 22px;
-  margin-left: 35%;
-}
-
-.contactuscontainer {
-  width: 40rem;
-  text-align: left;
-  /*margin-left: 35%;*/
-}
-.bg5 {
-  height: 400px;
-  width: 400px;
-  align-content: left;
-}
-.btn-submit {
-  width: 170px;
-  height: 50px;
-  font-size: 23px;
-  margin-bottom: 6%;
-  margin-right: 0px;
-}
-
-/* giver     goods view */
-.itemCards {
-  margin: 2%;
-}
-
-.itemCards button {
-  /*margin-right: 2%;*/
-  width: 230px;
+  
 }

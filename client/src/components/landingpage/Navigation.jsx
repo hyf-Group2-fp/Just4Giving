@@ -5,8 +5,6 @@ import {useSelector} from "react-redux";
 //import Disclaimer from "../disclaimer/Disclaimer";
 import Aboutus from "../aboutus/Aboutus";
 
-
-
 function Navigation() {
     //modal disclaimer
     const [modalShow, setModalShow] = useState(false);
@@ -16,7 +14,7 @@ function Navigation() {
     const authenticatedNavBar = () => {
         return (
 
-            <div className="margin-t-b">
+            <div>
                 <Navbar collapseOnSelect expand="lg" sticky="top">
                     <Navbar>
                         <Navbar.Brand className="main-brand" href="/">
@@ -40,7 +38,7 @@ function Navigation() {
                           <Aboutus show={modalShow} onHide={() => setModalShow(false)} />
                         </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link href="/login">Sign Out</Nav.Link>
+                                <Nav.Link href="/logout">Sign Out</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
@@ -67,7 +65,7 @@ function Navigation() {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="row justify-content-end links">
                             <Nav.Item>
-                                <Nav.Link className="footer-priv" onClick={() => setModalShow(true)}>
+                                <Nav.Link onClick={() => setModalShow(true)}>
                                   About Us
                                 </Nav.Link>
                                 <Aboutus show={modalShow} onHide={() => setModalShow(false)} />

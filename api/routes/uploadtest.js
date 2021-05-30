@@ -1,7 +1,7 @@
 const express = require("express");
 
 // initialize express
-//const app = express();
+const app = express();
 
 app.get("/upload/test", async (req, res) => {
     res.send(
