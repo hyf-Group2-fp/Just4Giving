@@ -15,13 +15,8 @@ const ContactGiver = () => {
     const [subject, setSubject] = useState("");
     const [message, SetMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    // get the good id
     const { id } = useParams();
-    //  console.log(id);
-    // get the needer info
     const userInfo = useSelector((state) => state.userInfo);
-    const url = "http://localhost:5000/api/good/sendEmail";
-    //console.log(first_name )
 
     // dispatch
     const dispatch = useDispatch();
@@ -32,9 +27,7 @@ const ContactGiver = () => {
         const res = await axios.get(`http://localhost:5000/api/goods/${id}`);
         const good = res.data.good;
         const subject = res.data.good.item_name;
-        //console.log(subject)
         setSubject(subject);
-        //  console.log(good);
         setGood(good);
         dispatch(createGoods(good));
     };
@@ -43,12 +36,7 @@ const ContactGiver = () => {
         fetchGood();
     }, []);
 
-    // giver id
-
     const giver_id = useSelector((state) => state.goods.giver_id);
-    // console.log(giver_id);
-    // fetch the giver email
-
     const fetchGiver = async () => {
         const res = await axios.get(
             `http://localhost:5000/api/user/${giver_id}`
@@ -69,7 +57,6 @@ const ContactGiver = () => {
             e.preventDefault();
             e.stopPropagation();
         } else {
-            console.log(giver);
             const mailInfo = {
                 to: giver,
                 from: "just4giving.hyf@gmail.com",
@@ -141,8 +128,8 @@ const ContactGiver = () => {
         </div>
                 `,
             };
-            console.log(mailInfo);
             try {
+                const url = "http://localhost:5000/api/good/sendEmail";
                 const response = await axios.post(url, mailInfo).then((res) => {
                     console.log(res.data);
                     setErrorMessage("Email successfully sent to giver");
@@ -160,7 +147,15 @@ const ContactGiver = () => {
             <h2 className="formh1"> Item Details</h2>
             <div className="container">
                 <div className="flex-container">
-                    <div className="flex-child">Image</div>
+                    <div className="flex-child">
+                        <img
+                          src={`/assets/images/uploads/${good.image}`}
+                          id="preview"
+                          width="477"
+                          height="477"
+                          alt="good"
+                        />
+                    </div>
                     <div className="flex-child">
                         <h4 className="itemh">{good.item_name}</h4>
                         <p>
@@ -178,8 +173,6 @@ const ContactGiver = () => {
                 </div>
 
                 <div className="giverform">
-                    {/* <p>`Email of the giver : ${giver}`</p> */}
-
                     <Form
                         noValidate
                         validated={validated}
