@@ -192,7 +192,8 @@ function EditItem() {
                             <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    <Button type='submit' className='formb'>
+                    {/* <Button type='submit' className='formb'> */}
+                    <Button type='submit' className='btn-submit float-right'>
                         Submit
                     </Button>
                 </Form>
