@@ -50,7 +50,7 @@ const DetailsItem = () => {
             //  height="477"
              alt="good"
         />
-          <Card.Title>Good: {good.item_name}</Card.Title>
+          <Card.Title className="mt-4">Good: {good.item_name}</Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroupItem>

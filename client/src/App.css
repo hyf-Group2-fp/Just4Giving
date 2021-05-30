@@ -537,7 +537,7 @@ footer{
 }
 
 .detailsItem{
-  width: 70%;
+  width: 50%;
   border-radius: 25px !important;
   box-shadow: 0 3px 20px rgba(0,0,0,0.3);
 }
