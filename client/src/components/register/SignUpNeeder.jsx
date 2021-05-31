@@ -192,14 +192,14 @@ function SignUpNeeder() {
                     </Form.Row>
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="description">
-                            <Form.Label>Description</Form.Label>
+                            <Form.Label>Tell us your story in 200 words</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 required
                                 placeholder="Example: I am Sabrina, I came from Palestine. I just move to Belgium last month with my husband and my little daughter. I live in Brussel, I stay in a studio with very limited furniture. I know this app from a friend, I hope I could find some stuff that could be useful for me."
                                 minLength="200"
                                 maxLength="500"
-                                rows={3}
+                                rows={5}
                                 name="description"
                                 onChange={(e) => setDescription(e.target.value)}
                             />{" "}
@@ -257,7 +257,10 @@ function SignUpNeeder() {
                         <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
                     </Form.Group>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
-                    <Button type="submit" className="formb">
+
+                    {/* class="btn-submit float-right btn btn-primary */}
+                    {/* <Button type="submit" className="formb"> */}
+                    <Button type="submit" className="btn-submit float-right">
                         Submit
                     </Button>
                 </Form>

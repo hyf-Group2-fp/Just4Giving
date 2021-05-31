@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Redirect } from "react-router";
+//import { Redirect } from "react-router";
 import Disclaimer from "../disclaimer/Disclaimer";
 import {useHistory} from "react-router-dom";
  
@@ -11,7 +11,7 @@ function Footer() {
   const [modalShow, setModalShow] = useState(false);
   const history = useHistory()
   return (
-    <div className="main-footer">
+    <footer className="main-footer mt-auto">
       <Navbar
         className="d-flex justify-content-between"
         sticky="Bottom"
@@ -42,7 +42,7 @@ function Footer() {
           </Nav.Item>
         </Nav>
       </Navbar>
-    </div>
+    </footer>
   );
 }
 export default Footer;

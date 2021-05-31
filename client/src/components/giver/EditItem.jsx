@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Form, Col, Button, InputGroup } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { Form, Col, Button } from 'react-bootstrap';
+//import { useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import {getCategoryId} from "./utils";
 
 function EditItem() {
     const [validated, setValidated] = useState(false);
@@ -33,13 +34,6 @@ function EditItem() {
             setQuantity(good.quantity);
             setDescription(good.description);
             setQuality(good.quality);
-            // if (good.quality == 1) {
-            //   setQuality('New');
-            // } else if (good.quality == 2) {
-            //   setQuality('Fairly used');
-            // } else {
-            //   setQuality('used');
-            // }
         };
         fetchGood();
     }, []);
@@ -52,20 +46,20 @@ function EditItem() {
             event.preventDefault();
             event.stopPropagation();
         } else {
-            const newGood = {
+            const updatedGood = {
                 item_name: item,
                 category: category,
+                category_id: getCategoryId(category),
                 description: description,
                 quality: quality,
                 quantity: quantity,
                 image: image,
             };
-            console.log(newGood);
 
             try {
                 const response = await axios.put(
                     `http://localhost:5000/api/goods/${id}`,
-                    newGood
+                    updatedGood
                 );
                 console.log('response', response);
             } catch (err) {
@@ -99,6 +93,7 @@ function EditItem() {
                                 aria-describedby='inputGroupPrepend'
                                 required
                                 onChange={(e) => setItem(e.target.value)}
+                                value={item}
                             />
                             <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
@@ -154,6 +149,7 @@ function EditItem() {
                                 className='my-1 mr-sm-2'
                                 id='quality'
                                 custom
+                                value={quality}
                                 onChange={(e) => setQuality(e.target.value)}>
                                 <option value='0'>Select...</option>
                                 <option value='New'>New</option>
@@ -169,6 +165,7 @@ function EditItem() {
                                 required
                                 type='number'
                                 min={0}
+                                value={quantity}
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
                             {/*<Form.Control.Feedback></Form.Control.Feedback>*/}
@@ -182,13 +179,15 @@ function EditItem() {
                                 required
                                 as='textarea'
                                 rows={3}
+                                value={description}
                                 placeholder='Please describe the details of the item, e.g. colour, condition, size, etc...'
                                 onChange={(e) => setDescription(e.target.value)}
                             />
                             <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
-                    <Button type='submit' className='formb'>
+                    {/* <Button type='submit' className='formb'> */}
+                    <Button type='submit' className='btn-submit float-right'>
                         Submit
                     </Button>
                 </Form>

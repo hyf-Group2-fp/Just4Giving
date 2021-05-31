@@ -23,17 +23,34 @@ const DetailsItem = () => {
     fetchItem();
   }, []);
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    <div className="detailsItemContainer"
+      // style={{
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      // }}
     >
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="" />
+      <div className="detailsItem" >
+      <Card>
+     
+        {/* <Card.Img className= "detailPict"
+        variant="top"
+        
+        src= {`../assets/images/uploads/${good.image}`}
+        // width="50px"
+            
+        // src={`assets/images/uploads/${good.image}`}
+        /> */}
         <Card.Body>
-          <Card.Title>Good: {good.item_name}</Card.Title>
+        <img
+             src={`../assets/images/uploads/${good.image}`}
+             className= "detailPict"
+            //  id="preview"
+            //  width="477"
+            //  height="477"
+             alt="good"
+        />
+          <Card.Title className="mt-4">Good: {good.item_name}</Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <ListGroupItem>
@@ -44,10 +61,11 @@ const DetailsItem = () => {
               .startOf('seconds')
               .fromNow()}
           </ListGroupItem>
-          <ListGroupItem>Category: {good.category}</ListGroupItem>
+          <ListGroupItem className="detailsrows">Category: {good.category}</ListGroupItem>
         </ListGroup>
-        <Card.Text>Description: {good.description}</Card.Text>
+        <Card.Text className="detailsrows">Description: {good.description}</Card.Text>
       </Card>
+      </div>
     </div>
   );
 };
