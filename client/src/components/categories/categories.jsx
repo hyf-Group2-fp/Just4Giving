@@ -15,14 +15,14 @@ function Categories() {
 
     //fetch the categories
     const FetchCategories = async () => {
-        const url = `http://localhost:5000/api/categories`;
+        const url = `/api/categories`;
         const response = await axios.get(url);
         const resCategories = response.data;
         setCategories(resCategories);
     };
 
     const fetchGoods = async (categoryId) => {
-        const goodUrl = `http://localhost:5000/api/goods/category/${categoryId}`;
+        const goodUrl = `/api/goods/category/${categoryId}`;
         const response = await axios.get(goodUrl);
         const resGoods = response.data.goods;
         console.log(resGoods);
@@ -72,32 +72,35 @@ function Categories() {
 
     return (
         <div>
-            <div id='categories-panel' className='sidebar'>
-                <div id='categories-header'>
-                    <h2 id='categories-title-text'>Select a category</h2>
+            <div id="categories-panel" className="sidebar">
+                <div id="categories-header">
+                    <h2 id="categories-title-text">Select a category</h2>
                 </div>
                 <div
-                    id='open-close-btn'
-                    className='openbtn'
-                    onClick={() => handleToggle()}></div>
-                <div id='categories-body' className='row-categories'>
+                    id="open-close-btn"
+                    className="openbtn"
+                    onClick={() => handleToggle()}
+                ></div>
+                <div id="categories-body" className="row-categories">
                     {/* categories */}
                     {categories &&
                         categories.map((category) => (
                             <div
-                                className='category col-6'
-                                key={category.categories_id}>
-                                <div className='pt-3 category-title'>
+                                className="category col-6"
+                                key={category.categories_id}
+                            >
+                                <div className="pt-3 category-title">
                                     {category.category_name}
                                 </div>
                                 {/* image */}
                                 <div
-                                    className='category-image'
-                                    id={`cat_img_${category.categories_id}`}>
+                                    className="category-image"
+                                    id={`cat_img_${category.categories_id}`}
+                                >
                                     <img
                                         src={`assets/images/categories/${category.category_image}`}
-                                        width='60'
-                                        height='60'
+                                        width="60"
+                                        height="60"
                                         alt={`${category.category_image}`}
                                         onClick={() =>
                                             fetchGoods(category.categories_id)
@@ -108,7 +111,7 @@ function Categories() {
                         ))}
                 </div>
             </div>
-                {/* this div will be moved together with the panel,
+            {/* this div will be moved together with the panel,
               it can contains the cards */}
         </div>
     );

@@ -1,32 +1,33 @@
-import React, { useState } from "react";
-import { Form, Col, Button } from "react-bootstrap";
-import axios from "axios";
-import  { Redirect } from 'react-router-dom';
-import Disclaimer from "../disclaimer/Disclaimer";
+import React, { useState } from 'react';
+import { Form, Col, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import Disclaimer from '../disclaimer/Disclaimer';
 
 // Redux
-import {useDispatch, useSelector} from "react-redux";
-import {userNeeder} from "../../redux/actions/userInfoAction.js";
+import { useDispatch, useSelector } from 'react-redux';
+import { userNeeder } from '../../redux/actions/userInfoAction.js';
 
 function SignUpNeeder() {
     const [validated, setValidated] = useState(false);
-    const [first_name, setFirst_name] = useState("");
-    const [last_name, setLast_name] = useState("");
-    const [age, setAge] = useState("");
-    const [phone, setPhone] = useState("");
-    const [street, setStreet] = useState("");
-    const [email, setEmail] = useState("");
-    const [description, setDescription] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmpassword, setConfirmpassword] = useState("");
+    const [first_name, setFirst_name] = useState('');
+    const [last_name, setLast_name] = useState('');
+    const [age, setAge] = useState('');
+    const [phone, setPhone] = useState('');
+    const [street, setStreet] = useState('');
+    const [email, setEmail] = useState('');
+    const [description, setDescription] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmpassword, setConfirmpassword] = useState('');
     const [modalShow, setModalShow] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
+    const [signedin, setSignedin] = useState(false);
 
     const dispatch = useDispatch();
 
     // get the needer
-    const usertype = useSelector(state => state.userInfo.is_needer);
-    const url = "http://localhost:5000/api/needer/signup" ;
+    const usertype = useSelector((state) => state.userInfo.is_needer);
+    const url = '/api/needer/signup';
 
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
@@ -36,7 +37,9 @@ function SignUpNeeder() {
             event.preventDefault();
             event.stopPropagation();
         } else if (password !== confirmpassword) {
-            setErrorMessage("Password and Confirm password are not same, try again");
+            setErrorMessage(
+                'Password and Confirm password are not same, try again'
+            );
             // alert("password and confirmpassword does not match");
             event.stopPropagation();
         } else {
@@ -51,45 +54,32 @@ function SignUpNeeder() {
                 password: password,
                 is_giver: 0,
                 is_needer: 1,
-                agreement: 1
+                agreement: 1,
             };
 
-
             try {
-                const response = await axios.post(url, userdata).then(
-                    (res) => {
-
-                        console.log(res);
-                        // dispatch action
-                        dispatch(userNeeder(userdata));
-                    }
-                )
+                const response = await axios.post(url, userdata).then((res) => {
+                    console.log(res);
+                    setSignedin(true);
+                });
             } catch (error) {
-                
                 // should be error.response.data.message
-                setErrorMessage("Email already exist, Please try Sign In");
+                setErrorMessage('Email already exist, Please try Sign In');
                 // alert('email already exist, please try login');
-                console.error("There was an error!", error);
+                console.error('There was an error!', error);
             }
         }
 
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1) return (<Redirect to={{ pathname: '/profileneeder' }} />
-    );
-
+    if (signedin === true) return <Redirect to={{ pathname: '/login' }} />;
 
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
-                <Form
-
-                    noValidate
-                    validated={validated}
-                    onSubmit={handleSubmit}
-                >
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first_name">
                             <Form.Label>First name</Form.Label>
@@ -104,7 +94,7 @@ function SignUpNeeder() {
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 At least 3 letters
-                            </Form.Control.Feedback>{" "}
+                            </Form.Control.Feedback>{' '}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
                             <Form.Label>Last name</Form.Label>
@@ -116,7 +106,7 @@ function SignUpNeeder() {
                                 maxLength="50"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>{' '}
                             <Form.Control.Feedback type="invalid">
                                 At least 3 letters
                             </Form.Control.Feedback>
@@ -166,7 +156,7 @@ function SignUpNeeder() {
                                 required
                                 name="email"
                                 onChange={(e) => setEmail(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter email address.
@@ -183,7 +173,7 @@ function SignUpNeeder() {
                                 maxLength="255"
                                 name="address"
                                 onChange={(e) => setStreet(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter your street name at least 5 letters
@@ -192,7 +182,9 @@ function SignUpNeeder() {
                     </Form.Row>
                     <Form.Row>
                         <Form.Group as={Col} md="12" controlId="description">
-                            <Form.Label>Tell us your story in 200 words</Form.Label>
+                            <Form.Label>
+                                Tell us your story in 200 words
+                            </Form.Label>
                             <Form.Control
                                 as="textarea"
                                 required
@@ -202,7 +194,7 @@ function SignUpNeeder() {
                                 rows={5}
                                 name="description"
                                 onChange={(e) => setDescription(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Explain your situation in at least 200 letters
@@ -219,7 +211,7 @@ function SignUpNeeder() {
                                 required
                                 name="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Password must be 8 letters
@@ -239,24 +231,28 @@ function SignUpNeeder() {
                                 minLength="8"
                                 maxLength="255"
                                 required
-                            />{" "}
+                            />{' '}
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                    {/* 
+                        {/* 
                     <a href="" onClick={()=>setModalShow(true)}>*/}
-                    <Form.Check
+                        <Form.Check
                             required
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
                         />
-                            
-                        
+
                         {/*</a>*/}
-                        
-                        <Disclaimer show={modalShow} onHide={() => setModalShow(false)} />
+
+                        <Disclaimer
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                        />
                     </Form.Group>
-                    {errorMessage && <div className="error"> {errorMessage} </div>}
+                    {errorMessage && (
+                        <div className="error"> {errorMessage} </div>
+                    )}
 
                     {/* class="btn-submit float-right btn btn-primary */}
                     {/* <Button type="submit" className="formb"> */}

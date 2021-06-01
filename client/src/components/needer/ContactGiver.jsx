@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import moment from "moment";
 import { Form, Button, Col } from "react-bootstrap";
-
 // Redux
 import { createGoods } from "../../redux/actions/goodsInfoAction";
-
 const ContactGiver = () => {
     const [validated, setValidated] = useState(false);
     const [good, setGood] = useState({});
@@ -15,35 +13,30 @@ const ContactGiver = () => {
     const [subject, setSubject] = useState("");
     const [message, SetMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [success , setSuccess] = useState('') ;
     const { id } = useParams();
     const userInfo = useSelector((state) => state.userInfo);
-
     // dispatch
     const dispatch = useDispatch();
-
     // request the good details
-
     const fetchGood = async () => {
-        const res = await axios.get(`http://localhost:5000/api/goods/${id}`);
+        const res = await axios.get(`/api/goods/${id}`);
         const good = res.data.good;
         const subject = res.data.good.item_name;
         setSubject(subject);
         setGood(good);
         dispatch(createGoods(good));
     };
-
     useEffect(() => {
         fetchGood();
     }, []);
-
     const giver_id = useSelector((state) => state.goods.giver_id);
     const fetchGiver = async () => {
         const res = await axios.get(
-            `http://localhost:5000/api/user/${giver_id}`
+            `/api/user/${giver_id}`
         );
         const giver = res.data.giver.email;
         console.log(res.data.giver.email);
-
         setGiver(giver);
     };
     useEffect(() => {
@@ -129,10 +122,11 @@ const ContactGiver = () => {
                 `,
             };
             try {
-                const url = "http://localhost:5000/api/good/sendEmail";
+                const url = "/api/good/sendEmail";
                 const response = await axios.post(url, mailInfo).then((res) => {
                     console.log(res.data);
-                    setErrorMessage("Email successfully sent to giver");
+                    setSuccess("Email successfully sent to giver");
+
                 });
             } catch (error) {
                 setErrorMessage("Something wrong happened, try again later");
@@ -141,7 +135,6 @@ const ContactGiver = () => {
         e.preventDefault();
         setValidated(true);
     };
-
     return (
         <div className="formviewG">
             <h2 className="formh1"> Item Details</h2>
@@ -149,11 +142,11 @@ const ContactGiver = () => {
                 <div className="flex-container">
                     <div className="flex-child">
                         <img
-                          src={`/assets/images/uploads/${good.image}`}
-                          id="preview"
-                          width="477"
-                          height="477"
-                          alt="good"
+                            src={good.image}
+                            id="preview"
+                            width="477"
+                            height="477"
+                            alt="good"
                         />
                     </div>
                     <div className="flex-child">
@@ -171,7 +164,6 @@ const ContactGiver = () => {
                         <p>Quality: {good.quality}</p>
                     </div>
                 </div>
-
                 <div className="giverform">
                     <Form
                         noValidate
@@ -188,7 +180,7 @@ const ContactGiver = () => {
                                 <Form.Control
                                     as="textarea"
                                     required
-                                    placeholder="Example:Hi, I’m Sander I live in Brussel. I’m interested in the baby crib."
+                                    placeholder="Example:Hi, I'm Sander I live in Brussel. I'm interested in the baby crib."
                                     minLength="5"
                                     maxLength="500"
                                     rows={3}
@@ -206,11 +198,13 @@ const ContactGiver = () => {
                         {errorMessage && (
                             <div className="error"> {errorMessage} </div>
                         )}
+                        {success && (
+                            <div className="success"> {success} </div>
+                        )}
                     </Form>
                 </div>
             </div>
         </div>
     );
 };
-
 export default ContactGiver;
