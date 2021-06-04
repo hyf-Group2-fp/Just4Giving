@@ -36,7 +36,7 @@ function Footer() {
               className="fa fa-envelope-square fa-2x mail"
               style={{ paddingRight: "20px" }}
             ></i>
-            <a href="https://github.com/hyf-Group2-fp/Just4Giving">
+            <a href="https://github.com/hyf-Group2-fp/Just4Giving" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-github fa-2x github" aria-hidden="true"></i>
             </a>
           </Nav.Item>
