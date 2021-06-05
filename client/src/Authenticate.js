@@ -22,6 +22,10 @@ function Authenticate() {
       .then(response => {
         dispatch(signedUserInfo(response.data.user));
       })
+      .catch((error)  => {
+        //handle error
+        console.log(error);
+    });
   }, []);
 
   return null;

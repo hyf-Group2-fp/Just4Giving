@@ -9,7 +9,8 @@
     "quick": "npm i && cd client && npm i && cd .. && npm run dev",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "cd api && jest --collectCoverage=true --forceExit",
-    "test:watch": "cd api && jest --watch --collectCoverage=true --runInBand --detectOpenHandles"
+    "test:watch": "cd api && jest --watch --collectCoverage=true --runInBand --detectOpenHandles",
+    "db": "node api/scripts/sync && node api/scripts/user.js && node api/scripts/categories.js && node api/scripts/goods.js"
   },
   "license": "MIT",
   "dependencies": {
