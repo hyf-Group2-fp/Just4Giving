@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Col, Button, } from "react-bootstrap";
 import axios from "axios";
 import  { Redirect } from 'react-router-dom';
-//import Disclaimer from "../disclaimer/Disclaimer";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
@@ -19,7 +18,6 @@ function SignUpGiver(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
-    //const [modalShow, setModalShow] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const dispatch = useDispatch();
 
@@ -29,12 +27,12 @@ function SignUpGiver(props) {
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else if (password !== confirmpassword) {
-            setErrorMessage("Password and Confirm password are not same, try again.");
-           // alert("password and confirmpassword does not match");
+        // if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        // } else 
+        if (password !== confirmpassword) {
+            setErrorMessage("Password and Confirm password are not the same, try again.");
             event.stopPropagation();
         } else {
             const userdata = {
@@ -51,23 +49,16 @@ function SignUpGiver(props) {
                 agreement:1
             };
 
-
             try {
                 const response = await axios.post(url, userdata).then(
                     (res) => {
-
-                        console.log(res.data);
-
-
+                       //console.log(res.data);
                         // dispatch action
                         dispatch(userGiver(userdata ));
-
-
                     }
                 )
             } catch (error) {
-                setErrorMessage("Email already exist, Please try Sign In.");
-                // alert('email already exist, please try login');
+                setErrorMessage(error.response.data);
                 console.error("There was an error!", error);
             }
         }
@@ -121,11 +112,13 @@ function SignUpGiver(props) {
                         <Form.Group as={Col} md="2" controlId="age">
                             <Form.Label>Age</Form.Label>
                             <Form.Control
-                                required
                                 type="number"
                                 min={18}
                                 max={100}
+                                // value={18}
                                 name="age"
+                                required
+                                noValidate
                                 onChange={(e) => setAge(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
@@ -149,7 +142,7 @@ function SignUpGiver(props) {
                                 else.
                             </Form.Text>
                             <Form.Control.Feedback type="invalid">
-                                Enter phone number.
+                                Enter phone number
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="email">
@@ -158,11 +151,13 @@ function SignUpGiver(props) {
                                 type="email"
                                 required
                                 name="email"
+                                minLength="6"
+                                maxLength="100"
                                 onChange={(e) => setEmail(e.target.value)}
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter email address.
+                                Enter email address
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -173,6 +168,7 @@ function SignUpGiver(props) {
                                 type="text"
                                 required
                                 minLength="5"
+                                maxLength="100"
                                 name="address"
                                 onChange={(e) => setStreet(e.target.value)}
                             />{" "}
@@ -195,7 +191,7 @@ function SignUpGiver(props) {
                             />{" "}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Password must be 8 letters
+                                Password must be minimum 8 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -222,12 +218,8 @@ function SignUpGiver(props) {
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
                         /> 
-                        {/* </a> */}
-                        {/* <Disclaimer show={modalShow} onHide={() => setModalShow(false)} /> */}
                     </Form.Group>
                     {errorMessage && <div className="error"> {errorMessage} </div>}
-                    {/* btn-submit float-right 
-                    <Button type="submit" className="formb"> */}
                     <Button type="submit" className="btn-submit float-right">
                         Submit
                     </Button>

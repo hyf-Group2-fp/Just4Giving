@@ -99,10 +99,4 @@ const funcs = [
   createCategories8
 ];
 
-/* 
-createCategoriesn().then(() => {
-  process.exit();
-});
-*/
-
 funcs.map(fun => fun());
