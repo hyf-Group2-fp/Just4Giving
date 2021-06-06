@@ -22,7 +22,9 @@ The idea of the application is to offer a tool to connect those who have items t
 
 ## Screenshots
 
-![Example screenshot](https://cdn.jsdelivr.net/gh/hyf-Group2-fp/Just4Giving/img/just4giving.png)
+![Example screenshot](https://cdn.jsdelivr.net/gh/hyf-Group2-fp/Just4Giving/img/just4giving.png)![just4giving_2](https://user-images.githubusercontent.com/979362/120942397-f8b28380-c728-11eb-9cf9-46a2d70ee7c8.png)
+![just4giving_2b](https://user-images.githubusercontent.com/979362/120942400-fc460a80-c728-11eb-9dce-1e5f59ae56e7.png)
+
 
 ## Technologies
 
