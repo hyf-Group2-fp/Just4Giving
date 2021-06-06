@@ -1,7 +1,6 @@
 const { cryptPassword } = require("../utils/encryption");
 const { Sequelize } = require("sequelize");
 const sequelize = require("../db/db.js");
-const bcrypt = require("bcrypt");
 
 const User = sequelize.define(
     "user",

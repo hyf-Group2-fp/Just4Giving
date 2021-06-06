@@ -1,22 +1,30 @@
-import React, {useState} from "react";
-import {Form, Button, Card, Container, Row, Col} from "react-bootstrap";
+import React, {useState} from 'react';
+import {
+    Form,
+    Button,
+    Card,
+    Container,
+    Row,
+    Col
+} from 'react-bootstrap';
 import {Redirect} from 'react-router-dom';
 import pic from '../../assets/login/signin.png';
-import axios from "axios"
-import {useDispatch, useSelector} from "react-redux";
-import { signedUserInfo, signedUserError} from "../../redux/actions/userInfoAction";
-import Logout from "../../Logout";
+import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {signedUserError, signedUserInfo} from '../../redux/actions/userInfoAction';
+
 function Login() {
     const [validated,
         setValidated] = useState(false);
     const [authenticated,
         setAuthenticated] = useState(false);
     const [email,
-        setEmail] = useState("");
+        setEmail] = useState('');
     const [password,
-        setPassword] = useState("");
-    const dispatch = useDispatch() ;
-    const [errorMessage, setErrorMessage] = useState("");
+        setPassword] = useState('');
+    const dispatch = useDispatch();
+    const [errorMessage,
+        setErrorMessage] = useState('');
     const handleSubmit = async(event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -27,24 +35,15 @@ function Login() {
         } else {
             const userdata = {
                 email: email,
-                password: password,
+                password: password
             };
             try {
-                axios.post(
-                  "http://localhost:5000/api/authenticate",
-                  userdata,
-                  {
-                      withCredentials: true
-                  },
-                ).then((res) => {
-                    // dispatch action
-                    const user = res.data.user ;
-                    dispatch(signedUserInfo(user)) ;
-                    setAuthenticated(true);
-                })
+                const res = await axios.post('http://localhost:5000/api/authenticate', userdata, {withCredentials: true});
+                const user = res.data.user;
+                dispatch(signedUserInfo(user))
+                setAuthenticated(true);
             } catch (error) {
-                setErrorMessage("Email does not exist, Please try Sign Up");
-                // alert("please check your credentials")
+                setErrorMessage(error.response.data);
                 dispatch(signedUserError());
                 console.error('There was an error!', error);
             }
@@ -52,15 +51,18 @@ function Login() {
         event.preventDefault();
         setValidated(true);
     };
-    //choose what to do pass props with the data of the user
-    const isGiver = useSelector(state => state.userInfo.is_giver) ;
-    const isNeeder = useSelector(state => state.userInfo.is_needer) ;
+    //choose what to do, pass props with the data of the user
+    const isGiver = useSelector((state) => state.userInfo.is_giver);
+    const isNeeder = useSelector((state) => state.userInfo.is_needer);
     if (authenticated) {
         if (isGiver) {
-            return (<Redirect to={{pathname: '/profilegiver'}}
-            />)
+            return <Redirect to={{
+                pathname: '/profilegiver'
+            }}/>;
         } else if (isNeeder) {
-            return (<Redirect to={{pathname: '/profileneeder'}}/>)
+            return <Redirect to={{
+                pathname: '/profileneeder'
+            }}/>;
         }
     }
     return (
@@ -68,56 +70,55 @@ function Login() {
             <h1 className="text-center formh1">Sign-in</h1>
             <Container>
                 <Row>
-                <Col lg='4'></Col>
-                <Col>
-            <Card className="signincard">
-                <Form
-                    className="signin"
-                    // method="post"
-                    noValidate
-                    validated={validated}
-                    onSubmit={handleSubmit}>
-                    <Form.Row className="form-row-custom">
-                        <Form.Group className="inputs" controlId="email">
-                            <Form.Label>E-mail</Form.Label>
-                            <Form.Control required type="email" onChange={(e) => setEmail(e.target.value)}/>
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">
-                                Enter email
-                            </Form.Control.Feedback>{" "}
-                        </Form.Group>
-                    </Form.Row>
-                    <Form.Row className="form-row-custom">
-                        <Form.Group className="inputs" controlId="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                type="password"
-                                minLength="8"
-                                maxLength="20"
-                                required
-                                name="password"
-                                onChange={(e) => setPassword(e.target.value)}/>{" "}
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>
-                            <Form.Control.Feedback type="invalid">
-                                Password must be 8 letters
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                    </Form.Row>
-                    {errorMessage && <div className="error"> {errorMessage} </div>}
-                    <Button type="submit" id="formblogin">
-                        Sign-in
-                    </Button>
-                </Form>
-            </Card>
-            </Col>
-            </Row>
-            <Row>
-            <Col>
-
-            <img className="bg3" src={pic} alt="helping hands"/>
-            </Col>
-            <Col lg='4'></Col>
-            </Row>
+                    <Col lg="4"></Col>
+                    <Col>
+                        <Card className="signincard">
+                            <Form className="signin" // method="post"
+                                noValidate validated={validated} onSubmit={handleSubmit}>
+                                <Form.Row className="form-row-custom">
+                                    <Form.Group className="inputs" controlId="email">
+                                        <Form.Label>E-mail</Form.Label>
+                                        <Form.Control required type="email" onChange={(e) => setEmail(e.target.value)}/>
+                                        <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                                        <Form.Control.Feedback type="invalid">
+                                            Enter email
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                </Form.Row>
+                                <Form.Row className="form-row-custom">
+                                    <Form.Group className="inputs" controlId="password">
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control
+                                            type="password"
+                                            minLength="8"
+                                            maxLength="20"
+                                            required
+                                            name="password"
+                                            onChange={(e) => setPassword(e.target.value)}/>
+                                        <Form.Control.Feedback type="valid"></Form.Control.Feedback>
+                                        <Form.Control.Feedback type="invalid">
+                                            Password must be minimum 8 letters
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                </Form.Row>
+                                {errorMessage && (
+                                    <div className="error text-center">
+                                        {errorMessage}
+                                    </div>
+                                )}
+                                <Button type="submit" id="formblogin">
+                                    Sign-in
+                                </Button>
+                            </Form>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <img className="bg3" src={pic} alt="helping hands"/>
+                    </Col>
+                    <Col lg="4"></Col>
+                </Row>
             </Container>
         </div>
     );

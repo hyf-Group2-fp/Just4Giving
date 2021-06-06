@@ -11,17 +11,15 @@ const createUser1 = async () => {
       street: 'first street 23',
       phone: '234533335',
       age: 24,
-      is_giver: 0,
-      is_needer: 1,
-      description: 'I love and want  helping others!!',
+      is_giver: 1,
+      is_needer: 0,
+      description: 'I love and want to help others!!',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('JonSmith123'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
-
-createUser1().then(() => {
-  process.exit();
-});
 
 // user2
 const createUser2 = async () => {
@@ -35,15 +33,13 @@ const createUser2 = async () => {
       age: 24,
       is_giver: 0,
       is_needer: 1,
-      description: 'I lneed some help',
+      description: 'I need help, I have just arrived from XYZ with my family, there are 3 of us: me, my wife and my 3 year old daughter, we currently live in a refugee camp. We need a new cell phone because the one I had now is broken.',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('james1234'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
-
-createUser2().then(() => {
-  process.exit();
-});
 
 // user3
 const createUser3 = async () => {
@@ -57,15 +53,13 @@ const createUser3 = async () => {
       age: 27,
       is_giver: 0,
       is_needer: 1,
-      description: 'I need help',
+      description: 'We urgently need help, they are 2 brothers of 20 years, I am XX and my brother is ZZ,. We arrived last Saturday and we really need clean clothes. We are from XYZ and we love your country, we hope to meet you soon. Thanks.',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('james1234'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
-
-createUser3().then(() => {
-  process.exit();
-});
 
 // user4
 const createUser4 = async () => {
@@ -74,20 +68,18 @@ const createUser4 = async () => {
       first_name: 'Rita',
       last_name: 'Charles',
       email: 'rita12@gmail.com',
-      street: ' street 20',
+      street: 'street 20',
       phone: '4386464664',
       age: 27,
       is_giver: 1,
       is_needer: 0,
-      description: 'I love helping others ',
+      description: 'I love helping others',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('james1234'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
-
-createUser4().then(() => {
-  process.exit();
-});
 
 // user5
 const createUser5 = async () => {
@@ -96,17 +88,34 @@ const createUser5 = async () => {
       first_name: 'Sam',
       last_name: 'Sterling',
       email: 'sam12@gmail.com',
-      street: ' street 102',
+      street: 'street 102',
       phone: '4386464664',
       age: 30,
       is_giver: 1,
       is_needer: 0,
-      description: 'I makes me happy to help others ',
+      description: 'I makes me happy to help others',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('james1234'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
 
-createUser5().then(() => {
+const funcs = [
+  createUser1,
+  createUser2,
+  createUser3,
+  createUser4,
+  createUser5
+];
+
+funcs.map(fun => fun());
+
+/*
+was
+createUserN().then(() => {
   process.exit();
 });
+*/
+
+//cryptPassword('12345678') doesn't work

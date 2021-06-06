@@ -51,11 +51,8 @@ app.post('/giver/signup', async (req, res) => {
             console.error(err.message);
             //401 or 403: user already exists
             res.status(401).send('password or email are not valid').end();
-            //res.status(500).send("server error");
         }
     }
 });
 
 module.exports = app;
-
-// just

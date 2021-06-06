@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import { Form, Col, Button, } from "react-bootstrap";
-import axios from "axios";
-import  { Redirect } from 'react-router-dom';
-
+import React, { useState } from 'react';
+import { Form, Col, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 //Redux
-import {useDispatch, useSelector} from "react-redux";
-import {userGiver} from "../../redux/actions/userInfoAction.js";
+import { useDispatch, useSelector } from 'react-redux';
 
 function SignUpGiver(props) {
-    const url = "http://localhost:5000/api/giver/signup";
+    const url = 'http://localhost:5000/api/giver/signup';
     const [validated, setValidated] = useState(false);
-    const [first_name, setFirst_name] = useState("");
-    const [last_name, setLast_name] = useState("");
-    const [age, setAge] = useState("");
-    const [phone, setPhone] = useState("");
-    const [street, setStreet] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmpassword, setConfirmpassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    const [first_name, setFirst_name] = useState('');
+    const [last_name, setLast_name] = useState('');
+    const [age, setAge] = useState('');
+    const [phone, setPhone] = useState('');
+    const [street, setStreet] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmpassword, setConfirmpassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useDispatch();
-
+    const [signedin, setSignedin] = useState(false);
     // get the giver
-    const usertype = useSelector(state => state.userInfo.is_giver);
+    //const usertype = useSelector((state) => state.userInfo.is_giver);
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
         event.preventDefault();
@@ -32,7 +30,9 @@ function SignUpGiver(props) {
         //     event.stopPropagation();
         // } else 
         if (password !== confirmpassword) {
-            setErrorMessage("Password and Confirm password are not the same, try again.");
+            setErrorMessage(
+                'Password and Confirm password are not the same, try again.'
+            );
             event.stopPropagation();
         } else {
             const userdata = {
@@ -41,41 +41,32 @@ function SignUpGiver(props) {
                 age: age,
                 phone: phone,
                 street: street,
-                description: "no description",
+                description: 'no description',
                 email: email,
                 password: password,
-                is_giver:1,
-                is_needer:0,
-                agreement:1
+                is_giver: 1,
+                is_needer: 0,
+                agreement: 1,
             };
-
             try {
-                const response = await axios.post(url, userdata).then(
-                    (res) => {
-                       //console.log(res.data);
-                        // dispatch action
-                        dispatch(userGiver(userdata ));
-                    }
-                )
+                const response = await axios.post(url, userdata).then((res) => {
+                    //console.log(res.data);
+                    setSignedin(true);
+                });
             } catch (error) {
                 setErrorMessage(error.response.data);
-                console.error("There was an error!", error);
+                console.error('There was an error!', error);
             }
         }
         event.preventDefault();
         setValidated(true);
     };
-    if(usertype === 1 ) return (<Redirect to={{ pathname: '/profilegiver' }} />
-    );
+    if (signedin === true) return <Redirect to={{ pathname: '/login' }} />;
     return (
         <div className="forms">
             <h1 className="text-center formh1"> Who are you?</h1>
             <div className="container formview">
-                <Form
-                    noValidate
-                    validated={validated}
-                    onSubmit={handleSubmit}
-                >
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Row>
                         <Form.Group as={Col} md="6" controlId="first_name">
                             <Form.Label>First name</Form.Label>
@@ -90,7 +81,7 @@ function SignUpGiver(props) {
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 At least 3 letters
-                            </Form.Control.Feedback>{" "}
+                            </Form.Control.Feedback>{' '}
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="last_name">
                             <Form.Label>Last name</Form.Label>
@@ -102,7 +93,7 @@ function SignUpGiver(props) {
                                 maxLength="20"
                                 onChange={(e) => setLast_name(e.target.value)}
                             />
-                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>{" "}
+                            <Form.Control.Feedback type="valid"></Form.Control.Feedback>{' '}
                             <Form.Control.Feedback type="invalid">
                                 At least 3 letters
                             </Form.Control.Feedback>
@@ -112,13 +103,11 @@ function SignUpGiver(props) {
                         <Form.Group as={Col} md="2" controlId="age">
                             <Form.Label>Age</Form.Label>
                             <Form.Control
+                                required
                                 type="number"
                                 min={18}
                                 max={100}
-                                // value={18}
                                 name="age"
-                                required
-                                noValidate
                                 onChange={(e) => setAge(e.target.value)}
                             />
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
@@ -142,7 +131,7 @@ function SignUpGiver(props) {
                                 else.
                             </Form.Text>
                             <Form.Control.Feedback type="invalid">
-                                Enter phone number
+                                Enter phone number.
                             </Form.Control.Feedback>
                         </Form.Group>
                         <Form.Group as={Col} md="6" controlId="email">
@@ -154,10 +143,10 @@ function SignUpGiver(props) {
                                 minLength="6"
                                 maxLength="100"
                                 onChange={(e) => setEmail(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Enter email address
+                                Enter email address.
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
@@ -171,7 +160,7 @@ function SignUpGiver(props) {
                                 maxLength="100"
                                 name="address"
                                 onChange={(e) => setStreet(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Enter your street name in at least 5 letters
@@ -188,7 +177,7 @@ function SignUpGiver(props) {
                                 required
                                 name="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                            />{" "}
+                            />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
                                 Password must be minimum 8 letters
@@ -208,38 +197,25 @@ function SignUpGiver(props) {
                                 minLength="8"
                                 maxLength="20"
                                 required
-                            />{" "}
+                            />{' '}
                         </Form.Group>
                     </Form.Row>
                     <Form.Group>
-                    {/* <a href="" onClick={()=>setModalShow(true)}> */}
                         <Form.Check
                             required
                             label="Agree to the terms and conditions "
                             feedback="You must agree before submitting."
-                        /> 
+                        />
                     </Form.Group>
-                    {errorMessage && <div className="error"> {errorMessage} </div>}
+                    {errorMessage && (
+                        <div className="error"> {errorMessage} </div>
+                    )}
                     <Button type="submit" className="btn-submit float-right">
                         Submit
                     </Button>
-                  
                 </Form>
             </div>
         </div>
     );
 }
 export default SignUpGiver;
-
-
-
-
-
-
-
-
-
-
-
-
-

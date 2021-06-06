@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
-//import { Redirect } from "react-router";
 import Disclaimer from "../disclaimer/Disclaimer";
 import {useHistory} from "react-router-dom";
  
