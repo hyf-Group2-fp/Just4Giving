@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Card, Button } from 'react-bootstrap';
 import moment from 'moment';
 import { useHistory } from 'react-router';
-import team from '../../assets/landingpage/team.png';
 
 // components
 import Categories from '../categories/categories';
@@ -13,7 +12,6 @@ function Needer() {
     const history = useHistory();
     // get the needer first name from state
     const first_name = useSelector((state) => state.userInfo.first_name);
-    //const email = useSelector((state) => state.categoryGoods[0].giver_id);
 
     // goodsPerCategory
     const goodsPerCategory = useSelector((state) => state.categoryGoods);
@@ -21,7 +19,6 @@ function Needer() {
     console.log(goodsPerCategory);
 
     // details handler function
-
     const detailsHandler = (id) => {
         history.push(`profileneeder/details/${id}`);
     };
@@ -56,31 +53,32 @@ function Needer() {
               src={'assets/images/uploads/'+good.image}
                 // src={team}
                 alt='good'
-                className='img-center'
+                className='img-center mt-3'
                 style={{ width: '18rem' }}
               />
-              <Card.Body>
+              <Card.Body className='text-center  d-flex  flex-column'>
                 <Card.Text>
                   {' '}
                   {moment
                     .utc(good.createdAt)
                     .local(false)
                     .startOf('seconds')
-                    .fromNow()}{' '}
+                    .fromNow()}
                 </Card.Text>
+                <div className='mt-auto'>
+                  <Card.Title style={{color: 'rgb(235, 130, 46)'}}>{good.item_name}</Card.Title>
 
-                <Card.Title>{good.item_name}</Card.Title>
+                  <Card.Text>{good.category}</Card.Text>
+                  <div className='btn-good-group'></div>
 
-                <Card.Text>{good.category}</Card.Text>
-                <div className='btn-good-group'></div>
-
-                <Button
-                  className='btn-good'
-                  size={'sm'}
-                  onClick={() => detailsHandler(good.goods_id)}
-                  variant='info'>
-                  Details
-                </Button>
+                  <Button
+                    className='btn-good'
+                    size={'sm'}
+                    onClick={() => detailsHandler(good.goods_id)}
+                    variant='info'>
+                    Details
+                  </Button>
+                </div>
               </Card.Body>
             </Card>
           ))}

@@ -5,6 +5,7 @@ import axios from 'axios';
 //import Resizer from 'react-image-file-resizer';
 
 function NewItem() {
+    
     const [validated, setValidated] = useState(false);
     const [item, setItem] = useState('');
     const [description, setDescription] = useState('');
@@ -17,20 +18,34 @@ function NewItem() {
     // use History
     const history = useHistory();
 
+    const uploadImage = async(file, event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        //https://stackoverflow.com/questions/56074531/how-to-retry-5xx-requests-using-axios
+        alert(file.name)
+        setImage(file);
+        const formData = new FormData();
+        formData.append('image', image);
+         await axios.post('http://localhost:5000/api/upload/', formData,
+         { 
+                                headers: {"Content-Type": "unknown"
+                        }
+         })
+        //  .then(resp => alert(resp))
+        //  .catch(err => alert(err));
+        // }
+
+    
+    }
+
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         event.preventDefault();
         event.stopPropagation();
 
         if (form.checkValidity() === true) {
-            //upload image
-            const uploadImg = async() => {
-                const formData = new FormData();
-                formData.append('image', image, image.name);
-                const response = await axios.post('http://localhost:5000/api/upload/', formData);
-            }
-            uploadImg()
-              .then(() => {
+
                   const newGood = {
                       item: item,
                       category: category,
@@ -41,7 +56,7 @@ function NewItem() {
                   };
                   setForm(true);
                   setValidated(true);
-              });
+            //   });
         }
     };
     if (form) {
@@ -63,15 +78,16 @@ function NewItem() {
         <div className="forms">
             <h1 className="text-center formh1">What do you want to give?</h1>
             <div className="container formview mt">
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <input type="file" onChange={(e) => uploadImage(e.target.files[0], e)}></input>
+                <Form noValidate validated={validated} onSubmit={handleSubmit} >
                     <Form.Row>
                         <Form.Group>
-                            <Form.File
+                            {/* <Form.File
                                 id="img"
                                 label="Image"
                                 name="image"
                                 onChange={(event) => setImage(event.target.files[0])}
-                                />
+                                /> */}
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>

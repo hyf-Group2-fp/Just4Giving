@@ -14,8 +14,10 @@ const createUser1 = async () => {
       is_giver: 1,
       is_needer: 0,
       description: 'I love and want to help others!!',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('12345678'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
 
@@ -32,8 +34,10 @@ const createUser2 = async () => {
       is_giver: 0,
       is_needer: 1,
       description: 'I need help, I have just arrived from XYZ with my family, there are 3 of us: me, my wife and my 3 year old daughter, we currently live in a refugee camp. We need a new cell phone because the one I had now is broken.',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('12345678'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
 
@@ -50,8 +54,10 @@ const createUser3 = async () => {
       is_giver: 0,
       is_needer: 1,
       description: 'We urgently need help, they are 2 brothers of 20 years, I am XX and my brother is ZZ,. We arrived last Saturday and we really need clean clothes. We are from XYZ and we love your country, we hope to meet you soon. Thanks.',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('12345678'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
 
@@ -68,8 +74,10 @@ const createUser4 = async () => {
       is_giver: 1,
       is_needer: 0,
       description: 'I love helping others',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('12345678'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
 
@@ -86,8 +94,10 @@ const createUser5 = async () => {
       is_giver: 1,
       is_needer: 0,
       description: 'I makes me happy to help others',
+      password: '12345678',
+      agreement: 1
     },
-    defaults: { password: await cryptPassword('12345678'), agreement: 1 },
+    // defaults: { password: await cryptPassword('12345678'), agreement: 1 },
   });
 };
 
@@ -107,3 +117,5 @@ createUserN().then(() => {
   process.exit();
 });
 */
+
+//cryptPassword('12345678') doesn't work

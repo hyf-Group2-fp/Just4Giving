@@ -1,6 +1,6 @@
 const Tags = require('../models/Tags');
-// create a tags : check the categories table for {category_id}
 
+// create a tags : check the categories table for {category_id}
 // tags 1
 const createTags1 = async () => {
   return await Tags.findOrCreate({

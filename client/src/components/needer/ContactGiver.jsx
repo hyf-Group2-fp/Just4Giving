@@ -38,13 +38,15 @@ const ContactGiver = () => {
 
     const giver_id = useSelector((state) => state.goods.giver_id);
     const fetchGiver = async () => {
-        const res = await axios.get(
-            `http://localhost:5000/api/user/${giver_id}`
-        );
-        const giver = res.data.giver.email;
-        console.log(res.data.giver.email);
-
-        setGiver(giver);
+        if (giver_id){
+            const res = await axios.get(
+                `http://localhost:5000/api/user/${giver_id}`
+            );
+            const giver = res.data.giver.email;
+            console.log(res.data.giver.email);
+    
+            setGiver(giver);
+        }
     };
     useEffect(() => {
         fetchGiver();
@@ -200,7 +202,7 @@ const ContactGiver = () => {
                                 </Form.Control.Feedback>
                             </Form.Group>
                         </Form.Row>
-                        <Button type="submit" className="formb">
+                        <Button type="submit" className="btn-submit float-right btn btn-primary" style={{marginRight: '0px'}}>
                             Submit
                         </Button>
                         {errorMessage && (

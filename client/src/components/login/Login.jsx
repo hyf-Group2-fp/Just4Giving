@@ -97,7 +97,7 @@ function Login() {
                                             onChange={(e) => setPassword(e.target.value)}/>
                                         <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                                         <Form.Control.Feedback type="invalid">
-                                            Password must be 8 letters
+                                            Password must be minimum 8 letters
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Form.Row>

@@ -31,7 +31,7 @@ function SignUpGiver(props) {
         // } else 
         if (password !== confirmpassword) {
             setErrorMessage(
-                'Password and Confirm password are not same, try again.'
+                'Password and Confirm password are not the same, try again.'
             );
             event.stopPropagation();
         } else {
@@ -180,7 +180,7 @@ function SignUpGiver(props) {
                             />{' '}
                             <Form.Control.Feedback type="valid"></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
-                                Password must be 8 letters
+                                Password must be minimum 8 letters
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Form.Row>
