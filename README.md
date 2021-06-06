@@ -60,8 +60,11 @@ The idea of the application is to offer a tool to connect those who have items t
 
 - `npm install` in the root folder.
 - `cd client` && `npm install`
-- `npm` run dev`
+- `npm run dev`
 
+#### Quick Setup
+- `npm run db`
+- `npm run quick`
 ## Code Examples
 
 ```js
@@ -186,6 +189,7 @@ Project is: _in progress_
 #### Project Owner :
 
 - [@Samir M.](https://github.com/samirm00)
+- [@Bermarte](https://github.com/bermarte) (Mentor)
 
 #### UX/UI designer :
 
